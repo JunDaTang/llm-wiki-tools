@@ -2,3 +2,8 @@ node_modules/
 *.log
 .DS_Store
 Thumbs.db
+
+# 流水线数据目录（用户书籍与生成产物，体积大且可再生）
+input/
+outputs/
+__pycache__/
