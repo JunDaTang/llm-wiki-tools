@@ -223,8 +223,11 @@ def extract_result(fname: str, zip_url: str, output_dir: Path, tmp_dir: Path):
             for chunk in r.iter_content(1 << 20):
                 f.write(chunk)
 
-    out_md = output_dir / f"{stem}.md"
-    out_json = output_dir / f"{stem}.json"
+    # 解析产物是中间件，统一放 parts/ 子目录（最终 md 由 build_book 整理后写在输出根目录）
+    parts_dir = output_dir / "parts"
+    parts_dir.mkdir(parents=True, exist_ok=True)
+    out_md = parts_dir / f"{stem}.md"
+    out_json = parts_dir / f"{stem}.json"
     md_text = None
     json_bytes = None
     images = {}  # zip 内路径 -> bytes
@@ -340,7 +343,7 @@ def main():
     def already_done(it):
         st = state.get(it["name"], {})
         return (not args.force and st.get("extracted")
-                and (output_dir / (Path(it["name"]).stem + ".md")).exists())
+                and (output_dir / "parts" / (Path(it["name"]).stem + ".md")).exists())
 
     pending = [it for it in items if not already_done(it)]
     skipped = len(items) - len(pending)

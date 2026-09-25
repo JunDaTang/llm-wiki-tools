@@ -11,8 +11,9 @@
   1. 有分片(_1-200.md 等)的按起始页排序合并为完整 {书名}.md；
      分片边界处"前片以 ``` 结尾 + 后片以 ```lang 开头"视为跨片代码块并缝合
   2. toc.json 优先从原 PDF 书签树生成（层级权威、全局页码）；
-     原书无书签时从 md 重建（层级按编号深度、页码由 content_list.json 的
-     page_idx + 分片起始页推导，尽力而为，报告中明确标注）
+     原书无书签时走 LLM 标题集分析（--emit-analysis 发射请求 → agent 通读判定
+     层级与噪音 → --apply-analysis 应用，脚本硬校验：同形态同层级、编号深度单调）；
+     未提供分析结果时退化为编号深度启发式（质量较差，仅应急用）
   3. md 标题向目录对齐清洗（审核规则，全部记录在 toc_review.md）:
      - 阶段1/2 匹配（严格=去空白反斜杠 / 宽松=再去 LaTeX 残留与破折号）:
        先试单行，再试相邻标题行合并（修复"1.4 …原"+"因？怎样解决？"式断行）
@@ -32,7 +33,7 @@ import difflib
 import json
 import re
 import sys
-from collections import Counter
+from collections import Counter, defaultdict
 from pathlib import Path
 
 import pypdf
@@ -93,6 +94,61 @@ def numkey(s: str):
     if m:
         return (m.group(1), m.group(2))
     return (None, s)
+
+
+def heading_shape(t: str):
+    """标题的编号形态签名（对 LLM 层级判定做硬校验：同形态必须同层级）"""
+    lt = loose(t)
+    m = re.match(r"^(\d+(?:\.\d+)*)", lt)
+    if m:
+        return f"num{m.group(1).count('.') + 1}"
+    for pat, name in (
+        (r"^第[一二三四五六七八九十百千]+篇", "cn-pian"),
+        (r"^第[一二三四五六七八九十百千]+章", "cn-zhang"),
+        (r"^第[一二三四五六七八九十百千]+节", "cn-jie"),
+        (r"^[一二三四五六七八九十百]+[、.．]", "cn-xu"),
+        (r"^\d+[).）]", "paren"),
+        (r"^(Part|Chapter)\s+\w+", "en-part-chapter"),
+    ):
+        if re.match(pat, lt):
+            return name
+    return None
+
+
+def check_analysis(result_items, request_items):
+    """对 LLM 层级判定做硬校验，返回错误列表（空 = 通过）"""
+    errs = []
+    req_idx = [it["idx"] for it in request_items]
+    got = {it["idx"]: it for it in result_items}
+    if sorted(got) != sorted(req_idx):
+        missing = sorted(set(req_idx) - set(got))[:8]
+        extra = sorted(set(got) - set(req_idx))[:8]
+        errs.append(f"覆盖不完整: 缺 idx {missing}，多 idx {extra}")
+        return errs
+    title_by_idx = {it["idx"]: it["title"] for it in request_items}
+    shape_levels = defaultdict(set)
+    for idx, it in got.items():
+        if it.get("action") == "noise":
+            continue
+        lv = it.get("level")
+        if not isinstance(lv, int) or not 2 <= lv <= 6:
+            errs.append(f"idx={idx} 层级非法: {lv!r}（须为 2-6 整数或 noise）")
+            continue
+        sh = heading_shape(title_by_idx[idx])
+        if sh:
+            shape_levels[sh].add(lv)
+    for sh, lvs in sorted(shape_levels.items()):
+        if len(lvs) > 1:
+            errs.append(f"形态 {sh} 层级不一致 {sorted(lvs)}（同形态必须同层级）")
+    digit_lv = {}
+    for sh, lvs in shape_levels.items():
+        if sh.startswith("num") and len(lvs) == 1:
+            digit_lv[int(sh[3:])] = next(iter(lvs))
+    for d1 in sorted(digit_lv):
+        for d2 in sorted(digit_lv):
+            if d1 < d2 and digit_lv[d2] < digit_lv[d1]:
+                errs.append(f"编号深度 {d1} 层级 L{digit_lv[d1]} 不得浅于编号深度 {d2} 层级 L{digit_lv[d2]}")
+    return errs
 
 
 def parse_headings(lines):
@@ -183,12 +239,22 @@ def merge_parts(parts):
 
 
 def iter_part_files(output: Path, base: str):
+    """分片原始 md 在 parts/ 子目录（新版布局）；旧布局兜底扫描根目录"""
+    parts_dir = output / "parts"
+    scan_dirs = [parts_dir] if parts_dir.exists() else [output]
     parts = []
-    for f in output.glob(f"{base}_*.md"):
-        m = PART_RE.match(f.stem)
-        if m and m.group("base") == base:
-            parts.append({"name": f.name, "a": int(m.group("a")), "b": int(m.group("b")),
-                          "text": f.read_text(encoding="utf-8")})
+    for d in scan_dirs:
+        for f in d.glob(f"{base}_*.md"):
+            m = PART_RE.match(f.stem)
+            if m and m.group("base") == base:
+                parts.append({"name": f.name, "a": int(m.group("a")), "b": int(m.group("b")),
+                              "text": f.read_text(encoding="utf-8")})
+    if not parts and parts_dir.exists():  # 新版目录但该 base 只有根目录分片（旧布局混入）
+        for f in output.glob(f"{base}_*.md"):
+            m = PART_RE.match(f.stem)
+            if m and m.group("base") == base:
+                parts.append({"name": f.name, "a": int(m.group("a")), "b": int(m.group("b")),
+                              "text": f.read_text(encoding="utf-8")})
     return sorted(parts, key=lambda p: p["a"])
 
 
@@ -227,15 +293,29 @@ def page_from_content_list(json_files, title):
     return None
 
 
-def build_doc(base, parts, pdf_path, output, report):
-    """处理一个文档，返回一致性是否通过"""
+def build_doc(base, parts, pdf_path, output, report, analysis=None):
+    """处理一个文档，返回一致性是否通过。
+    analysis: None=常规流程; 'emit'=写出标题层级分析请求(不写产物);
+    'apply'=应用 .analysis-result.json 的 LLM 层级判定后重建产物。仅对无书签文档生效。"""
     single = not parts
-    json_files = ([(output / f"{p['name'][:-3]}.json", p["a"]) for p in parts]
-                  or [(output / f"{base}.json", 1)])
-    md_file = output / f"{base}.md"
+    parts_dir = output / "parts"
+    if parts:
+        json_files = [(parts_dir / f"{p['name'][:-3]}.json", p["a"]) for p in parts]
+    else:
+        # 单文档：原始 md/json 在 parts/（新版）或根目录（旧布局）
+        raw = parts_dir / f"{base}.md"
+        js = parts_dir / f"{base}.json"
+        json_files = [(js if js.exists() else output / f"{base}.json", 1)]
+    md_file = output / f"{base}.md"          # 最终成品固定写输出根目录
+    toc_dir = output / "toc"
+    toc_dir.mkdir(parents=True, exist_ok=True)
+    req_file = toc_dir / f"{base}.analysis-request.json"
+    res_file = toc_dir / f"{base}.analysis-result.json"
 
     if single:
-        text = md_file.read_text(encoding="utf-8").rstrip("\n")
+        if not raw.exists():
+            raw = md_file  # 旧布局：根目录单文档 md 即原始版（就地清洗）
+        text = raw.read_text(encoding="utf-8").rstrip("\n")
         seams = []
         report += [f"## {base}", "", "- 单文档（无分片）"]
     else:
@@ -265,7 +345,10 @@ def build_doc(base, parts, pdf_path, output, report):
     bm_list = get_bookmarks(pdf_path) if pdf_path and pdf_path.exists() else []
     total_pages = len(pypdf.PdfReader(str(pdf_path)).pages) if pdf_path and pdf_path.exists() else None
     using_bookmarks = bool(bm_list)
-    report += [f"- 目录来源: {'PDF 书签树（%d 条，层级权威、全局页码）' % len(bm_list) if using_bookmarks else 'md 重建（原书无书签，尽力而为）'}"]
+    src_desc = ("PDF 书签树（%d 条，层级权威、全局页码）" % len(bm_list) if using_bookmarks else
+                ("LLM 标题集分析（无书签；agent 判定层级与噪音，脚本硬校验）" if analysis == "apply" or res_file.exists()
+                 else "md 重建（原书无书签，启发式尽力而为）"))
+    report += [f"- 目录来源: {src_desc}"]
 
     # ---- 标题对齐清洗（计划阶段）----
     used = [False] * len(bm_list)
@@ -335,25 +418,80 @@ def build_doc(base, parts, pdf_path, output, report):
             if gps:
                 process(gps)
     else:
-        # 无书签: 只做弱噪音降级，层级按编号深度重写（与 fallback toc 同源，保证一致）
-        prev_depth = 0
-        for g in parse_headings(lines):
-            gps = [p for p in g["parts"] if p[0] != root_idx]
-            for (li, lv, t) in gps:
-                lt = loose(t)
-                if lt in CALLOUT_WORDS or re.fullmatch(r"[IVX]+", lt) or lt.startswith("•") \
-                        or (len(lt) > 50 and re.search(r"[。？！?!]", lt)):
+        # 无书签：head_groups 为清洗目标（根行除外）
+        head_groups = [[p for p in g["parts"] if p[0] != root_idx]
+                       for g in parse_headings(lines)]
+        head_groups = [g for g in head_groups if g]
+
+        if analysis == "emit":
+            items, idx = [], 0
+            for gps in head_groups:
+                for (li, lv, t) in gps:
+                    cb, ca = [], []
+                    j = li - 1
+                    while j >= 0 and len(cb) < 2:
+                        if lines[j].strip():
+                            cb.insert(0, lines[j].strip()[:60])
+                        j -= 1
+                    j = li + 1
+                    while j < len(lines) and len(ca) < 2:
+                        if lines[j].strip():
+                            ca.append(lines[j].strip()[:60])
+                        j += 1
+                    items.append({"idx": idx, "title": t, "level_guess": lv,
+                                  "page": page_from_content_list(json_files, t),
+                                  "before": cb, "after": ca})
+                    idx += 1
+            req_file.write_text(json.dumps({"book": base, "items": items},
+                                           ensure_ascii=False, indent=1),
+                                encoding="utf-8", newline="\n")
+            log(f"[EMIT] {req_file.name}: {len(items)} 个标题待分析")
+            return True
+
+        if analysis == "apply" and not res_file.exists():
+            raise SystemExit(f"{base}: 缺 {res_file.name}，请先 --emit-analysis 并完成分析")
+        # 已有分析结果则自动应用（粘性）：普通重跑不会退化回启发式
+        use_llm = res_file.exists()
+        if use_llm:
+            result = json.loads(res_file.read_text(encoding="utf-8"))
+            req_items = json.loads(
+                (toc_dir / f"{base}.analysis-request.json").read_text(encoding="utf-8"))["items"]
+            flat = [(li, lv, t) for gps in head_groups for (li, lv, t) in gps]
+            if len(req_items) != len(flat):
+                raise SystemExit(f"{base}: 请求文件 {len(req_items)} 项与当前标题 {len(flat)} 项不符，"
+                                 "请重新 --emit-analysis")
+            errs = check_analysis(result["items"], req_items)
+            if errs:
+                raise SystemExit(f"{base}: 分析结果未通过硬校验:\n- " + "\n- ".join(errs))
+            by_idx = {it["idx"]: it for it in result["items"]}
+            for idx, (li, lv, t) in enumerate(flat):
+                r = by_idx[idx]
+                if r.get("action") == "noise":
                     actions[li] = ("demote", None, t)
                     demoted.append(t)
-                    continue
-                k, _ = numkey(lt)
-                depth = (0 if re.fullmatch(r"[A-Z]", k) else k.count(".")) if k else prev_depth
-                prev_depth = depth
-                actions[li] = ("keep", depth + 2, t)
-        # 级别跳变只记录不钳制（钳制会破坏 md/toc 一致性）
-        seq = [v[1] for _, v in sorted(actions.items()) if v[0] == "keep"]
-        if any(b - a > 1 for a, b in zip(seq, seq[1:])):
-            report.append("- 级别跳变警告: 重建目录存在层级跳变（未钳制，建议人工复核）")
+                else:
+                    actions[li] = ("keep", int(r["level"]), t)
+            report += [f"- 标题层级: LLM 分析判定（keep {len(flat) - len(demoted)} / noise {len(demoted)}）"]
+            report += [f"- 分析依据: {result.get('notes', '')[:150]}"]
+        if not use_llm:
+            # 启发式 fallback：层级按编号深度（与 toc 同源）
+            prev_depth = 0
+            for gps in head_groups:
+                for (li, lv, t) in gps:
+                    lt = loose(t)
+                    if lt in CALLOUT_WORDS or re.fullmatch(r"[IVX]+", lt) or lt.startswith("•") \
+                            or (len(lt) > 50 and re.search(r"[。？！?!]", lt)):
+                        actions[li] = ("demote", None, t)
+                        demoted.append(t)
+                        continue
+                    k, _ = numkey(lt)
+                    depth = (0 if re.fullmatch(r"[A-Z]", k) else k.count(".")) if k else prev_depth
+                    prev_depth = depth
+                    actions[li] = ("keep", depth + 2, t)
+            # 级别跳变只记录不钳制（钳制会破坏 md/toc 一致性）
+            seq = [v[1] for _, v in sorted(actions.items()) if v[0] == "keep"]
+            if any(b - a > 1 for a, b in zip(seq, seq[1:])):
+                report.append("- 级别跳变警告: 重建目录存在层级跳变（未钳制，建议人工复核）")
 
     # ---- 书签缺失 -> 补插（锚定到下一个已匹配章节前）----
     if rejected_ev:
@@ -450,11 +588,13 @@ def build_doc(base, parts, pdf_path, output, report):
             else:
                 toc_items.append(node)
             stack.append((d, node))
-        source = "md-rebuild"
+        source = "llm-analysis" if res_file.exists() else "md-rebuild"
 
     toc = {"book": base, "source": source, "total_pages": total_pages,
            "items": [{"title": root_title, "level": 1, "page": 1, "children": toc_items}]}
-    toc_file = output / f"{base}.toc.json"
+    toc_dir = output / "toc"
+    toc_dir.mkdir(exist_ok=True)
+    toc_file = toc_dir / f"{base}.toc.json"
     toc_file.write_text(json.dumps(toc, ensure_ascii=False, indent=2),
                         encoding="utf-8", newline="\n")
 
@@ -506,13 +646,22 @@ def main():
     ap.add_argument("--input", default="input/pdf2md")
     ap.add_argument("--output", default="outputs/pdf2md")
     ap.add_argument("--only", default=None)
+    ap.add_argument("--emit-analysis", action="store_true",
+                    help="无书签文档：写出标题层级分析请求（供 LLM 分析），不写产物")
+    ap.add_argument("--apply-analysis", action="store_true",
+                    help="无书签文档：应用 .analysis-result.json 的层级判定并重建产物")
     args = ap.parse_args()
+    if args.emit_analysis and args.apply_analysis:
+        ap.error("--emit-analysis 与 --apply-analysis 互斥")
+    mode = "emit" if args.emit_analysis else ("apply" if args.apply_analysis else None)
     if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
     input_dir, output = Path(args.input), Path(args.output)
+    parts_dir = output / "parts"
+    scan_dir = parts_dir if parts_dir.exists() else output  # 新版布局扫 parts/，旧布局扫根目录
     groups, singles = {}, []
-    for f in sorted(output.glob("*.md")):
+    for f in sorted(scan_dir.glob("*.md")):
         if f.name == "toc_review.md":  # 审核报告自身不是文档
             continue
         m = PART_RE.match(f.stem)
@@ -538,9 +687,13 @@ def main():
     for base, files in sorted(docs):
         parts = iter_part_files(output, base)
         pdf_path = input_dir / f"{base}.pdf"
-        ok = build_doc(base, parts, pdf_path, output, report)
-        all_ok &= ok
-        log(f"[{'PASS' if ok else 'FAIL'}] {base}")
+        if mode and pdf_path.exists() and get_bookmarks(pdf_path):
+            log(f"[SKIP] {base}: 有书签，走书签路径，无需 LLM 分析")
+            continue
+        ok = build_doc(base, parts, pdf_path, output, report, analysis=mode)
+        if mode != "emit":
+            all_ok &= ok
+            log(f"[{'PASS' if ok else 'FAIL'}] {base}")
 
     report_path = output / "toc_review.md"
     report_path.write_text("\n".join(report) + "\n", encoding="utf-8", newline="\n")

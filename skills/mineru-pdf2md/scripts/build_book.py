@@ -239,12 +239,22 @@ def merge_parts(parts):
 
 
 def iter_part_files(output: Path, base: str):
+    """分片原始 md 在 parts/ 子目录（新版布局）；旧布局兜底扫描根目录"""
+    parts_dir = output / "parts"
+    scan_dirs = [parts_dir] if parts_dir.exists() else [output]
     parts = []
-    for f in output.glob(f"{base}_*.md"):
-        m = PART_RE.match(f.stem)
-        if m and m.group("base") == base:
-            parts.append({"name": f.name, "a": int(m.group("a")), "b": int(m.group("b")),
-                          "text": f.read_text(encoding="utf-8")})
+    for d in scan_dirs:
+        for f in d.glob(f"{base}_*.md"):
+            m = PART_RE.match(f.stem)
+            if m and m.group("base") == base:
+                parts.append({"name": f.name, "a": int(m.group("a")), "b": int(m.group("b")),
+                              "text": f.read_text(encoding="utf-8")})
+    if not parts and parts_dir.exists():  # 新版目录但该 base 只有根目录分片（旧布局混入）
+        for f in output.glob(f"{base}_*.md"):
+            m = PART_RE.match(f.stem)
+            if m and m.group("base") == base:
+                parts.append({"name": f.name, "a": int(m.group("a")), "b": int(m.group("b")),
+                              "text": f.read_text(encoding="utf-8")})
     return sorted(parts, key=lambda p: p["a"])
 
 
@@ -288,12 +298,24 @@ def build_doc(base, parts, pdf_path, output, report, analysis=None):
     analysis: None=常规流程; 'emit'=写出标题层级分析请求(不写产物);
     'apply'=应用 .analysis-result.json 的 LLM 层级判定后重建产物。仅对无书签文档生效。"""
     single = not parts
-    json_files = ([(output / f"{p['name'][:-3]}.json", p["a"]) for p in parts]
-                  or [(output / f"{base}.json", 1)])
-    md_file = output / f"{base}.md"
+    parts_dir = output / "parts"
+    if parts:
+        json_files = [(parts_dir / f"{p['name'][:-3]}.json", p["a"]) for p in parts]
+    else:
+        # 单文档：原始 md/json 在 parts/（新版）或根目录（旧布局）
+        raw = parts_dir / f"{base}.md"
+        js = parts_dir / f"{base}.json"
+        json_files = [(js if js.exists() else output / f"{base}.json", 1)]
+    md_file = output / f"{base}.md"          # 最终成品固定写输出根目录
+    toc_dir = output / "toc"
+    toc_dir.mkdir(parents=True, exist_ok=True)
+    req_file = toc_dir / f"{base}.analysis-request.json"
+    res_file = toc_dir / f"{base}.analysis-result.json"
 
     if single:
-        text = md_file.read_text(encoding="utf-8").rstrip("\n")
+        if not raw.exists():
+            raw = md_file  # 旧布局：根目录单文档 md 即原始版（就地清洗）
+        text = raw.read_text(encoding="utf-8").rstrip("\n")
         seams = []
         report += [f"## {base}", "", "- 单文档（无分片）"]
     else:
@@ -324,7 +346,7 @@ def build_doc(base, parts, pdf_path, output, report, analysis=None):
     total_pages = len(pypdf.PdfReader(str(pdf_path)).pages) if pdf_path and pdf_path.exists() else None
     using_bookmarks = bool(bm_list)
     src_desc = ("PDF 书签树（%d 条，层级权威、全局页码）" % len(bm_list) if using_bookmarks else
-                ("LLM 标题集分析（无书签；agent 判定层级与噪音，脚本硬校验）" if analysis == "apply"
+                ("LLM 标题集分析（无书签；agent 判定层级与噪音，脚本硬校验）" if analysis == "apply" or res_file.exists()
                  else "md 重建（原书无书签，启发式尽力而为）"))
     report += [f"- 目录来源: {src_desc}"]
 
@@ -420,20 +442,20 @@ def build_doc(base, parts, pdf_path, output, report, analysis=None):
                                   "page": page_from_content_list(json_files, t),
                                   "before": cb, "after": ca})
                     idx += 1
-            req_file = output / f"{base}.analysis-request.json"
             req_file.write_text(json.dumps({"book": base, "items": items},
                                            ensure_ascii=False, indent=1),
                                 encoding="utf-8", newline="\n")
             log(f"[EMIT] {req_file.name}: {len(items)} 个标题待分析")
             return True
 
-        if analysis == "apply":
-            res_file = output / f"{base}.analysis-result.json"
-            if not res_file.exists():
-                raise SystemExit(f"{base}: 缺 {res_file.name}，请先 --emit-analysis 并完成分析")
+        if analysis == "apply" and not res_file.exists():
+            raise SystemExit(f"{base}: 缺 {res_file.name}，请先 --emit-analysis 并完成分析")
+        # 已有分析结果则自动应用（粘性）：普通重跑不会退化回启发式
+        use_llm = res_file.exists()
+        if use_llm:
             result = json.loads(res_file.read_text(encoding="utf-8"))
             req_items = json.loads(
-                (output / f"{base}.analysis-request.json").read_text(encoding="utf-8"))["items"]
+                (toc_dir / f"{base}.analysis-request.json").read_text(encoding="utf-8"))["items"]
             flat = [(li, lv, t) for gps in head_groups for (li, lv, t) in gps]
             if len(req_items) != len(flat):
                 raise SystemExit(f"{base}: 请求文件 {len(req_items)} 项与当前标题 {len(flat)} 项不符，"
@@ -451,7 +473,7 @@ def build_doc(base, parts, pdf_path, output, report, analysis=None):
                     actions[li] = ("keep", int(r["level"]), t)
             report += [f"- 标题层级: LLM 分析判定（keep {len(flat) - len(demoted)} / noise {len(demoted)}）"]
             report += [f"- 分析依据: {result.get('notes', '')[:150]}"]
-        else:
+        if not use_llm:
             # 启发式 fallback：层级按编号深度（与 toc 同源）
             prev_depth = 0
             for gps in head_groups:
@@ -566,11 +588,13 @@ def build_doc(base, parts, pdf_path, output, report, analysis=None):
             else:
                 toc_items.append(node)
             stack.append((d, node))
-        source = "llm-analysis" if analysis == "apply" else "md-rebuild"
+        source = "llm-analysis" if res_file.exists() else "md-rebuild"
 
     toc = {"book": base, "source": source, "total_pages": total_pages,
            "items": [{"title": root_title, "level": 1, "page": 1, "children": toc_items}]}
-    toc_file = output / f"{base}.toc.json"
+    toc_dir = output / "toc"
+    toc_dir.mkdir(exist_ok=True)
+    toc_file = toc_dir / f"{base}.toc.json"
     toc_file.write_text(json.dumps(toc, ensure_ascii=False, indent=2),
                         encoding="utf-8", newline="\n")
 
@@ -634,8 +658,10 @@ def main():
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
     input_dir, output = Path(args.input), Path(args.output)
+    parts_dir = output / "parts"
+    scan_dir = parts_dir if parts_dir.exists() else output  # 新版布局扫 parts/，旧布局扫根目录
     groups, singles = {}, []
-    for f in sorted(output.glob("*.md")):
+    for f in sorted(scan_dir.glob("*.md")):
         if f.name == "toc_review.md":  # 审核报告自身不是文档
             continue
         m = PART_RE.match(f.stem)
