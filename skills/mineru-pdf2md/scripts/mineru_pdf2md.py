@@ -44,6 +44,7 @@ from pathlib import Path
 import requests
 from pypdf import PdfReader, PdfWriter
 
+PART_RE = re.compile(r"^(?P<base>.+)_(?P<a>\d{1,4})-(?P<b>\d{1,4})$")  # 分片文件名 → 书名
 API_BASE = "https://mineru.net"
 BATCH_URL = API_BASE + "/api/v4/file-urls/batch"
 RESULT_URL = API_BASE + "/api/v4/extract-results/batch/{}"
@@ -212,8 +213,11 @@ def poll_batches(items: list[dict], token: str, poll_interval: int, timeout: int
 
 
 def extract_result(fname: str, zip_url: str, output_dir: Path, tmp_dir: Path):
-    """下载结果 zip，解包 md/json/images 到输出目录，命名与平台手动导出一致（{stem}.md / {stem}.json）。"""
+    """下载结果 zip：md/json 留在包内（build_book 需要时从 zips 内存提取），
+    只把 md 实际引用的图片解包到 {书名}/images/，zip 归档到 zips/。"""
     stem = Path(fname).stem
+    m = PART_RE.match(stem)
+    base = m.group("base") if m else stem  # 分片归属的书名（单文档即自身）
     zip_path = tmp_dir / f"{stem}.zip"
     zip_path.parent.mkdir(parents=True, exist_ok=True)
 
@@ -223,13 +227,7 @@ def extract_result(fname: str, zip_url: str, output_dir: Path, tmp_dir: Path):
             for chunk in r.iter_content(1 << 20):
                 f.write(chunk)
 
-    # 解析产物是中间件，统一放 parts/ 子目录（最终 md 由 build_book 整理后写在输出根目录）
-    parts_dir = output_dir / "parts"
-    parts_dir.mkdir(parents=True, exist_ok=True)
-    out_md = parts_dir / f"{stem}.md"
-    out_json = parts_dir / f"{stem}.json"
     md_text = None
-    json_bytes = None
     images = {}  # zip 内路径 -> bytes
 
     with zipfile.ZipFile(zip_path) as zf:
@@ -242,28 +240,6 @@ def extract_result(fname: str, zip_url: str, output_dir: Path, tmp_dir: Path):
         if md_name:
             md_text = zf.read(md_name).decode("utf-8", errors="replace").replace("\r\n", "\n")
 
-        def is_aux_json(n):
-            base = Path(n).name.lower()
-            return base.endswith(("model.json", "layout.json", "_span.json"))
-
-        json_all = [n for n in names if n.lower().endswith(".json") and not is_aux_json(n)]
-        json_name = next(
-            (
-                n
-                for n in (
-                    f"{stem}_middle.json",
-                    f"{stem}_content_list.json",
-                    *(x for x in json_all if x.endswith("_middle.json")),
-                    *(x for x in json_all if x.endswith("_content_list.json")),
-                    *(x for x in json_all if x.endswith("_content_list_v2.json")),
-                )
-                if n in json_all or n in names
-            ),
-            json_all[0] if json_all else None,
-        )
-        if json_name:
-            json_bytes = zf.read(json_name)
-
         # 额外格式（full.html/full.docx/full.tex）不展开落盘，随结果 zip 保留在 zips/ 目录
         for n in names:
             norm = n.replace("\\", "/")
@@ -273,27 +249,20 @@ def extract_result(fname: str, zip_url: str, output_dir: Path, tmp_dir: Path):
     if md_text is None:
         raise MineruError(f"{fname}: 结果 zip 中未找到 markdown（内容: {names[:10]}）")
 
-    output_dir.mkdir(parents=True, exist_ok=True)
-    out_md.write_text(md_text, encoding="utf-8", newline="\n")
-    if json_bytes is not None:
-        try:
-            obj = json.loads(json_bytes)
-            out_json.write_text(json.dumps(obj, ensure_ascii=False, indent=4), encoding="utf-8", newline="\n")
-        except (ValueError, UnicodeDecodeError):
-            out_json.write_bytes(json_bytes)
+    book_dir = output_dir / base
+    book_dir.mkdir(parents=True, exist_ok=True)
     # 只保留 md 实际引用的图片；其余裁剪图（公式/表格等）在 zips/ 的结果压缩包里
     if images:
         # md 图片语法与 HTML 表格内嵌 <img src="images/..."> 两种引用都要认
         keep = ({Path(r).name for r in re.findall(r"\]\((?:\./)?images/([^)\s]+)\)", md_text)}
                 | {Path(r).name for r in re.findall(r"""<img[^>]*?src=["'](?:\./)?images/([^"'\s>]+)["']""", md_text)})
-        img_dir = output_dir / "images"
+        img_dir = book_dir / "images"
         img_dir.mkdir(exist_ok=True)
         for n, data in images.items():
             if Path(n).name in keep:
                 (img_dir / Path(n).name).write_bytes(data)
 
-    used_json = Path(json_name).name if json_name else "-"
-    log(f"完成: {out_md.name} + {used_json} ({len(keep) if images else 0} 张图片)")
+    log(f"完成: {base}/images +{len(keep) if images else 0} 张图片, zip 已归档 zips/")
 
     # 原始结果压缩包保留到 zips/（含 layout.json、model.json、额外格式、全部图片等）
     zips_dir = output_dir / "zips"
@@ -343,7 +312,7 @@ def main():
     def already_done(it):
         st = state.get(it["name"], {})
         return (not args.force and st.get("extracted")
-                and (output_dir / "parts" / (Path(it["name"]).stem + ".md")).exists())
+                and (output_dir / "zips" / (Path(it["name"]).stem + ".zip")).exists())
 
     pending = [it for it in items if not already_done(it)]
     skipped = len(items) - len(pending)

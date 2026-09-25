@@ -33,6 +33,7 @@ import difflib
 import json
 import re
 import sys
+import zipfile
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -238,24 +239,52 @@ def merge_parts(parts):
     return "\n".join(out), seams
 
 
-def iter_part_files(output: Path, base: str):
-    """分片原始 md 在 parts/ 子目录（新版布局）；旧布局兜底扫描根目录"""
-    parts_dir = output / "parts"
-    scan_dirs = [parts_dir] if parts_dir.exists() else [output]
-    parts = []
-    for d in scan_dirs:
-        for f in d.glob(f"{base}_*.md"):
-            m = PART_RE.match(f.stem)
-            if m and m.group("base") == base:
-                parts.append({"name": f.name, "a": int(m.group("a")), "b": int(m.group("b")),
-                              "text": f.read_text(encoding="utf-8")})
-    if not parts and parts_dir.exists():  # 新版目录但该 base 只有根目录分片（旧布局混入）
-        for f in output.glob(f"{base}_*.md"):
-            m = PART_RE.match(f.stem)
-            if m and m.group("base") == base:
-                parts.append({"name": f.name, "a": int(m.group("a")), "b": int(m.group("b")),
-                              "text": f.read_text(encoding="utf-8")})
-    return sorted(parts, key=lambda p: p["a"])
+def load_raw_from_zips(output: Path, base: str):
+    """从 zips/ 的原始结果压缩包内存提取该书的全部分片 md 与 content_list（不落盘）。
+    返回 (parts, json_docs, single)：parts=[{name,a,b,text}]，json_docs=[(content_list, 起始页)]"""
+    zips_dir = output / "zips"
+    entries = []
+    if zips_dir.exists():
+        for zp in sorted(zips_dir.glob("*.zip")):
+            stem = zp.stem
+            m = PART_RE.match(stem)
+            b_ = m.group("base") if m else stem
+            if b_ != base:
+                continue
+            rng = (int(m.group("a")), int(m.group("b"))) if m else None
+            entries.append((stem, rng, zp))
+    parts, json_docs = [], []
+    for stem, rng, zp in entries:
+        a = rng[0] if rng else 1
+        with zipfile.ZipFile(zp) as zf:
+            names = zf.namelist()
+            md_name = next((n for n in (f"{stem}.md", "full.md") if n in names),
+                           next((n for n in names if n.lower().endswith(".md")), None))
+            if md_name is None:
+                raise ValueError(f"{zp.name}: zip 内无 markdown")
+            text = zf.read(md_name).decode("utf-8", errors="replace").replace("\r\n", "\n")
+            jname = next((n for n in names if n.endswith("_content_list.json")), None)
+            obj = json.loads(zf.read(jname)) if jname else None
+        parts.append({"name": stem + ".md", "a": a, "b": rng[1] if rng else a, "text": text})
+        json_docs.append((obj, a))
+    parts.sort(key=lambda p: p["a"])
+    single = bool(parts) and all(p["name"] == f"{base}.md" for p in parts)
+    return parts, json_docs, single
+
+
+def page_from_content_list(json_docs, title):
+    """从 content_list（已解析对象）推导全局页码: 分片起始页 + page_idx"""
+    t = loose(title)[:8]
+    if not t:
+        return None
+    for obj, offset in json_docs:
+        if obj is None:
+            continue
+        blocks = obj if isinstance(obj, list) else obj.get("content_list", [])
+        for b in blocks:
+            if b.get("type") in ("text", "title") and loose(b.get("text", "")).startswith(t):
+                return offset + int(b.get("page_idx", 0))
+    return None
 
 
 def get_bookmarks(pdf_path: Path):
@@ -277,47 +306,23 @@ def get_bookmarks(pdf_path: Path):
     return out
 
 
-def page_from_content_list(json_files, title):
-    """从 content_list.json 推导全局页码: 分片起始页 + page_idx"""
-    t = loose(title)[:8]
-    if not t:
-        return None
-    for jf, offset in json_files:
-        try:
-            blocks = json.loads(Path(jf).read_text(encoding="utf-8"))
-        except (ValueError, OSError):
-            continue
-        for b in blocks:
-            if b.get("type") in ("text", "title") and loose(b.get("text", "")).startswith(t):
-                return offset + int(b.get("page_idx", 0))
-    return None
-
-
-def build_doc(base, parts, pdf_path, output, report, analysis=None):
+def build_doc(base, pdf_path, output, report, analysis=None):
     """处理一个文档，返回一致性是否通过。
     analysis: None=常规流程; 'emit'=写出标题层级分析请求(不写产物);
     'apply'=应用 .analysis-result.json 的 LLM 层级判定后重建产物。仅对无书签文档生效。"""
-    single = not parts
-    parts_dir = output / "parts"
-    if parts:
-        json_files = [(parts_dir / f"{p['name'][:-3]}.json", p["a"]) for p in parts]
-    else:
-        # 单文档：原始 md/json 在 parts/（新版）或根目录（旧布局）
-        raw = parts_dir / f"{base}.md"
-        js = parts_dir / f"{base}.json"
-        json_files = [(js if js.exists() else output / f"{base}.json", 1)]
-    md_file = output / f"{base}.md"          # 最终成品固定写输出根目录
-    toc_dir = output / "toc"
-    toc_dir.mkdir(parents=True, exist_ok=True)
-    req_file = toc_dir / f"{base}.analysis-request.json"
-    res_file = toc_dir / f"{base}.analysis-result.json"
+    parts, json_docs, single = load_raw_from_zips(output, base)
+    if not parts:
+        raise SystemExit(f"{base}: zips/ 中未找到原始结果压缩包（请先运行解析器）")
+    book_dir = output / base
+    book_dir.mkdir(parents=True, exist_ok=True)
+    md_file = book_dir / f"{base}.md"        # 最终成品：{书名}/{书名}.md
+    req_file = book_dir / f"{base}.analysis-request.json"
+    res_file = book_dir / f"{base}.analysis-result.json"
 
     if single:
-        if not raw.exists():
-            raw = md_file  # 旧布局：根目录单文档 md 即原始版（就地清洗）
-        text = raw.read_text(encoding="utf-8").rstrip("\n")
+        text = parts[0]["text"].rstrip("\n")
         seams = []
-        report += [f"## {base}", "", "- 单文档（无分片）"]
+        report += [f"## {base}", "", "- 单文档（无分片，原始产物取自 zips/）"]
     else:
         text, seams = merge_parts(parts)
         report += [f"## {base}", "", f"- 分片合并: {len(parts)} 片 -> {md_file.name}"]
@@ -439,7 +444,7 @@ def build_doc(base, parts, pdf_path, output, report, analysis=None):
                             ca.append(lines[j].strip()[:60])
                         j += 1
                     items.append({"idx": idx, "title": t, "level_guess": lv,
-                                  "page": page_from_content_list(json_files, t),
+                                  "page": page_from_content_list(json_docs, t),
                                   "before": cb, "after": ca})
                     idx += 1
             req_file.write_text(json.dumps({"book": base, "items": items},
@@ -455,7 +460,7 @@ def build_doc(base, parts, pdf_path, output, report, analysis=None):
         if use_llm:
             result = json.loads(res_file.read_text(encoding="utf-8"))
             req_items = json.loads(
-                (toc_dir / f"{base}.analysis-request.json").read_text(encoding="utf-8"))["items"]
+                req_file.read_text(encoding="utf-8"))["items"]
             flat = [(li, lv, t) for gps in head_groups for (li, lv, t) in gps]
             if len(req_items) != len(flat):
                 raise SystemExit(f"{base}: 请求文件 {len(req_items)} 项与当前标题 {len(flat)} 项不符，"
@@ -579,7 +584,7 @@ def build_doc(base, parts, pdf_path, output, report, analysis=None):
         toc_items, stack = [], []
         for lv, t in [(l, t) for l, t in fh if l > 1]:
             node = {"title": t, "level": lv,
-                    "page": page_from_content_list(json_files, t)}
+                    "page": page_from_content_list(json_docs, t)}
             d = lv - 2
             while stack and stack[-1][0] >= d:
                 stack.pop()
@@ -592,9 +597,7 @@ def build_doc(base, parts, pdf_path, output, report, analysis=None):
 
     toc = {"book": base, "source": source, "total_pages": total_pages,
            "items": [{"title": root_title, "level": 1, "page": 1, "children": toc_items}]}
-    toc_dir = output / "toc"
-    toc_dir.mkdir(exist_ok=True)
-    toc_file = toc_dir / f"{base}.toc.json"
+    toc_file = book_dir / f"{base}.toc.json"
     toc_file.write_text(json.dumps(toc, ensure_ascii=False, indent=2),
                         encoding="utf-8", newline="\n")
 
@@ -658,39 +661,24 @@ def main():
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
     input_dir, output = Path(args.input), Path(args.output)
-    parts_dir = output / "parts"
-    scan_dir = parts_dir if parts_dir.exists() else output  # 新版布局扫 parts/，旧布局扫根目录
-    groups, singles = {}, []
-    for f in sorted(scan_dir.glob("*.md")):
-        if f.name == "toc_review.md":  # 审核报告自身不是文档
-            continue
-        m = PART_RE.match(f.stem)
-        if m:
-            groups.setdefault(m.group("base"), []).append(f)
-        else:
-            singles.append(f)
-    bases = set(groups)
-    singles = [f for f in singles if f.stem not in bases]
-
-    docs = []
-    for base, files in groups.items():
-        if args.only and args.only not in base:
-            continue
-        docs.append((base, files))
-    for f in singles:
-        if args.only and args.only not in f.stem:
-            continue
-        docs.append((f.stem, [f]))
+    zips_dir = output / "zips"
+    if not zips_dir.exists():
+        raise SystemExit(f"{output}: 未找到 zips/——解析产物以 zips/ 为唯一原始来源，请先运行解析器")
+    bases = set()
+    for zp in zips_dir.glob("*.zip"):
+        m = PART_RE.match(zp.stem)
+        bases.add(m.group("base") if m else zp.stem)
 
     report = ["# MinerU 产物整理审核报告", ""]
     all_ok = True
-    for base, files in sorted(docs):
-        parts = iter_part_files(output, base)
+    for base in sorted(bases):
+        if args.only and args.only not in base:
+            continue
         pdf_path = input_dir / f"{base}.pdf"
         if mode and pdf_path.exists() and get_bookmarks(pdf_path):
             log(f"[SKIP] {base}: 有书签，走书签路径，无需 LLM 分析")
             continue
-        ok = build_doc(base, parts, pdf_path, output, report, analysis=mode)
+        ok = build_doc(base, pdf_path, output, report, analysis=mode)
         if mode != "emit":
             all_ok &= ok
             log(f"[{'PASS' if ok else 'FAIL'}] {base}")

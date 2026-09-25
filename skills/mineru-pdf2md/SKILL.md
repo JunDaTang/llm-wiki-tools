@@ -31,7 +31,7 @@ uv run --with pypdf --with requests python <skill>/scripts/mineru_pdf2md.py \
     --input input/pdf2md --output outputs/pdf2md
 ```
 
-脚本自动完成：申请批量上传链接 → 超过 200 页的 PDF 用 pypdf 拆成 `{名}_1-200.pdf` 等分片 → PUT 上传 → 轮询 → 结果 zip 保留到 `<output>/zips/` → 解包 md / json 到 `<output>/parts/` 子目录（中间产物）、图片到 `images/`（只落盘 md 引用的图）。
+脚本自动完成：申请批量上传链接 → 超过 200 页的 PDF 用 pypdf 拆成 `{名}_1-200.pdf` 等分片 → PUT 上传 → 轮询 → 结果 zip 保留到 `<output>/zips/` → 解包 md 实际引用的图片到 `{书名}/images/`。md/json 本身留在 zip 内——**zips/ 是唯一原始来源**，整理器按需从 zip 内存提取，中间产物不落盘。
 
 判断与要点：
 
@@ -74,17 +74,18 @@ c 步校验失败会以明确错误退出（列出违规 idx），修正判定�
 
 ### 第 3 步：验证与汇报
 
-产物布局（顶层只留最终成品，中间产物全部进子目录）：
+产物布局（顶层只有按书分文件夹，每本书自包含）：
 
 ```
 <output>/
-├── {书名}.md               # 最终成品（顶层只有它）
-├── toc_review.md           # 跨书审核报告
-├── images/                 # md 引用的图片
-├── zips/                   # 原始结果压缩包（含全部裁剪图/额外格式）
-├── parts/                  # 中间产物：分片 md/json、单文档原始版
-├── toc/                    # {书名}.toc.json + LLM 分析请求/结果
-└── .mineru_state.json      # 解析断点状态
+├── {书名}/
+│   ├── {书名}.md               # 最终成品
+│   ├── {书名}.toc.json         # 目录树（书签或 LLM 分析）
+│   ├── {书名}.analysis-*.json  # 无书签书的 LLM 分析底稿（有书签书没有）
+│   └── images/                 # 该书引用的图片
+├── toc_review.md               # 跨书审核报告
+├── zips/                       # 原始结果压缩包（唯一原始来源，含全部裁剪图/额外格式）
+└── .mineru_state.json          # 解析断点状态
 ```
 
 1. 看两个脚本的退出码与日志（`[PASS]/[FAIL]` 逐文档）。
