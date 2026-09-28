@@ -8,7 +8,7 @@
   ——与章同级、平铺在书目录下，层级交给 index.md/toc.json 表达；子节仍超限则
   按标题层级继续下探（最深至 H6），叶子仍超限按空行段落边界兜底硬切成 -2/-3
   多个文件（单段超长如整张表格不切，宁可整段落块超限）。被拆页末尾追加
-  「本节包含的小节」/「本节续页」链接清单，自身即成为可导航的目录页。
+  「本节包含的小节」链接清单，自身即成为可导航的目录页。叶子拆无可拆仍超限则整页保留（不硬切续页）。
   平铺后所有 md 与书根 images/ 同目录，images/xxx.jpg 相对引用天然可解析
   （llm_wiki 摄取同样按源文件所在目录解析相对引用）；
 - 章级默认自动判层：H2 数量 >=4 或 H2 全部形似"第 N 章/数字编号"式章名 → H2；
@@ -24,7 +24,7 @@
 
 输出 {输出}/{书名}/：{书名}.md + {章标题}.md + 超限章下探出的 {子节标题}.md
 （全部平铺在书目录下）+ index.md（全量标题树：独立成页的标题加链接，内联
-标题只列文字，硬切续页缩进列出）+ images/（源目录存在则整目录复制）。
+标题只列文字）+ images/（源目录存在则整目录复制）。
 同名冲突先试冠父章前缀、再退 -2/-3 数字后缀。
 若源目录有 {书名}.toc.json（build_book 产物），则与标题锁步校验（宽松口径）
 并给每个 toc 节点补 file 字段（该标题内容所在的文件，内联标题指向归属页）
@@ -114,22 +114,6 @@ def body_bytes(lines) -> int:
     return sum(len(line.encode("utf-8")) + 1 for line in lines)
 
 
-def chunk_lines(lines, max_bytes):
-    """按空行段落边界把 lines 切成每块 <= max_bytes 字节的若干块；
-    单段超长时不切（避免零进度），宁可整段落块超限。"""
-    chunks, cur, cur_bytes = [], [], 0
-    for line in lines:
-        b = len(line.encode("utf-8")) + 1
-        if cur and cur_bytes + b > max_bytes and line.strip():
-            chunks.append(cur)
-            cur, cur_bytes = [], 0
-        cur.append(line)
-        cur_bytes += b
-    if cur:
-        chunks.append(cur)
-    return chunks
-
-
 def clear_dir(d: Path):
     """整体重建前清空目录。Windows 下句柄瞬时占用（索引/杀软）会让 rmtree 报
     WinError 32——重试几次；仍失败则告警继续（内容文件总会被重写，残留风险仅限
@@ -182,7 +166,7 @@ def split_book(md_file: Path, out_dir: Path, level_arg, max_bytes):
     file_of_section = [None] * len(secs)    # 每个标题内容所在文件（内联标题指向归属页）
     own_file = set()                        # 独立成页的标题（index 加链接，内联只列文字）
     disp_depth = [0] * len(secs)            # index 展示缩进深度
-    extra_parts = {}                        # 硬切续页: sec 下标 -> [(文件名, 续号)]
+    oversize_kept = []                      # 拆无可拆仍超限、按用户策略整页保留的叶子
     size_split = 0
 
     def namekey(s):
@@ -255,28 +239,15 @@ def split_book(md_file: Path, out_dir: Path, level_arg, max_bytes):
             return rel, title
 
         if over:
-            # 叶子（伪章节 / 到达下探上限 / 无子节）仍超限：按段落边界兜底硬切，
-            # 首页末尾附「本节续页」链接清单
-            chunks = chunk_lines(body, max_bytes)
-            first = chunks[0]
-            for j in range(k + 1, end):    # 范围内更深的标题随正文一起被硬切，归属首页
+            # 叶子（伪章节 / 到达下探上限 / 无子节）仍超限：接受超限整页保留。
+            # 用户策略（2026-09-29）：最小的子标题已拆无可拆就停止，不再按段落
+            # 硬切出 -1/-2/-3 续页——超大索引/表格/长文献拆碎反而破坏可用性
+            oversize_kept.append(rel)
+            content[rel] = body
+            file_of_section[k] = rel
+            for j in range(k + 1, end):    # 内联的更深标题归属本文件
                 file_of_section[j] = rel
                 disp_depth[j] = depth + (secs[j][1] - lv)
-            i = 1
-            cont_links = []
-            for part in chunks[1:]:
-                i += 1
-                while busy(f"{stem}-{i}"):
-                    i += 1
-                claim(f"{stem}-{i}")
-                cont_rel = f"{stem}-{i}.md"
-                content[cont_rel] = part
-                extra_parts.setdefault(k, []).append((cont_rel, i))
-                cont_links.append(f"- [（续{i}）](<{cont_rel}>)")
-            if cont_links:
-                first = first + ["", f"{sub_head} 本节续页", ""] + cont_links
-            content[rel] = first
-            file_of_section[k] = rel
             return rel, title
 
         content[rel] = body
@@ -327,7 +298,8 @@ def split_book(md_file: Path, out_dir: Path, level_arg, max_bytes):
         shutil.copytree(book_dir / "images", out_dir / "images", dirs_exist_ok=True)
 
     head = (f"由 `{md_file}` 按章级标题（H{level}）拆分，共 {len(content)} 页"
-            f"（{len(secs)} 个标题；超过 {max_bytes // 1024}KB 的章按子标题二次拆分 {size_split} 处）")
+            f"（{len(secs)} 个标题；超过 {max_bytes // 1024}KB 的章按子标题二次拆分 {size_split} 处，"
+            f"拆无可拆仍超限整页保留 {len(oversize_kept)} 页）")
     idx = [f"# {base}", "", head + "。", ""]
     # 封面页始终进 index：它现在附「本书包含的章」链接清单，是书目录页
     idx.append(f"- [{base}（封面/前言）](<{root_name}>)")
@@ -339,10 +311,8 @@ def split_book(md_file: Path, out_dir: Path, level_arg, max_bytes):
             idx.append(f"{indent}- [{title}](<{file_of_section[k]}>)")
         else:
             idx.append(f"{indent}- {title}")
-        for rel2, n2 in extra_parts.get(k, []):
-            idx.append(f"{indent}  - [{title}（续{n2}）](<{rel2}>)")
     (out_dir / "index.md").write_text("\n".join(idx) + "\n", encoding="utf-8", newline="\n")
-    return len(content), level, size_split
+    return len(content), level, size_split, len(oversize_kept)
 
 
 def collect_jobs(input_path: Path):
@@ -382,9 +352,11 @@ def main():
         raise SystemExit(f"{in_path}: 未找到可拆分的 md（单文件 / <书名>/<书名>.md 布局 / 顶层 *.md）")
     total = 0
     for md_file, base in jobs:
-        n, level, size_split = split_book(md_file, out_dir / sanitize(base), level_arg, max_bytes)
+        n, level, size_split, oversize = split_book(md_file, out_dir / sanitize(base), level_arg, max_bytes)
         total += n
         extra = f"，{size_split} 处超限二次拆分" if size_split else ""
+        if oversize:
+            extra += f"，{oversize} 页拆无可拆整页保留"
         log(f"[OK] {base}: 章级=H{level}，拆出 {n} 页{extra} -> {out_dir / sanitize(base)}")
     log(f"合计 {total} 页")
 
