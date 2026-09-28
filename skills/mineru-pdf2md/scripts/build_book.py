@@ -43,6 +43,9 @@ PART_RE = re.compile(r"^(?P<base>.+)_(?P<a>\d{1,4})-(?P<b>\d{1,4})$")
 HEAD_RE = re.compile(r"^(#{1,6}) (.+?)\s*$")
 FENCE_RE = re.compile(r"^\s*(?:```|~~~)")
 OPEN_FENCE_RE = re.compile(r"^\s*```[A-Za-z0-9_+#.\-]*\s*$")
+# OCR 粘连特征：小写字母后紧跟大写字母（"ofFunctions"、"NablaOperator"——
+# 原文本此处应为空格；词首大写不命中，中文不受影响）
+STICKY_RE = re.compile(r"[a-z][A-Z]")
 CALLOUT_WORDS = {"提示", "危险", "通知", "任务", "名词", "目录", "证明", "注意"}
 
 # 降级标题的形态分类（探索结论：约 58% 明确噪音，42% 灰区中约 3/4 是书签粒度
@@ -188,22 +191,29 @@ def parse_headings(lines):
     return groups
 
 
-def match_bm(title, bm_list, used, stages):
-    """标题匹配书签。stages: 1=严格 2=宽松 3=编号+文本相似。返回书签下标或 None"""
+def match_bm(title, bm_list, used, stages, page_lo=None, page_hi=None):
+    """标题匹配书签。stages: 1=严格 2=宽松 3=编号+文本相似。返回书签下标或 None。
+    page_lo/hi：只允许命中页码落在窗口内的书签（标题所在分片的页区间±容差）。
+    没有窗口时，书里大量无大编号小节（"1. Arithmetic Series…"）会经阶段3跳到远处
+    同编号的顶层章书签（页 1400+），last_bm 一跳即雪崩式拒绝后续全部匹配
+    （Bronshtein 英文版实测 346 处 REJ/片）。"""
+    def in_win(bm):
+        return page_lo is None or page_lo <= bm["page"] <= page_hi
+
     n1, l1 = norm(title), loose(title)
     if 1 in stages:
         for bi, bm in enumerate(bm_list):
-            if not used[bi] and norm(bm["title"]) == n1:
+            if not used[bi] and in_win(bm) and norm(bm["title"]) == n1:
                 return bi
     if 2 in stages:
         for bi, bm in enumerate(bm_list):
-            if not used[bi] and loose(bm["title"]) == l1:
+            if not used[bi] and in_win(bm) and loose(bm["title"]) == l1:
                 return bi
     if 3 in stages:
         k1, r1 = numkey(l1)
         if k1:
             for bi, bm in enumerate(bm_list):
-                if used[bi]:
+                if used[bi] or not in_win(bm):
                     continue
                 k2, r2 = numkey(loose(bm["title"]))
                 if k2 == k1 and r1 and r2 and (
@@ -215,14 +225,19 @@ def match_bm(title, bm_list, used, stages):
 
 
 def merge_parts(parts):
-    """合并分片文本，缝合跨片代码块。返回 (text, seam_events)"""
+    """合并分片文本，缝合跨片代码块。返回 (text, seam_events, spans)，
+    spans=[[start, end_excl, page_a, page_b]] 每片在输出文本中的行区间
+    （供标题行反查分片页窗口，书签匹配按页过滤）。"""
     seams = []
+    spans = []
     chunks = [p["text"].rstrip("\n").split("\n") for p in parts]
     out = list(chunks[0])
+    spans.append([0, len(out), parts[0]["a"], parts[0]["b"]])
     for i in range(1, len(chunks)):
         nxt = list(chunks[i])
         while out and not out[-1].strip():
             out.pop()
+            spans[-1][1] -= 1
         while nxt and not nxt[0].strip():
             nxt.pop(0)
         joined = False
@@ -231,12 +246,15 @@ def merge_parts(parts):
                           "prev_tail": out[-2].strip()[-36:] if len(out) > 1 else "",
                           "next_head": nxt[1].strip()[:36] if len(nxt) > 1 else ""})
             out.pop()
+            spans[-1][1] -= 1
             nxt.pop(0)
             joined = True
         if not joined:
             out.append("")
+        start_i = len(out)
         out.extend(nxt)
-    return "\n".join(out), seams
+        spans.append([start_i, len(out), parts[i]["a"], parts[i]["b"]])
+    return "\n".join(out), seams, spans
 
 
 def load_raw_from_zips(output: Path, base: str):
@@ -296,7 +314,9 @@ def get_bookmarks(pdf_path: Path):
             if isinstance(i, list):
                 walk(i, d + 1)
             else:
-                out.append({"depth": d, "title": str(i.title).strip(),
+                # 书签文本可能内嵌换行（如 Bronshtein 英文版 "Continuity and \rDiscontinuity"），
+                # 匹配层已去空白不受影响，但落盘 toc.json/补插标题必须规范成单空格，否则下游锁步校验失配
+                out.append({"depth": d, "title": re.sub(r"\s+", " ", str(i.title)).strip(),
                             "page": r.get_destination_page_number(i) + 1})
 
     try:
@@ -322,9 +342,10 @@ def build_doc(base, pdf_path, output, report, analysis=None):
     if single:
         text = parts[0]["text"].rstrip("\n")
         seams = []
+        spans = None   # 单文档无分片错配问题，书签匹配不加页窗口
         report += [f"## {base}", "", "- 单文档（无分片，原始产物取自 zips/）"]
     else:
-        text, seams = merge_parts(parts)
+        text, seams, spans = merge_parts(parts)
         report += [f"## {base}", "", f"- 分片合并: {len(parts)} 片 -> {md_file.name}"]
         for s in seams:
             report += [f"- 缝合跨片代码块: {s['at']}（前片尾 …{s['prev_tail']} / 后片头 {s['next_head']}…）"]
@@ -342,9 +363,22 @@ def build_doc(base, pdf_path, output, report, analysis=None):
     if root_idx is None:
         lines = [f"# {base}", ""] + lines
         root_idx = 0
+        if spans:
+            for sp in spans:
+                sp[0] += 2
+                sp[1] += 2
         report += [f"- 添加书名根标题: # {base}"]
     else:
         report += [f"- 书名根标题(已有): {root_title}"]
+
+    def piece_window(li):
+        """标题行号 -> 所在分片的页窗口（±3 页容差）；spans 为空则不限制。"""
+        if not spans:
+            return (None, None)
+        for s0, s1, a, b in spans:
+            if s0 <= li < s1:
+                return (max(1, a - 3), b + 3)
+        return (None, None)
 
     # ---- 书签 ----
     bm_list = get_bookmarks(pdf_path) if pdf_path and pdf_path.exists() else []
@@ -361,6 +395,7 @@ def build_doc(base, pdf_path, output, report, analysis=None):
     collapse = set()   # 被 keep 组折叠掉的后续标题行
     merged_ev, demoted, fuzzy_ev, inserted_ev = [], [], [], []
     rejected_ev = []
+    toc_group_ev = []  # 目录页整组降级事件（pipeline 把目录条目渲染成标题时触发）
     kept_bm = []       # (line_idx, bm_idx) 按处理顺序
     bm_title = {}      # bm_idx -> toc 使用的标题（模糊匹配时用 md 文本）
 
@@ -375,43 +410,60 @@ def build_doc(base, pdf_path, output, report, analysis=None):
                 rejected_ev.append({"md": title, "bm": bm_list[bi]["title"]})
                 return False
             used[bi] = True
+            # 命中书签后标题文本以书签为准：书签是 PDF 原生元数据，md 是 OCR
+            # （粘连如 "ofFunctions"、错字如 "Diferentiation"，甚至双编号并条
+            #  "6.1 … 6.1.1 …"）。两个例外：
+            #  1) 书签自身粘连而 md 干净（两次独立 OCR，粘连位置不同，如书签
+            #     "Divergence ofVector Fields" vs md "…of Vector Fields"）→ 保留 md；
+            #  2) 个别书签制作残缺是 md 的截断前缀（如 "1.5.3.6 Taking the"）→ 保留 md。
+            bm_t = bm_list[bi]["title"]
+            if title != bm_t:
+                if not (STICKY_RE.search(bm_t) and not STICKY_RE.search(title)):
+                    _, r_md = numkey(loose(title))
+                    _, r_bm = numkey(loose(bm_t))
+                    truncated = bool(r_bm and r_md and r_md.startswith(r_bm)
+                                     and len(r_bm) < len(r_md) * 0.8
+                                     and not re.search(r"\d+\.\d+", r_md))
+                    if not truncated:
+                        title = bm_t
             level = bm_list[bi]["depth"] + 2
             actions[parts_[0][0]] = ("keep", level, title)
             # 折叠范围内所有行（含被合并标题行之间的空行）
             for li in range(parts_[0][0] + 1, parts_[-1][0] + 1):
                 collapse.add(li)
             kept_bm.append((parts_[0][0], bi))
-            if fuzzy:
-                bm_title[bi] = title
+            # toc 节点标题与 md 标题行必须同源同文（用户原则：md 与 toc 逐字一致）——
+            # 无论命中阶段,统一登记最终选定的文本
+            bm_title[bi] = title
             last_bm[0] = bi
             return True
 
-        def process(parts_):
+        def process(parts_, win=(None, None)):
             n = len(parts_)
             if not n:
                 return
             # 阶段1/2: 单行优先，再渐进合并（修复断行标题）
             for take in range(1, n + 1):
                 concat = "".join(p[2] for p in parts_[:take])
-                bi = match_bm(concat, bm_list, used, stages=(1, 2))
+                bi = match_bm(concat, bm_list, used, stages=(1, 2), page_lo=win[0], page_hi=win[1])
                 if bi is not None and keep(parts_[:take], bi, concat):
                     if take > 1:
                         merged_ev.append({"title": concat, "n": take})
-                    process(parts_[take:])
+                    process(parts_[take:], win)
                     return
-            # 阶段3: 编号+文本相似（模糊），toc 沿用 md 标题文本
+            # 阶段3: 编号+文本相似（模糊）；命中后文本仍以书签为准（见 keep）
             for take in range(1, n + 1):
                 concat = "".join(p[2] for p in parts_[:take])
-                bi = match_bm(concat, bm_list, used, stages=(3,))
+                bi = match_bm(concat, bm_list, used, stages=(3,), page_lo=win[0], page_hi=win[1])
                 if bi is not None and keep(parts_[:take], bi, concat, fuzzy=True):
                     fuzzy_ev.append({"md": concat, "bm": bm_list[bi]["title"],
                                      "page": bm_list[bi]["page"]})
-                    process(parts_[take:])
+                    process(parts_[take:], win)
                     return
             # 未匹配: 一律降级（含字母编号标题——审核发现 10.2 内部的 "B. 处理截断…"
             # 这类小节编号会与附录编号撞形，以书签为权威，宁降级不误保留）
             for p in parts_:
-                bi = match_bm(p[2], bm_list, used, stages=(1, 2, 3))
+                bi = match_bm(p[2], bm_list, used, stages=(1, 2, 3), page_lo=win[0], page_hi=win[1])
                 if bi is not None and keep([p], bi, p[2]):
                     continue
                 actions[p[0]] = ("demote", None, p[2])
@@ -420,8 +472,19 @@ def build_doc(base, pdf_path, output, report, analysis=None):
         for g in parse_headings(lines):
             # 根组可能吸收了紧随其后的标题行（root -> 空行 -> 标题），只跳过根行本身
             gps = [p for p in g["parts"] if p[0] != root_idx]
-            if gps:
-                process(gps)
+            if not gps:
+                continue
+            # 目录页组：解析器可能把书前目录的条目整页渲染成标题（pipeline 对双栏手册如此），
+            # 一次性用光书签序列令正文标题保序匹配雪崩（4717 处拒绝）。正文真标题之间总有
+            # 正文段落隔开（组仅 1-2 行），整页连续标题行组成的大组只可能是目录 → 整组降级。
+            if len(gps) >= 6:
+                for p in gps:
+                    actions[p[0]] = ("demote", None, p[2])
+                    demoted.append(p[2])
+                toc_group_ev.append({"n": len(gps), "first": gps[0][2][:40],
+                                     "last": gps[-1][2][:40]})
+                continue
+            process(gps, piece_window(gps[0][0]))
     else:
         # 无书签：head_groups 为清洗目标（根行除外）
         head_groups = [[p for p in g["parts"] if p[0] != root_idx]
@@ -499,6 +562,9 @@ def build_doc(base, pdf_path, output, report, analysis=None):
                 report.append("- 级别跳变警告: 重建目录存在层级跳变（未钳制，建议人工复核）")
 
     # ---- 书签缺失 -> 补插（锚定到下一个已匹配章节前）----
+    if toc_group_ev:
+        report += [f"- 目录页组降级: {len(toc_group_ev)} 组（整页连续标题行，判定为渲染成标题的目录条目）:"]
+        report += [f"  - {e['n']} 行「{e['first']}」…「{e['last']}」" for e in toc_group_ev[:8]]
     if rejected_ev:
         report += [f"- 乱序匹配拒绝: {len(rejected_ev)} 处（md 标题顺序与书签顺序矛盾，标题已降级、书签走补插）:"]
         report += [f"  - md「{e['md'][:30]}」 vs 书签「{e['bm'][:30]}」" for e in rejected_ev[:8]]
@@ -573,7 +639,7 @@ def build_doc(base, pdf_path, output, report, analysis=None):
             stack.append((bm["depth"], node))
         source = "pdf-bookmarks"
         if fuzzy_ev:
-            report += ["- 模糊匹配章节（编号一致、文本有公式/破折号差异，toc 沿用 md 标题）:"]
+            report += ["- 模糊匹配章节（编号一致、文本有差异；标题文本取无 OCR 粘连的一方，toc 与 md 同文）:"]
             report += [f"  - 「{e['bm'][:30]}」-> 「{e['md'][:30]}」(p{e['page']})" for e in fuzzy_ev]
     else:
         fence, fh = False, []

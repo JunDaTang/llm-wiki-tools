@@ -5,7 +5,7 @@ description: 用 MinerU 精准解析 API 批量把 PDF 转成完整 Markdown、�
 
 # mineru-pdf2md
 
-用 MinerU 精准解析 API（model_version=vlm）把 PDF（单本或一批）转成四类产物：**完整 Markdown**、**结构化 JSON**、**目录树 toc.json**（层级 + 全局页码）、**审核报告 toc_review.md**，并以一致性关卡保证完整 md 的标题序列与 toc.json 严格对齐。全部能力由本 skill 自带的两个零安装脚本承载：解析器 `scripts/mineru_pdf2md.py`、整理器 `scripts/build_book.py`（下文以 `<skill>/scripts/` 指代）。
+用 MinerU 精准解析 API 把 PDF（单本或一批）转成四类产物：**完整 Markdown**、**结构化 JSON**、**目录树 toc.json**（层级 + 全局页码）、**审核报告 toc_review.md**，并以一致性关卡保证完整 md 的标题序列与 toc.json **逐字符严格对齐**。全部能力由本 skill 自带的两个零安装脚本承载：解析器 `scripts/mineru_pdf2md.py`、整理器 `scripts/build_book.py`（下文以 `<skill>/scripts/` 指代）。
 
 ## When to use this
 
@@ -36,11 +36,14 @@ uv run --with pypdf --with requests python <skill>/scripts/mineru_pdf2md.py \
 判断与要点：
 
 - **断点续跑**：中断/失败后重跑同一命令即可，state 里的已完成任务自动跳过。轮询超时（默认 7200s）抛错后同样直接重跑续接。
-- **硬限制**：单文件 ≤200MB 且 ≤200 页（超限自动拆分，无需人工干预）、单批 ≤50 个文件、上传链接 24h 有效。
-- **过滤与强制**：`--only 关键词` 按文件名过滤；`--force` 忽略已完成状态强制重解析；`--ocr` 扫描件开 OCR（文本层 PDF 不需要，默认关）。
+- **硬限制**：单文件 ≤200MB 且 ≤200 页（超限自动拆分，无需人工干预；大书按页拆后单片大小自然摊薄，238MB/1577 页实测拆 8 片无压力）、单批 ≤50 个文件、上传链接 24h 有效。
+- **过滤与强制**：`--only 关键词` 按**原始 PDF 文件名**过滤（不是分片名）；`--force` 忽略已完成状态强制重解析；`--ocr` 扫描件开 OCR（文本层 PDF 不需要，默认关）。
+- **模型选择**：默认 `vlm`（端到端视觉模型，单栏大字书效果好）；**双栏小字学术书是 vlm 弱项**——Bronshtein 英文版实测正文标题识别全灭（content_list title 块 = 0，md 里仅目录页条目被渲染成标题）。此类书换 `--model-version pipeline`（版面分析 + 标题分级），正文标题识别正常。注意 pipeline 的 content_list title 字段也常为 0，判断标题质量看 full.md 的 `#` 行，不要看 content_list。
+- **语言**：`--language` 默认 `ch`（中英文包，对纯英文书实测也无中文幻觉）；纯英文书建议 `--language en` 更对症。该参数对 vlm/pipeline 都生效，只影响识别语言包。
 - **额外格式**：`--extra-formats html docx latex` 让 zip 里多出 `full.html/full.docx/full.tex`，但**不展开落盘**——默认产物就是 md + json。
 - 结果 zip（在 zips/）是完整原始产物：`full.md`、`{uuid}_content_list.json(_v2)`、`model.json`、`layout.json`、`{uuid}_origin.pdf`、全部裁剪图、可选的额外格式。任何解析层疑问先翻 zip。
 - 单任务 `failed` 会让脚本以非零码退出并在 state 里记 `err_msg`；修复原因后重跑，其余任务不受影响（state 各自独立）。
+- **运维坑**：批量接口上传完成即排队计费，停本地脚本**不能**撤销服务端解析（想只试一片就预先用 pypdf 把该片拆成单独 PDF 再跑）；state 里有 `batch_id` 但 `uploaded: false` 的条目会被续接逻辑当"只轮询"死等（waiting-file 永不完成）——续接前先删掉这些条目；批次里若混有未上传的孤儿文件，轮询条件永不满足，结果就绪后可直接调 `GET /api/v4/extract-results/batch/{id}` 拿 `full_zip_url` 手动下载归档。
 
 ### 第 2 步：整理（build_book.py）
 
@@ -49,11 +52,11 @@ uv run --with pypdf python <skill>/scripts/build_book.py \
     --input input/pdf2md --output outputs/pdf2md
 ```
 
-自动完成：分片 md 按页序合并成 `{书名}.md`（含跨片代码块缝合）→ 生成 `{书名}.toc.json` → md 标题清洗对齐 → **一致性关卡** → 审核报告 `toc_review.md`。
+自动完成：分片 md 按页序合并成 `{书名}.md`（含跨片代码块缝合）→ 生成 `{书名}.toc.json` → md 标题清洗对齐（含**分片页窗口匹配**与**标题文本仲裁**，保证 md 标题行与 toc 节点**逐字符同文**）→ **一致性关卡** → 审核报告 `toc_review.md`。
 
 目录的生成路径按原书是否带书签分两条：
 
-**A. 有书签（书签路径）**：从原 PDF 书签树生成 toc（层级权威、全局页码），md 标题向书签对齐清洗（降级误判、补插缺失章节、层级重写）。判定规则与探索结论见 `references/cleaning-rules.md`。
+**A. 有书签（书签路径）**：从原 PDF 书签树生成 toc（层级权威、全局页码），md 标题向书签对齐清洗（降级误判、补插缺失章节、层级重写、标题文本取书签与 md 中无 OCR 粘连的一方）。判定规则与探索结论见 `references/cleaning-rules.md`。
 
 **B. 无书签（LLM 分析路径）**：标题层级由 agent 通读分析判定，脚本负责执行与验证，三步：
 
@@ -89,9 +92,10 @@ c 步校验失败会以明确错误退出（列出违规 idx），修正判定�
 ```
 
 1. 看两个脚本的退出码与日志（`[PASS]/[FAIL]` 逐文档）。
-2. 抽查 toc_review.md：补插/降级/缝合数量是否符合预期，抽查 2-3 个补插章节的上下文。
+2. 抽查 toc_review.md：补插/降级/缝合数量是否符合预期，抽查 2-3 个补插章节的上下文；**补插数异常大**（如接近书签总数的一半）说明 md 标题识别出了系统性问题——先查解析层（vlm 对双栏小字书失效，换 pipeline），不要在清洗层硬调。
 3. 检查产物引用完整性：所有 md 里 `images/` 相对引用都存在（搬动目录时尤其要连 images/ 一起搬）。
-4. 向用户汇报：产物路径、各文档 PASS/FAIL、补插/降级/缝合计数、**消耗的解析额度**（任务数 × 页数）。
+4. 校验 md↔toc 严格同文：md 标题行文本与 toc.json 节点标题应**逐字符相等**（build_book 的文本仲裁已保证；发现差异说明仲裁逻辑被绕过或改动）。
+5. 向用户汇报：产物路径、各文档 PASS/FAIL、补插/降级/缝合计数、**消耗的解析额度**（任务数 × 页数）。
 
 ## 常见坑
 
