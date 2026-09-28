@@ -1,0 +1,3 @@
+### Relational Symbols
+
+<table><tr><td>= equal to</td><td></td><td></td><td>≈ approximately equal to</td><td>≤ less than or equal to</td></tr><tr><td></td><td>≡ identically equal to</td><td>&lt; less than</td><td></td><td>≥ greater than or equal to</td></tr><tr><td></td><td>:= equal to by definition</td><td>&gt; greater than</td><td></td><td>1X&lt;I1 unequal to, different from</td></tr><tr><td></td><td> much less than</td><td></td><td>≥ much greater than</td><td>corresponding to</td></tr><tr><td></td><td>人 partial order relation</td><td></td><td>&gt; partial order relation</td><td></td></tr></table>
