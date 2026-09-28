@@ -543,7 +543,12 @@ def build_doc(base, pdf_path, output, report, analysis=None):
             if act[0] == "keep":
                 final.append(f"{'#' * act[1]} {act[2]}")
             else:
-                final.append(act[2])
+                # 降级文本可能本身以 # 开头（提示词模板行被 vlm 识别为标题，如「# 上下文」），
+                # 原样落盘会再次成为标题行、破坏 md/toc 一致性 → 转义行首 #
+                t2 = act[2]
+                if HEAD_RE.match(t2):
+                    t2 = re.sub(r"^(#{1,6})", r"\\\1", t2)
+                final.append(t2)
             continue
         if idx in collapse:
             continue
