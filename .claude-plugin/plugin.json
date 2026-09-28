@@ -16,6 +16,7 @@
   "skills": [
     "./skills/example-skill",
     "./skills/mineru-pdf2md",
-    "./skills/skill-release"
+    "./skills/skill-release",
+    "./skills/split-md"
   ]
 }
