@@ -1,0 +1,1722 @@
+# Handbook of Mathematics 6th Edition
+
+由 `outputs\mineru-pdf2md-math-en2\Handbook of Mathematics 6th Edition\Handbook of Mathematics 6th Edition.md` 按章级标题（H2）拆分，共 480 页（1718 个标题；超过 32KB 的章按子标题二次拆分 79 处，拆无可拆仍超限整页保留 3 页）。
+
+- [Handbook of Mathematics 6th Edition（封面/前言）](<Handbook of Mathematics 6th Edition.md>)
+- [Preface to the Sixth English Edition](<Preface to the Sixth English Edition.md>)
+- [Preface to the Fifth English Edition](<Preface to the Fifth English Edition.md>)
+- [From the Preface to the Fourth English Edition](<From the Preface to the Fourth English Edition.md>)
+- [Co-Authors](<Co-Authors.md>)
+- [Additional Chapters with Co-Authors in the CD–ROM to the Books of the German Editions 7,8 and 9.](<Additional Chapters with Co-Authors in the CD–ROM to the Books of the German Editions 7,8 and 9.md>)
+- [Contents](<Contents.md>)
+- [List of Tables](<List of Tables.md>)
+- [1 Arithmetics](<1 Arithmetics.md>)
+  - [1.1 Elementary Rules for Calculations](<1.1 Elementary Rules for Calculations.md>)
+    - [1.1.1 Numbers](<1.1.1 Numbers.md>)
+      - 1.1.1.1 Natural, Integer, and Rational Numbers
+      - 1.1.1.2 Irrational and Transcendental Numbers
+      - 1.1.1.3 Real Numbers
+      - 1.1.1.4 Continued Fractions
+      - 1.1.1.5 Commensurability
+    - [1.1.2 Methods for Proof](<1.1.2 Methods for Proof.md>)
+      - 1.1.2.1 Direct Proof
+      - 1.1.2.2 Indirect Proof or Proof by Contradiction
+      - 1.1.2.3 Mathematical Induction
+      - 1.1.2.4 Constructive Proof
+    - [1.1.3 Sums and Products](<1.1.3 Sums and Products.md>)
+      - 1.1.3.1 Sums
+      - 1.1.3.2 Products
+    - [1.1.4 Powers, Roots, and Logarithms](<1.1.4 Powers, Roots, and Logarithms.md>)
+      - 1.1.4.1 Powers
+      - 1.1.4.2 Roots
+      - 1.1.4.3 Logarithms
+      - 1.1.4.4 Special Logarithms
+    - [1.1.5 Algebraic Expressions](<1.1.5 Algebraic Expressions.md>)
+      - 1.1.5.1 Definitions
+      - 1.1.5.2 Algebraic Expressions in Detail
+    - [1.1.6 Integral Rational Expressions](<1.1.6 Integral Rational Expressions.md>)
+      - 1.1.6.1 Representation in Polynomial Form
+      - 1.1.6.2 Factoring Polynomials
+      - 1.1.6.3 Special Formulas
+      - 1.1.6.4 Binomial Theorem
+      - 1.1.6.5 Determination of the Greatest Common Divisor of Two Polynomials
+    - [1.1.7 Rational Expressions](<1.1.7 Rational Expressions.md>)
+      - 1.1.7.1 Reducing to the Simplest Form
+      - 1.1.7.2 Determination of the Integral Rational Part
+      - 1.1.7.3 Partial Fraction Decomposition
+      - 1.1.7.4 Transformations of Proportions
+    - [1.1.8 Irrational Expressions](<1.1.8 Irrational Expressions.md>)
+  - [1.2 Finite Series](<1.2 Finite Series.md>)
+    - 1.2.1 Definition of a Finite Series
+    - 1.2.2 Arithmetic Series
+    - 1.2.3 Geometric Series
+    - 1.2.4 Special Finite Series
+    - 1.2.5 Mean Values
+      - 1.2.5.1 Arithmetic Mean or Arithmetic Average
+      - 1.2.5.2 Geometric Mean or Geometric Average
+      - 1.2.5.3 Harmonic Mean
+      - 1.2.5.4 Quadratic Mean
+      - 1.2.5.5 Relations Between the Means of Two Positive Values
+  - [1.3 Business Mathematics](<1.3 Business Mathematics.md>)
+    - 1.3.1 Calculation of Interest orPercentage
+      - 1.3.1.1 Percentage or Interest
+      - 1.3.1.2 Increment
+      - 1.3.1.3 Discount or Reduction
+    - 1.3.2 Calculation of Compound Interest
+      - 1.3.2.1 Interest
+      - 1.3.2.2 Compound Interest
+    - 1.3.3 Amortization Calculus
+      - 1.3.3.1 Amortization
+      - 1.3.3.2 Equal Principal Repayments
+      - 1.3.3.3 Equal Annuities
+    - 1.3.4 Annuity Calculations
+      - 1.3.4.1 Annuities
+      - 1.3.4.2 Future Amount of an Ordinary Annuity
+      - 1.3.4.3 Balance after Annuity Payments
+    - 1.3.5 Depreciation
+      - 1.3.5.1 Methods of Depreciation
+      - 1.3.5.2 Straight-Line Method
+      - 1.3.5.3 Arithmetically Declining Balance Depreciation
+      - 1.3.5.4 Digital Declining Balance Depreciation
+      - 1.3.5.5 Geometrically Declining Balance Depreciation
+      - 1.3.5.6 Depreciation with Different Types of Depreciation Account
+  - [1.4 Inequalities](<1.4 Inequalities.md>)
+    - 1.4.1 Pure Inequalities
+      - 1.4.1.1 Definitions
+      - 1.4.1.2 Properties of Inequalities of Type I and II
+    - 1.4.2 Special Inequalities
+      - 1.4.2.1 Triangle Inequality for Real Numbers
+      - 1.4.2.2 Triangle Inequality for Complex Numbers
+      - 1.4.2.3 Inequalities for Absolute Values of Differences of Real and Complex Numbers
+      - 1.4.2.4 Inequality for Arithmetic and Geometric Means
+      - 1.4.2.5 Inequality for Arithmetic and Quadratic Means
+      - 1.4.2.6 Inequalities for Diferent Means of Real Numbers
+      - 1.4.2.7 Bernoulli’s Inequality
+      - 1.4.2.8 Binomial Inequality
+      - 1.4.2.9 Cauchy-Schwarz Inequality
+      - 1.4.2.10 Chebyshev Inequality
+      - 1.4.2.11 Generalized Chebyshev Inequality
+      - 1.4.2.12 H¨older Inequality
+      - 1.4.2.13 Minkowski Inequality
+    - 1.4.3 Solution of Linear and Quadratic Inequalities
+      - 1.4.3.1 General Remarks
+      - 1.4.3.2 Linear Inequalities
+      - 1.4.3.3 Quadratic Inequalities
+      - 1.4.3.4 General Case for Inequalities of Second Degree
+  - [1.5 Complex Numbers](<1.5 Complex Numbers.md>)
+    - 1.5.1 Imaginary and Complex Numbers
+      - 1.5.1.1 Imaginary Unit
+      - 1.5.1.2 Complex Numbers
+    - 1.5.2 Geometric Representation
+      - 1.5.2.1 Vector Representation
+      - 1.5.2.2 Equality of Complex Numbers
+      - 1.5.2.3 Trigonometric Form of Complex Numbers
+      - 1.5.2.4 Exponential Form of a Complex Number
+      - 1.5.2.5 Conjugate Complex Numbers
+    - 1.5.3 Calculation with Complex Numbers
+      - 1.5.3.1 Addition and Subtraction
+      - 1.5.3.2 Multiplication
+      - 1.5.3.3 Division
+      - 1.5.3.4 General Rules for the Basic Operations
+      - 1.5.3.5 Taking Powers of Complex Numbers
+      - 1.5.3.6 Taking the n-th Root ofa Complex Number
+      - th Root of a ComplexNumber
+  - [1.6 Algebraic and Transcendental Equations](<1.6 Algebraic and Transcendental Equations.md>)
+    - [1.6.1 Transforming Algebraic Equations to Normal Form](<1.6.1 Transforming Algebraic Equations to Normal Form.md>)
+      - 1.6.1.1 Definition
+      - 1.6.1.2 System of n Algebraic Equations
+      - 1.6.1.3 Extraneous Roots
+    - [1.6.2 Equations of Degree at Most Four](<1.6.2 Equations of Degree at Most Four.md>)
+      - 1.6.2.1 Equations of Degree One (Linear Equations)
+      - 1.6.2.2 Equations of Degree Two (Quadratic Equations)
+      - 1.6.2.3 Equations of Degree Three (Cubic Equations)
+      - 1.6.2.4 Equations of Degree Four
+      - 1.6.2.5 Equations of Higher Degree
+    - [1.6.3 Equations of Degree](<1.6.3 Equations of Degree.md>)
+      - 1.6.3.1 General Properties of Algebraic Equations
+      - 1.6.3.2 Equations with Real Coefficients
+    - [1.6.4 Reducing Transcendental Equations to Algebraic Equations](<1.6.4 Reducing Transcendental Equations to Algebraic Equations.md>)
+      - 1.6.4.1 Definition
+      - 1.6.4.2 Exponential Equations
+      - 1.6.4.3 Logarithmic Equations
+      - 1.6.4.4 Trigonometric Equations
+      - 1.6.4.5 Equations with Hyperbolic Functions
+- [2 Functions](<2 Functions.md>)
+  - [2.1 Notion of Functions](<2.1 Notion of Functions.md>)
+    - [2.1.1 Definition of a Function](<2.1.1 Definition of a Function.md>)
+      - 2.1.1.1 Function
+      - 2.1.1.2 Real Functions
+      - 2.1.1.3 Functions of Several Variables
+      - 2.1.1.4 Complex Functions
+      - 2.1.1.5 Further Functions
+      - 2.1.1.6 Functionals
+      - 2.1.1.7 Functions and Mappings
+    - [2.1.2 Methods for Defining a Real Function](<2.1.2 Methods for Defining a Real Function.md>)
+      - 2.1.2.1 Defining a Function
+      - 2.1.2.2 Analytic Representation of a Function
+    - [2.1.3 CertainTypes of Functions](<2.1.3 CertainTypes of Functions.md>)
+      - 2.1.3.1 Monotone Functions
+      - 2.1.3.2 Bounded Functions
+      - 2.1.3.3 Extreme Values of Functions
+      - 2.1.3.4 Even Functions
+      - 2.1.3.5 Odd Functions
+      - 2.1.3.6 Representation with Even and Odd Functions
+      - 2.1.3.7 Periodic Functions
+      - 2.1.3.8 Inverse Functions
+    - [2.1.4 Limits of Functions](<2.1.4 Limits of Functions.md>)
+      - 2.1.4.1 Definition of the Limit of a Function
+      - 2.1.4.2 Definition by Limit of Sequences
+      - 2.1.4.3 Cauchy Condition for Convergence
+      - 2.1.4.4 Infinity as a Limit of a Function
+      - 2.1.4.5 Left-Hand and Right-Hand Limit of a Function
+      - 2.1.4.6 Limit ofa Function as x Tends to Infinity
+      - Tends to Infinity
+      - 2.1.4.7 Theorems About Limits of Functions
+      - 2.1.4.8 Calculation of Limits
+      - 2.1.4.9 Order of Magnitude of Functions and Landau Order Symbols
+    - [2.1.5 Continuity of a Function](<2.1.5 Continuity of a Function.md>)
+      - 2.1.5.1 Notion of Continuity and Discontinuity
+      - 2.1.5.2 Definition of Continuity
+      - 2.1.5.3 Most Frequent Types of Discontinuities
+      - 2.1.5.4 Continuity and Discontinuity of Elementary Functions
+      - 2.1.5.5 Properties of Continuous Functions
+  - [2.2 Elementary Functions](<2.2 Elementary Functions.md>)
+    - 2.2.1 Algebraic Functions
+      - 2.2.1.1 Polynomials
+      - 2.2.1.2 Rational Functions
+      - 2.2.1.3 Irrational Functions
+    - 2.2.2 Transcendental Functions
+      - 2.2.2.1 Exponential Functions
+      - 2.2.2.2 Logarithmic Functions
+      - 2.2.2.3 Trigonometric Functions
+      - 2.2.2.4 Inverse Trigonometric Functions
+      - 2.2.2.5 Hyperbolic Functions
+      - 2.2.2.6 Inverse Hyperbolic Functions
+    - 2.2.3 Composite Functions
+  - [2.3 Polynomials](<2.3 Polynomials.md>)
+    - 2.3.1 Linear Function
+    - 2.3.2 Quadratic Polynomial
+    - 2.3.3 Cubic Polynomials
+    - 2.3.4 Polynomials of n-th Degree
+    - 2.3.5 Parabola of n-th Degree
+  - [2.4 Rational Functions](<2.4 Rational Functions.md>)
+    - 2.4.1 Special Fractional Linear Function (Inverse Proportionality)
+    - 2.4.2 Linear Fractional Function
+    - 2.4.3 Curves of Third Degree,Type I
+    - 2.4.4 Curves of Third Degree,Type II
+    - 2.4.5 Curves of Third Degree,Type III
+    - 2.4.6 Reciprocal Powers
+  - [2.5 Irrational Functions](<2.5 Irrational Functions.md>)
+    - 2.5.1 Square Root of a Linear Binomial
+    - 2.5.2 Square Root of a Quadratic Polynomial
+    - 2.5.3 Power Function
+  - [2.6 Exponential Functions and Logarithmic Functions](<2.6 Exponential Functions and Logarithmic Functions.md>)
+    - 2.6.1 Exponential Functions
+    - 2.6.2 Logarithmic Functions
+    - 2.6.3 Error Curve
+    - 2.6.4 Exponential Sum
+    - 2.6.5 Generalized Error Function
+    - 2.6.6 Product of Power and Exponential Functions
+  - [2.7 Trigonometric Functions (Functions ofAngles)](<2.7 Trigonometric Functions (Functions ofAngles).md>)
+    - 2.7.1 Basic Notions
+      - 2.7.1.1 Definition and Representation
+      - 2.7.1.2 Range and Behavior of the Functions
+    - 2.7.2 Important Formulas for Trigonometric Functions
+      - 2.7.2.1 Relations Between the Trigonometric Functions
+      - 2.7.2.2 Trigonometric Functions of the Sum and Difference of Two Angles (Addition Theorems)
+      - 2.7.2.3 Trigonometric Functions of an Integer Multiple of an Angle
+      - 2.7.2.4 Trigonometric Functions of Half-Angles
+      - 2.7.2.5 Sum and Difference of Two Trigonometric Functions
+      - 2.7.2.6 Products of Trigonometric Functions
+      - 2.7.2.7 Powers of Trigonometric Functions
+    - 2.7.3 Description of Oscillations
+      - 2.7.3.1 Formulation of the Problem
+      - 2.7.3.2 Superposition of Oscillations
+      - 2.7.3.3 Vector Diagram for Oscillations
+      - 2.7.3.4 Damping of Oscillations
+  - [2.8 Cyclometric or Inverse Trigonometric Functions](<2.8 Cyclometric or Inverse Trigonometric Functions.md>)
+    - 2.8.1 Definition ofthe Inverse Trigonometric Functions
+    - 2.8.2 Reduction to the Principal Value
+    - 2.8.3 Relations Between the Principal Values
+    - 2.8.4 Formulas for Negative Arguments
+    - 2.8.5 Sum and Difference of arcsin x and arcsin y
+    - 2.8.6 Sum and Difference of arcos x and arcos y
+    - 2.8.7 Sum and Difference of arctan x and arctan y
+    - 2.8.8 Special Relations for arcsin x, arccos x, arctan x
+  - [2.9 Hyperbolic Functions](<2.9 Hyperbolic Functions.md>)
+    - 2.9.1 Definition of Hyperbolic Functions
+    - 2.9.2 Graphical Representation of the Hyperbolic Functions
+      - 2.9.2.1 Hyperbolic Sine
+      - 2.9.2.2 Hyperbolic Cosine
+      - 2.9.2.3 Hyperbolic Tangent
+      - 2.9.2.4 Hyperbolic Cotangent
+    - 2.9.3 Important Formulas for the Hyperbolic Functions
+      - 2.9.3.1 Hyperbolic Functions of One Variable
+      - 2.9.3.2 Expressing a Hyperbolic Function by Another One with the Same Argument
+      - 2.9.3.3 Formulas for Negative Arguments
+      - 2.9.3.4 Hyperbolic Functions of the Sum and Difference of Two Arguments (Addition Theorems)
+      - 2.9.3.5 Hyperbolic Functions of Double Arguments
+      - 2.9.3.6 De Moivre Formula for Hyperbolic Functions
+      - 2.9.3.7 Hyperbolic Functions of Half-Argument
+      - 2.9.3.8 Sum and Difference of Hyperbolic Functions
+      - 2.9.3.9 Relation Between Hyperbolic and Trigonometric Functions with Complex Arguments z
+  - [2.10 Area Functions](<2.10 Area Functions.md>)
+    - 2.10.1 Definitions
+      - 2.10.1.1 Area Sine
+      - 2.10.1.2 Area Cosine
+      - 2.10.1.3 Area Tangent
+      - 2.10.1.4 Area Cotangent
+    - 2.10.2 Determination of Area Functions Using Natural Logarithm
+    - 2.10.3 Relations Between Different Area Functions
+    - 2.10.4 Sum and Difference of Area Functions
+    - 2.10.5 Formulas for Negative Arguments
+  - [2.11 Curves of Order Three (Cubic Curves)](<2.11 Curves of Order Three (Cubic Curves).md>)
+    - 2.11.1 Semicubic Parabola
+    - 2.11.2 Witch of Agnesi
+    - 2.11.3 Cartesian Folium (Folium of Descartes)
+    - 2.11.4 Cissoid
+    - 2.11.5 Strophoide
+  - [2.12 Curves of Order Four (Quartics)](<2.12 Curves of Order Four (Quartics).md>)
+    - 2.12.1 Conchoid of Nicomedes
+    - 2.12.2 General Conchoid
+    - 2.12.3 Pascal’s Lima¸con
+    - 2.12.4 Cardioid
+    - 2.12.5 Cassinian Curve
+    - 2.12.6 Lemniscate
+  - [2.13 Cycloids](<2.13 Cycloids.md>)
+    - 2.13.1 Common (Standard) Cycloid
+    - 2.13.2 Prolate and Curtate Cycloids or Trochoids
+    - 2.13.3 Epicycloid
+    - 2.13.4 Hypocycloid and Astroid
+    - 2.13.5 Prolate and Curtate Epicycloid and Hypocycloid
+  - [2.14 Spirals](<2.14 Spirals.md>)
+    - 2.14.1 Archimedean Spiral
+    - 2.14.2 Hyperbolic Spiral
+    - 2.14.3 Logarithmic Spiral
+    - 2.14.4 Evolvent of the Circle
+    - 2.14.5 Clothoid
+  - [2.15 Various Other Curves](<2.15 Various Other Curves.md>)
+    - 2.15.1 Catenary Curve
+    - 2.15.2 Tractrix
+  - [2.16 Determination of Empirical Curves](<2.16 Determination of Empirical Curves.md>)
+    - 2.16.1 Procedure
+      - 2.16.1.1 Curve-Shape Comparison
+      - 2.16.1.2 Rectification
+      - 2.16.1.3 Determination of Parameters
+    - 2.16.2 Useful Empirical Formulas
+      - 2.16.2.1 Power Functions
+      - 2.16.2.2 Exponential Functions
+      - 2.16.2.3 Quadratic Polynomial
+      - 2.16.2.4 Rational Linear Functions
+      - 2.16.2.5 Square Root of a Quadratic Polynomial
+      - 2.16.2.6 General Error Curve
+      - 2.16.2.7 Curve of Order Three, Type II
+      - 2.16.2.8 Curve of Order Three, Type III
+      - 2.16.2.9 Curve of Order Three, Type I
+      - 2.16.2.10 Product of Power and Exponential Functions
+      - 2.16.2.11 Exponential Sum
+      - 2.16.2.12 Numerical Example
+  - [2.17 Scales and Graph Paper](<2.17 Scales and Graph Paper.md>)
+    - 2.17.1 Scales
+    - 2.17.2 Graph Paper
+      - 2.17.2.1 Semilogarithmic Paper
+      - 2.17.2.2 Double Logarithmic Paper
+      - 2.17.2.3 Graph Paper with a Reciprocal Scale
+      - 2.17.2.4 Remark
+  - [2.18 Functions of Several Variables](<2.18 Functions of Several Variables.md>)
+    - 2.18.1 Definition and Representation
+      - 2.18.1.1 Representation of Functions of Several Variables
+      - 2.18.1.2 Geometric Representation of Functions of Several Variables
+    - 2.18.2 Different Domains in the Plane
+      - 2.18.2.1 Domain of a Function
+      - 2.18.2.2 Two-Dimensional Domains
+      - 2.18.2.3 Three or Multidimensional Domains
+      - 2.18.2.4 Methods to Determine a Function
+      - 2.18.2.5 Various Forms for the Analytical Representation of a Function
+      - 2.18.2.6 Dependence of Functions
+    - 2.18.3 Limits
+      - 2.18.3.1 Definition
+      - 2.18.3.2 Exact Definition
+      - 2.18.3.3 Generalization for Several Variables
+      - 2.18.3.4 Iterated Limit
+    - 2.18.4 Continuity
+    - 2.18.5 Properties of Continuous Functions
+      - 2.18.5.1 Theorem on Zeros of Bolzano
+      - 2.18.5.2 Intermediate Value Theorem
+      - 2.18.5.3 Theorem About the Boundedness of a Function
+      - 2.18.5.4 Weierstrass Theorem (About the Existence of Maximum and
+      - Minimum)
+  - [2.19 Nomography](<2.19 Nomography.md>)
+    - 2.19.1 Nomograms
+    - 2.19.2 Net Charts
+    - 2.19.3 Alignment Charts
+      - 2.19.3.1 Alignment Charts with Three Straight-Line Scales Through a Point
+      - 2.19.3.2 Alignment Charts with Two Parallel Inclined Straight-Line Scales and One Inclined Straight-Line Scale
+      - 2.19.3.3 Alignment Charts with Two Parallel Straight Lines and a Curved Scale
+    - 2.19.4 Net Charts for More Than Three Variables
+- [3 Geometry](<3 Geometry.md>)
+  - [3.1 Plane Geometry](<3.1 Plane Geometry.md>)
+    - [3.1.1 Basic Notations](<3.1.1 Basic Notations.md>)
+      - 3.1.1.1 Point, Line, Ray, Segment
+      - 3.1.1.2 Angle
+      - 3.1.1.3 Angle Between Two Intersecting Lines
+      - 3.1.1.4 Pairs of Angles with Intersecting Parallels
+      - 3.1.1.5 Angles Measured in Degrees and in Radians
+    - [3.1.2 Geometrical Definition of Circular and Hyperbolic Functions](<3.1.2 Geometrical Definition of Circular and Hyperbolic Functions.md>)
+      - 3.1.2.1 Definition of Circular or Trigonometric Functions
+      - 3.1.2.2 Definitions of the Hyperbolic Functions
+    - [3.1.3 Plane Triangles](<3.1.3 Plane Triangles.md>)
+      - 3.1.3.1 Statements about Plane Triangles
+      - 3.1.3.2 Symmetry
+    - [3.1.4 Plane Quadrangles](<3.1.4 Plane Quadrangles.md>)
+      - 3.1.4.1 Parallelogram
+      - 3.1.4.2 Rectangle and Square
+      - 3.1.4.3 Rhombus
+      - 3.1.4.4 Trapezoid
+      - 3.1.4.5 General Quadrangle
+      - 3.1.4.6 Inscribed Quadrangle
+      - 3.1.4.7 Circumscribing Quadrangle
+    - [3.1.5 Polygons in the Plane](<3.1.5 Polygons in the Plane.md>)
+      - 3.1.5.1 General Polygon
+      - 3.1.5.2 Regular Convex Polygons
+      - 3.1.5.3 Some Regular Convex Polygons
+    - [3.1.6 The Circle and Related Shapes](<3.1.6 The Circle and Related Shapes.md>)
+      - 3.1.6.1 Circle
+      - 3.1.6.2 Circular Segment and Circular Sector
+      - 3.1.6.3 Annulus
+  - [3.2 Plane Trigonometry](<3.2 Plane Trigonometry.md>)
+    - 3.2.1 Triangles
+      - 3.2.1.1 Calculations in Right-Angled Triangles in the Plane
+      - 3.2.1.2 Calculations in General (Oblique) Triangles in the Plane
+    - 3.2.2 Geodesic Applications
+      - 3.2.2.1 Geodesic Coordinates
+      - 3.2.2.2 Angles in Geodesy
+      - 3.2.2.3 Applications in Surveying
+  - [3.3 Stereometry](<3.3 Stereometry.md>)
+    - 3.3.1 Lines and Planes in Space
+    - 3.3.2 Edge, Corner, Solid Angle
+    - 3.3.3 Polyeder orPolyhedron
+    - 3.3.4 Solids Bounded by Curved Surfaces
+  - [3.4 Spherical Trigonometry](<3.4 Spherical Trigonometry.md>)
+    - [3.4.1 Basic Concepts of Geometry on the Sphere](<3.4.1 Basic Concepts of Geometry on the Sphere.md>)
+      - 3.4.1.1 Curve, Arc, and Angle on the Sphere
+      - 3.4.1.2 Special Coordinate Systems
+      - 3.4.1.3 Spherical Lune or Biangle
+      - 3.4.1.4 Spherical Triangle
+      - 3.4.1.5 Polar Triangle
+      - 3.4.1.6 Euler Triangles and Non-Euler Triangles
+      - 3.4.1.7 Trihedral Angle
+    - [3.4.2 Basic Properties of Spherical Triangles](<3.4.2 Basic Properties of Spherical Triangles.md>)
+      - 3.4.2.1 General Statements
+      - 3.4.2.2 Fundamental Formulas and Applications
+      - 3.4.2.3 Further Formulas
+    - [3.4.3 Calculation of SphericalTriangles](<3.4.3 Calculation of SphericalTriangles.md>)
+      - [3.4.3.1 Basic Problems, Accuracy Observations](<3.4.3.1 Basic Problems, Accuracy Observations.md>)
+      - [3.4.3.2 Right-Angled Spherical Triangles](<3.4.3.2 Right-Angled Spherical Triangles.md>)
+      - [3.4.3.3 Spherical Triangles with Oblique Angles](<3.4.3.3 Spherical Triangles with Oblique Angles.md>)
+      - [3.4.3.4 Spherical Curves](<3.4.3.4 Spherical Curves.md>)
+  - [3.5 Vector Algebra and Analytical Geometry](<3.5 Vector Algebra and Analytical Geometry.md>)
+    - [3.5.1 Vector Algebra](<3.5.1 Vector Algebra.md>)
+      - [3.5.1.1 Definition of Vectors](<3.5.1.1 Definition of Vectors.md>)
+      - [3.5.1.2 Calculation Rules for Vectors](<3.5.1.2 Calculation Rules for Vectors.md>)
+      - [3.5.1.3 Coordinates of a Vector](<3.5.1.3 Coordinates of a Vector.md>)
+      - [3.5.1.4 Directional Coefficient](<3.5.1.4 Directional Coefficient.md>)
+      - [3.5.1.5 Scalar Product and Vector Product](<3.5.1.5 Scalar Product and Vector Product.md>)
+      - [3.5.1.6 Combination of Vector Products](<3.5.1.6 Combination of Vector Products.md>)
+      - [3.5.1.7 Vector Equations](<3.5.1.7 Vector Equations.md>)
+      - [3.5.1.8 Covariant and Contravariant Coordinates of a Vector](<3.5.1.8 Covariant and Contravariant Coordinates of a Vector.md>)
+      - [3.5.1.9 Geometric Applications of Vector Algebra](<3.5.1.9 Geometric Applications of Vector Algebra.md>)
+    - [3.5.2 Analytical Geometry of the Plane](<3.5.2 Analytical Geometry of the Plane.md>)
+      - [3.5.2.1 Basic Concepts, Coordinate Systems in the Plane](<3.5.2.1 Basic Concepts, Coordinate Systems in the Plane.md>)
+      - [3.5.2.2 Coordinate Transformations](<3.5.2.2 Coordinate Transformations.md>)
+      - [3.5.2.3 Special Notations and Points in the Plane](<3.5.2.3 Special Notations and Points in the Plane.md>)
+      - [3.5.2.4 Areas](<3.5.2.4 Areas.md>)
+      - [3.5.2.5 Equation of a Curve](<3.5.2.5 Equation of a Curve.md>)
+      - [3.5.2.6 Line](<3.5.2.6 Line.md>)
+      - [3.5.2.7 Circle](<3.5.2.7 Circle.md>)
+      - [3.5.2.8 Ellipse](<3.5.2.8 Ellipse.md>)
+      - [3.5.2.9 Hyperbola](<3.5.2.9 Hyperbola.md>)
+      - [3.5.2.10 Parabola](<3.5.2.10 Parabola.md>)
+      - [3.5.2.11 Quadratic Curves (Curves of Second Order or Conic Sections)](<3.5.2.11 Quadratic Curves (Curves of Second Order or Conic Sections).md>)
+    - [3.5.3 Analytical Geometry of Space](<3.5.3 Analytical Geometry of Space.md>)
+      - [3.5.3.1 Basic Concepts](<3.5.3.1 Basic Concepts.md>)
+      - [3.5.3.2 Spatial Coordinate Systems](<3.5.3.2 Spatial Coordinate Systems.md>)
+      - [3.5.3.3 Transformation of Orthogonal Coordinates](<3.5.3.3 Transformation of Orthogonal Coordinates.md>)
+      - [3.5.3.4 Rotations with Direction Cosines](<3.5.3.4 Rotations with Direction Cosines.md>)
+      - [3.5.3.5 Cardan Angles](<3.5.3.5 Cardan Angles.md>)
+      - [3.5.3.6 Euler’s angles](<3.5.3.6 Euler’s angles.md>)
+      - [3.5.3.7 Special Quantities in Space](<3.5.3.7 Special Quantities in Space.md>)
+      - [3.5.3.8 Equation of a Surface](<3.5.3.8 Equation of a Surface.md>)
+      - [3.5.3.9 Equation of a Space Curve](<3.5.3.9 Equation of a Space Curve.md>)
+      - [3.5.3.10 Line and Plane in Space](<3.5.3.10 Line and Plane in Space.md>)
+      - [3.5.3.11 Lines in Space](<3.5.3.11 Lines in Space.md>)
+      - [3.5.3.12 Intersection Points and Angles of Lines and Planes in Space](<3.5.3.12 Intersection Points and Angles of Lines and Planes in Space.md>)
+      - [3.5.3.13 Surfaces of Second Order, Equations in Normal Form](<3.5.3.13 Surfaces of Second Order, Equations in Normal Form.md>)
+      - [3.5.3.14 Surfaces of Second Order or Quadratic Surfaces, General Theory](<3.5.3.14 Surfaces of Second Order or Quadratic Surfaces, General Theory.md>)
+    - [3.5.4 Geometric Transformations and Coordinate Transformations](<3.5.4 Geometric Transformations and Coordinate Transformations.md>)
+      - [3.5.4.1 Geometric 2D Transformations](<3.5.4.1 Geometric 2D Transformations.md>)
+      - [3.5.4.2 Homogeneous Coordinates, Matrix Representation](<3.5.4.2 Homogeneous Coordinates, Matrix Representation.md>)
+      - [3.5.4.3 Coordinate Transformation](<3.5.4.3 Coordinate Transformation.md>)
+      - [3.5.4.4 Composition of Transformations](<3.5.4.4 Composition of Transformations.md>)
+      - [3.5.4.5 3D–Transformations](<3.5.4.5 3D–Transformations.md>)
+      - [3.5.4.6 Deformation Transformations](<3.5.4.6 Deformation Transformations.md>)
+    - [3.5.5 Planar Projections](<3.5.5 Planar Projections.md>)
+      - 3.5.5.1 Classification of the projections
+      - 3.5.5.2 Local or Projection Coordinate System
+      - 3.5.5.3 Principal Projections
+      - 3.5.5.4 Axonometric Projection
+      - 3.5.5.5 Isometric Projection
+      - 3.5.5.6 Oblique Parallel Projection
+      - 3.5.5.7 Perspective Projection
+  - [3.6 Differential Geometry](<3.6 Differential Geometry.md>)
+    - [3.6.1 Plane Curves](<3.6.1 Plane Curves.md>)
+      - [3.6.1.1 Ways to Define a Plane Curve](<3.6.1.1 Ways to Define a Plane Curve.md>)
+      - [3.6.1.2 Local Elements of a Curve](<3.6.1.2 Local Elements of a Curve.md>)
+      - [3.6.1.3 Special Points of a Curve](<3.6.1.3 Special Points of a Curve.md>)
+      - [3.6.1.4 Asymptotes of Curves](<3.6.1.4 Asymptotes of Curves.md>)
+      - [3.6.1.5 General Discussion of a Curve Given by an Equation](<3.6.1.5 General Discussion of a Curve Given by an Equation.md>)
+      - [3.6.1.6 Evolutes and Evolvents](<3.6.1.6 Evolutes and Evolvents.md>)
+      - [3.6.1.7 Envelope of a Family of Curves](<3.6.1.7 Envelope of a Family of Curves.md>)
+    - [3.6.2 Space Curves](<3.6.2 Space Curves.md>)
+      - 3.6.2.1 Ways to Define a Space Curve
+      - 3.6.2.2 Moving Trihedral
+      - 3.6.2.3 Curvature and Torsion
+    - [3.6.3 Surfaces](<3.6.3 Surfaces.md>)
+      - 3.6.3.1 Ways to Define a Surface
+      - 3.6.3.2 Tangent Plane and Surface Normal
+      - 3.6.3.3 Line Elements of a Surface
+      - 3.6.3.4 Curvature of a Surface
+      - 3.6.3.5 Ruled Surfaces and Developable Surfaces
+      - 3.6.3.6 Geodesic Lines on a Surface
+- [4 Linear Algebra](<4 Linear Algebra.md>)
+  - [4.1 Matrices](<4.1 Matrices.md>)
+    - [4.1.1 Notion of Matrix](<4.1.1 Notion of Matrix.md>)
+    - [4.1.2 Square Matrices](<4.1.2 Square Matrices.md>)
+    - [4.1.3 Vectors](<4.1.3 Vectors.md>)
+    - [4.1.4 Arithmetical Operations with Matrices](<4.1.4 Arithmetical Operations with Matrices.md>)
+    - [4.1.5 Rules of Calculation for Matrices](<4.1.5 Rules of Calculation for Matrices.md>)
+    - [4.1.6 Vector and Matrix Norms](<4.1.6 Vector and Matrix Norms.md>)
+      - 4.1.6.1 Vector Norms
+      - 4.1.6.2 Matrix Norms
+  - [4.2 Determinants](<4.2 Determinants.md>)
+    - 4.2.1 Definitions
+    - 4.2.2 Rules of Calculation for Determinants
+    - 4.2.3 Evaluation of Determinants
+  - [4.3 Tensors](<4.3 Tensors.md>)
+    - [4.3.1 Transformation of Coordinate Systems](<4.3.1 Transformation of Coordinate Systems.md>)
+    - [4.3.2 Tensors in Cartesian Coordinates](<4.3.2 Tensors in Cartesian Coordinates.md>)
+    - [4.3.3 Tensors with Special Properties](<4.3.3 Tensors with Special Properties.md>)
+      - 4.3.3.1 Tensors of Rank 2
+      - 4.3.3.2 Invariant Tensors
+    - [4.3.4 Tensors in Curvilinear Coordinate Systems](<4.3.4 Tensors in Curvilinear Coordinate Systems.md>)
+      - 4.3.4.1 Covariant and Contravariant Basis Vectors
+      - 4.3.4.2 Covariant and Contravariant Coordinates of Tensors of Rank 1
+      - 4.3.4.3 Covariant, Contravariant and Mixed Coordinates of Tensors of Rank 2
+      - 4.3.4.4 Rules of Calculation
+    - [4.3.5 Pseudotensors](<4.3.5 Pseudotensors.md>)
+      - 4.3.5.1 Symmetry with Respect to the Origin
+      - 4.3.5.2 Introduction to the Notion of Pseudotensors
+  - [4.4 Quaternions and Applications](<4.4 Quaternions and Applications.md>)
+    - [4.4.1 Quaternions](<4.4.1 Quaternions.md>)
+      - 4.4.1.1 Definition and Representation
+      - 4.4.1.2 Matrix Representation of Quaternions
+      - 4.4.1.3 Calculation Rules
+    - [4.4.2 Representation of Rotations in IR3](<4.4.2 Representation of Rotations in IR3.md>)
+      - [4.4.2.1 Rotations of an Object About the Coordinate Axes](<4.4.2.1 Rotations of an Object About the Coordinate Axes.md>)
+      - [4.4.2.2 Cardan-Angles](<4.4.2.2 Cardan-Angles.md>)
+      - [4.4.2.3 Euler Angles](<4.4.2.3 Euler Angles.md>)
+      - [4.4.2.4 Rotation Around an Arbitrary Zero Point Axis](<4.4.2.4 Rotation Around an Arbitrary Zero Point Axis.md>)
+      - [4.4.2.5 Rotation and Quaternions](<4.4.2.5 Rotation and Quaternions.md>)
+      - [4.4.2.6 Quaternions and Cardan Angles](<4.4.2.6 Quaternions and Cardan Angles.md>)
+      - [4.4.2.7 Efficiency of the Algorithms](<4.4.2.7 Efficiency of the Algorithms.md>)
+    - [4.4.3 Applications ofQuaternions](<4.4.3 Applications ofQuaternions.md>)
+      - 4.4.3.1 3D Rotations in Computer Graphics
+      - 4.4.3.2 Interpolation by Rotation matrices
+      - 4.4.3.3 Stereographic Projection
+      - 4.4.3.4 Satellite navigation
+      - 4.4.3.5 Vector Analysis
+      - 4.4.3.6 Normalized Quaternions and Rigid Body Motion
+  - [4.5 Systems of Linear Equations](<4.5 Systems of Linear Equations.md>)
+    - [4.5.1 Linear Systems, Pivoting](<4.5.1 Linear Systems, Pivoting.md>)
+      - 4.5.1.1 Linear Systems
+      - 4.5.1.2 Pivoting
+      - 4.5.1.3 Linear Dependence
+      - 4.5.1.4 Calculation of the Inverse of a Matrix
+    - [4.5.2 Solution of Systems of Linear Equations](<4.5.2 Solution of Systems of Linear Equations.md>)
+      - 4.5.2.1 Definition and Solvability
+      - 4.5.2.2 Application of Pivoting
+      - 4.5.2.3 Cramer’s Rule
+      - 4.5.2.4 Gauss’s Algorithm
+    - [4.5.3 Overdetermined Linear Systems of Equations](<4.5.3 Overdetermined Linear Systems of Equations.md>)
+      - 4.5.3.1 Overdetermined Linear Systems of Equations and Linear Least Squares Problems
+      - 4.5.3.2 Suggestions for Numerical Solutions of Least Squares Problems
+  - [4.6 Eigen value Problems for Matrices](<4.6 Eigen value Problems for Matrices.md>)
+    - [4.6.1 General Eigenvalue Problem](<4.6.1 General Eigenvalue Problem.md>)
+    - [4.6.2 Special Eigenvalue Problem](<4.6.2 Special Eigenvalue Problem.md>)
+      - 4.6.2.1 Characteristic Polynomial
+      - 4.6.2.2 Real Symmetric Matrices, Similarity Transformations
+      - 4.6.2.3 Transformation of Principal Axes of Quadratic Forms
+      - 4.6.2.4 Suggestions for the Numerical Calculations of Eigenvalues
+    - [4.6.3 Singular Value Decomposition](<4.6.3 Singular Value Decomposition.md>)
+- [5 Algebra and Discrete Mathematics](<5 Algebra and Discrete Mathematics.md>)
+  - [5.1 Logic](<5.1 Logic.md>)
+    - 5.1.1 Propositional Calculus
+    - 5.1.2 Formulas in Predicate Calculus
+  - [5.2 Set Theory](<5.2 Set Theory.md>)
+    - 5.2.1 Concept of Set, Special Sets
+    - 5.2.2 Operations with Sets
+    - 5.2.3 Relations and Mappings
+    - 5.2.4 Equivalence and Order Relations
+    - 5.2.5 Cardinality of Sets
+  - [5.3 Classical Algebraic Structures](<5.3 Classical Algebraic Structures.md>)
+    - [5.3.1 Operations](<5.3.1 Operations.md>)
+    - [5.3.2 Semigroups](<5.3.2 Semigroups.md>)
+    - [5.3.3 Groups](<5.3.3 Groups.md>)
+      - 5.3.3.1 Definition and Basic Properties
+      - 5.3.3.2 Subgroups and Direct Products
+      - 5.3.3.3 Mappings Between Groups
+    - [5.3.4 Group Representations](<5.3.4 Group Representations.md>)
+      - 5.3.4.1 Definitions
+      - 5.3.4.2 Particular Representations
+      - 5.3.4.3 Direct Sum of Representations
+      - 5.3.4.4 Direct Product of Representations
+      - 5.3.4.5 Reducible and Irreducible Representations
+      - 5.3.4.6 Schur’s Lemma 1
+      - 5.3.4.7 Clebsch-Gordan Series
+      - 5.3.4.8 Irreducible Representations of the Symmetric Group
+    - [5.3.5 Applications of Groups](<5.3.5 Applications of Groups.md>)
+      - 5.3.5.1 Symmetry Operations, Symmetry Elements
+      - 5.3.5.2 Symmetry Groups or Point Groups
+      - 5.3.5.3 Symmetry Operations with Molecules
+      - 5.3.5.4 Symmetry Groups in Crystallography
+      - 5.3.5.5 Symmetry Groups in Quantum Mechanics
+      - 5.3.5.6 Further Applications of Group Theory in Physics
+    - [5.3.6 Lie Groups and Lie Algebras](<5.3.6 Lie Groups and Lie Algebras.md>)
+      - [5.3.6.1 Introduction](<5.3.6.1 Introduction.md>)
+      - [5.3.6.2 Matrix-Lie Groups](<5.3.6.2 Matrix-Lie Groups.md>)
+      - [5.3.6.3 Important Applications](<5.3.6.3 Important Applications.md>)
+      - [5.3.6.4 Lie Algebra](<5.3.6.4 Lie Algebra.md>)
+      - [5.3.6.5 Applications in Robotics](<5.3.6.5 Applications in Robotics.md>)
+    - [5.3.7 Rings and Fields](<5.3.7 Rings and Fields.md>)
+      - 5.3.7.1 Definitions
+      - 5.3.7.2 Subrings, Ideals
+      - 5.3.7.3 Homomorphism, Isomorphism, Homomorphism Theorem
+      - 5.3.7.4 Finite Fields and Shift Registers
+    - [5.3.8 Vector Spaces](<5.3.8 Vector Spaces.md>)
+      - 5.3.8.1 Definition
+      - 5.3.8.2 Linear Dependence
+      - 5.3.8.3 Linear Operators
+      - 5.3.8.4 Subspaces, Dimension Formula
+      - 5.3.8.5 Euclidean Vector Spaces, Euclidean Norm
+      - 5.3.8.6 Bilinear Mappings, Bilinear Forms
+  - [5.4 Elementary Number Theory](<5.4 Elementary Number Theory.md>)
+    - [5.4.1 Divisibility](<5.4.1 Divisibility.md>)
+      - 5.4.1.1 Divisibility and Elementary Divisibility Rules
+      - 5.4.1.2 Prime Numbers
+      - 5.4.1.3 Criteria for Divisibility
+      - 5.4.1.4 Greatest Common Divisor and Least Common Multiple
+      - 5.4.1.5 Fibonacci Numbers
+    - [5.4.2 Linear Diophantine Equations](<5.4.2 Linear Diophantine Equations.md>)
+    - [5.4.3 Congruences and Residue Classes](<5.4.3 Congruences and Residue Classes.md>)
+    - [5.4.4 Theorems of Fermat, Euler, and Wilson](<5.4.4 Theorems of Fermat, Euler, and Wilson.md>)
+    - [5.4.5 Prime Number Tests](<5.4.5 Prime Number Tests.md>)
+    - [5.4.6 Codes](<5.4.6 Codes.md>)
+      - 5.4.6.1 Control Digits
+      - 5.4.6.2 Error correcting codes
+  - [5.5 Cryptology](<5.5 Cryptology.md>)
+    - 5.5.1 Problem of Cryptology
+    - 5.5.2 Cryptosystems
+    - 5.5.3 Mathematical Foundation
+    - 5.5.4 Security of Cryptosystems
+      - 5.5.4.1 Methods of Conventional Cryptography
+      - 5.5.4.2 Linear Substitution Ciphers
+      - 5.5.4.3 Vigen`ere Cipher
+      - 5.5.4.4 Matrix Substitution
+    - 5.5.5 Methods of Classical Cryptanalysis
+      - 5.5.5.1 Statistical Analysis
+      - 5.5.5.2 Kasiski-Friedman Test
+    - 5.5.6 One-Time Pad
+    - 5.5.7 Public Key Methods
+      - 5.5.7.1 Diffie-Hellman Key Exchange
+      - 5.5.7.2 One-Way Function
+      - 5.5.7.3 RSA Codes and RSA Method
+    - 5.5.8 DES Algorithm (Data Encryption Standard)
+    - 5.5.9 IDEA Algorithm (International Data Encryption Algorithm)
+  - [5.6 Universal Algebra](<5.6 Universal Algebra.md>)
+    - 5.6.1 Definition
+    - 5.6.2 Congruence Relations, Factor Algebras
+    - 5.6.3 Homomorphism
+    - 5.6.4 Homomorphism Theorem
+    - 5.6.5 Varieties
+    - 5.6.6 Term Algebras, Free Algebras
+  - [5.7 Boolean Algebras and Switch Algebra](<5.7 Boolean Algebras and Switch Algebra.md>)
+    - 5.7.1 Definition
+    - 5.7.2 Duality Principle
+    - 5.7.3 Finite Boolean Algebras
+    - 5.7.4 Boolean Algebras as Orderings
+    - 5.7.5 Boolean Functions, Boolean Expressions
+    - 5.7.6 Normal Forms
+    - 5.7.7 Switch Algebra
+  - [5.8 Algorithms of Graph Theory](<5.8 Algorithms of Graph Theory.md>)
+    - [5.8.1 Basic Notions and Notation](<5.8.1 Basic Notions and Notation.md>)
+    - [5.8.2 Traverse of Undirected Graphs](<5.8.2 Traverse of Undirected Graphs.md>)
+      - 5.8.2.1 Edge Sequences or Paths
+      - 5.8.2.2 Euler Trails
+      - 5.8.2.3 Hamiltonian Cycles
+    - [5.8.3 Trees and Spanning Trees](<5.8.3 Trees and Spanning Trees.md>)
+      - 5.8.3.1 Trees
+      - 5.8.3.2 Spanning Trees
+    - [5.8.4 Matchings](<5.8.4 Matchings.md>)
+    - [5.8.5 Planar Graphs](<5.8.5 Planar Graphs.md>)
+    - [5.8.6 Paths in Directed Graphs](<5.8.6 Paths in Directed Graphs.md>)
+    - [5.8.7 Transport Networks](<5.8.7 Transport Networks.md>)
+  - [5.9 Fuzzy Logic](<5.9 Fuzzy Logic.md>)
+    - [5.9.1 Basic Notions of Fuzzy Logic](<5.9.1 Basic Notions of Fuzzy Logic.md>)
+      - 5.9.1.1 Interpretation of Fuzzy Sets
+      - 5.9.1.2 Membership Functions on the Real Line
+      - 5.9.1.3 Fuzzy Sets
+    - [5.9.2 Connections (Aggregations) of Fuzzy Sets](<5.9.2 Connections (Aggregations) of Fuzzy Sets.md>)
+      - 5.9.2.1 Concepts for Aggregations of Fuzzy Sets
+      - 5.9.2.2 Practical Aggregation Operations of Fuzzy Sets
+      - 5.9.2.3 Compensatory Operators
+      - 5.9.2.4 Extension Principle
+      - 5.9.2.5 Fuzzy Complement
+    - [5.9.3 Fuzzy-Valued Relations](<5.9.3 Fuzzy-Valued Relations.md>)
+      - 5.9.3.1 Fuzzy Relations
+      - 5.9.3.2 Fuzzy Product Relation R S
+    - [5.9.4 Fuzzy Inference (Approximate Reasoning)](<5.9.4 Fuzzy Inference (Approximate Reasoning).md>)
+    - [5.9.5 Defuzzification Methods](<5.9.5 Defuzzification Methods.md>)
+    - [5.9.6 Knowledge-Based Fuzzy Systems](<5.9.6 Knowledge-Based Fuzzy Systems.md>)
+      - 5.9.6.1 Method ofMamdani
+      - 5.9.6.2 Method of Sugeno
+      - 5.9.6.3 Cognitive Systems
+      - 5.9.6.4 Knowledge-Based Interpolation Systems
+- [6 Differentiation](<6 Differentiation.md>)
+  - [6.1 Differentiation of Functions of One Variable](<6.1 Differentiation of Functions of One Variable.md>)
+    - [6.1.1 Differential Quotient](<6.1.1 Differential Quotient.md>)
+    - [6.1.2 Rules of Differentiation for Functions of One Variable](<6.1.2 Rules of Differentiation for Functions of One Variable.md>)
+      - 6.1.2.1 Derivatives of the Elementary Functions
+      - 6.1.2.2 Basic Rules of Differentiation
+    - [6.1.3 Derivatives ofHigher Order](<6.1.3 Derivatives ofHigher Order.md>)
+      - 6.1.3.1 Definition of Derivatives of Higher Order
+      - 6.1.3.2 Derivatives of Higher Order of some Elementary Functions
+      - 6.1.3.3 Leibniz’s Formula
+      - 6.1.3.4 Higher Derivatives of Functions Given in Parametric Form
+      - 6.1.3.5 Derivatives of Higher Order of the Inverse Function
+    - [6.1.4 Fundamental Theorems of Differential Calculus](<6.1.4 Fundamental Theorems of Differential Calculus.md>)
+      - 6.1.4.1 Monotonicity
+      - 6.1.4.2 Fermat’s Theorem
+      - 6.1.4.3 Rolle’s Theorem
+      - 6.1.4.4 Mean Value Theorem of Differential Calculus
+      - 6.1.4.5 Taylor’s Theorem of Functions of One Variable
+      - 6.1.4.6 Generalized Mean Value Theorem of Differential Calculus (Cauchy’s Theorem)
+    - [6.1.5 Determination of the Extreme Values and Inflection Points](<6.1.5 Determination of the Extreme Values and Inflection Points.md>)
+      - 6.1.5.1 Maxima and Minima
+      - 6.1.5.2 Necessary Conditions for the Existence of a Relative Extreme Value
+      - 6.1.5.3 Determination of the Relative Extreme Values and the Inflection Points of a Differentiable Explicit Function y = f(x)
+      - 6.1.5.4 Determination of Absolute Extrema
+      - 6.1.5.5 Determination of the Extrema of Implicit Functions
+  - [6.2 Differentiation of Functions of Several Variables](<6.2 Differentiation of Functions of Several Variables.md>)
+    - [6.2.1 Partial Derivatives](<6.2.1 Partial Derivatives.md>)
+      - 6.2.1.1 Partial Derivative of a Function
+      - 6.2.1.2 Geometrical Meaning for Functions of Two Variables
+      - 6.2.1.3 Differentials of x and f(x)
+      - 6.2.1.4 Basic Properties of the Differential
+      - 6.2.1.5 Partial Differential
+    - [6.2.2 Total Differential and Differentials of Higher Order](<6.2.2 Total Differential and Differentials of Higher Order.md>)
+      - 6.2.2.1 Notion of Total Differential of a Function of Several Variables (Complete Differential)
+      - 6.2.2.2 Derivatives and Differentials of Higher Order
+      - 6.2.2.3 Taylor’s Theorem for Functions of Several Variables
+    - [6.2.3 Rules of Differentiation for Functions of SeveralVariables](<6.2.3 Rules of Differentiation for Functions of SeveralVariables.md>)
+      - 6.2.3.1 Differentiation of Composite Functions
+      - 6.2.3.2 Differentiation of Implicit Functions
+    - [6.2.4 Substitution of Variables in Differential Expressions and CoordinateTransformations](<6.2.4 Substitution of Variables in Differential Expressions and CoordinateTransformations.md>)
+      - 6.2.4.1 Function of One Variable
+      - 6.2.4.2 Function of Two Variables
+    - [6.2.5 Extreme Values of Functions of Several Variables](<6.2.5 Extreme Values of Functions of Several Variables.md>)
+      - 6.2.5.1 Definition of a Relative Extreme Value
+      - 6.2.5.2 Geometric Representation
+      - 6.2.5.3 Determination of Extreme Values of Differentiable Functions of Two Variables
+      - 6.2.5.4 Determination of the Extreme Values of a Function of Two Variables
+      - 6.2.5.5 Solution of Approximation Problems
+      - 6.2.5.6 Extreme Value Problem with Side Conditions
+- [7 Infinite Series](<7 Infinite Series.md>)
+  - [7.1 Sequences of Numbers](<7.1 Sequences of Numbers.md>)
+    - 7.1.1 Properties of Sequences ofNumbers
+      - 7.1.1.1 Definition of Sequence of Numbers
+      - 7.1.1.2 Monotone Sequences of Numbers
+      - 7.1.1.3 Bounded Sequences of Numbers
+    - 7.1.2 Limits of Sequences ofNumbers
+  - [7.2 Number Series](<7.2 Number Series.md>)
+    - 7.2.1 General Convergence Theorems
+      - 7.2.1.1 Convergence and Divergence of Infinite Series
+      - 7.2.1.2 General Theorems about the Convergence of Series
+    - 7.2.2 Convergence Criteria for Series with Positive Terms
+      - 7.2.2.1 Comparison Criterion
+      - 7.2.2.2 D’Alembert’s Ratio Test
+      - 7.2.2.3 Root Test of Cauchy
+      - 7.2.2.4 Integral Test of Cauchy
+    - 7.2.3 Absolute and Conditional Convergence
+      - 7.2.3.1 Definition
+      - 7.2.3.2 Properties of Absolutely Convergent Series
+      - 7.2.3.3 Alternating Series
+    - 7.2.4 Some Special Series
+      - 7.2.4.1 The Values of Some Important Number Series
+      - 7.2.4.2 Bernoulli and Euler Numbers
+    - 7.2.5 Estimation of the Remainder
+      - 7.2.5.1 Estimation with Majorant
+      - 7.2.5.2 Alternating Convergent Series
+      - 7.2.5.3 Special Series
+  - [7.3 Function Series](<7.3 Function Series.md>)
+    - 7.3.1 Definitions
+    - 7.3.2 Uniform Convergence
+      - 7.3.2.1 Definition, Weierstrass Theorem
+      - 7.3.2.2 Properties of Uniformly Convergent Series
+    - 7.3.3 Power series
+      - 7.3.3.1 Definition, Convergence
+      - 7.3.3.2 Calculations with Power Series
+      - 7.3.3.3 Taylor Series Expansion, Maclaurin Series
+    - 7.3.4 Approximation Formulas
+    - 7.3.5 Asymptotic Power Series
+      - 7.3.5.1 Asymptotic Behavior
+      - 7.3.5.2 Asymptotic Power Series
+  - [7.4 Fourier Series](<7.4 Fourier Series.md>)
+    - 7.4.1 Trigonometric Sum and Fourier Series
+      - 7.4.1.1 Basic Notions
+      - 7.4.1.2 Most Important Properties of the Fourier Series
+    - 7.4.2 Determination of Coefficients for Symmetric Functions
+      - 7.4.2.1 Different Kinds of Symmetries
+      - 7.4.2.2 Forms of the Expansion into a Fourier Series
+    - 7.4.3 Determination of the Fourier Coefficients with Numerical Methods
+    - 7.4.4 Fourier Series and Fourier Integrals
+    - 7.4.5 Remarks on theTable of Some Fourier Expansions
+- [8 Integral Calculus](<8 Integral Calculus.md>)
+  - [8.1 Indefinite Integrals](<8.1 Indefinite Integrals.md>)
+    - [8.1.1 Primitive Function or Antiderivative](<8.1.1 Primitive Function or Antiderivative.md>)
+      - 8.1.1.1 Indefinite Integrals
+      - 8.1.1.2 Integrals of Elementary Functions
+    - [8.1.2 Rules of Integration](<8.1.2 Rules of Integration.md>)
+    - [8.1.3 Integration of Rational Functions](<8.1.3 Integration of Rational Functions.md>)
+      - 8.1.3.1 Integrals of Integer Rational Functions (Polynomials)
+      - 8.1.3.2 Integrals of Fractional Rational Functions
+      - 8.1.3.3 Four Cases of Partial Fraction Decomposition
+    - [8.1.4 Integration of Irrational Functions](<8.1.4 Integration of Irrational Functions.md>)
+      - 8.1.4.1 Substitution to Reduce to Integration of Rational Functions
+      - 8.1.4.2 Integration of Binomial Integrands
+      - 8.1.4.3 Elliptic Integrals
+    - [8.1.5 Integration of Trigonometric Functions](<8.1.5 Integration of Trigonometric Functions.md>)
+      - 8.1.5.1 Substitution
+      - 8.1.5.2 Simplified Methods
+    - [8.1.6 Integration of Further Transcendental Functions](<8.1.6 Integration of Further Transcendental Functions.md>)
+      - 8.1.6.1 Integrals with Exponential Functions
+      - 8.1.6.2 Integrals with Hyperbolic Functions
+      - 8.1.6.3 Application of Integration by Parts
+      - 8.1.6.4 Integrals of Transcendental Functions
+  - [8.2 Definite Integrals](<8.2 Definite Integrals.md>)
+    - [8.2.1 Basic Notions, Rules and Theorems](<8.2.1 Basic Notions, Rules and Theorems.md>)
+      - 8.2.1.1 Definition and Existence of the Definite Integral
+      - 8.2.1.2 Properties of Definite Integrals
+      - 8.2.1.3 Further Theorems about the Limits of Integration
+      - 8.2.1.4 Evaluation of the Definite Integral
+    - [8.2.2 Applications of Definite Integrals](<8.2.2 Applications of Definite Integrals.md>)
+      - 8.2.2.1 General Principle for Applications of the Definite Integral
+      - 8.2.2.2 Applications in Geometry
+      - 8.2.2.3 Applications in Mechanics and Physics
+    - [8.2.3 Improper Integrals, Stieltjes and Lebesgue Integrals](<8.2.3 Improper Integrals, Stieltjes and Lebesgue Integrals.md>)
+      - 8.2.3.1 Generalization of the Notion of the Integral
+      - 8.2.3.2 Integrals with Infinite Integration Limits
+      - 8.2.3.3 Integrals with Unbounded Integrand
+    - [8.2.4 Parametric Integrals](<8.2.4 Parametric Integrals.md>)
+      - 8.2.4.1 Definition of Parametric Integrals
+      - 8.2.4.2 Differentiation Under the Symbol of Integration
+      - 8.2.4.3 Integration Under the Symbol of Integration
+    - [8.2.5 Integration by Series Expansion, Special Non-Elementary Functions](<8.2.5 Integration by Series Expansion, Special Non-Elementary Functions.md>)
+  - [8.3 Line Integrals](<8.3 Line Integrals.md>)
+    - 8.3.1 Line Integrals ofthe First Type
+      - 8.3.1.1 Definitions
+      - 8.3.1.2 Existence Theorem
+      - 8.3.1.3 Evaluation of the Line Integral of the First Type
+      - 8.3.1.4 Application of the Line Integral of the First Type
+    - 8.3.2 Line Integrals of the Second Type
+      - 8.3.2.1 Definitions
+      - 8.3.2.2 Existence Theorem
+      - 8.3.2.3 Calculation of the Line Integral of the Second Type
+    - 8.3.3 Line Integrals of GeneralType
+      - 8.3.3.1 Definition
+      - 8.3.3.2 Properties of the Line Integral of General Type 1. The Decomposition of the Path of the Integral
+      - 8.3.3.3 Integral Along a Closed Curve
+    - 8.3.4 Independence of the Line Integral of the Path of Integration
+      - 8.3.4.1 Two-Dimensional Case
+      - 8.3.4.2 Existence of a Primitive Function
+      - 8.3.4.3 Three-Dimensional Case
+      - 8.3.4.4 Determination of the Primitive Function
+      - 8.3.4.5 Zero-Valued Integral Along a Closed Curve
+  - [8.4 Multiple Integrals](<8.4 Multiple Integrals.md>)
+    - 8.4.1 Double Integrals
+      - 8.4.1.1 Notion of the Double Integral
+      - 8.4.1.2 Evaluation of the Double Integral
+      - 8.4.1.3 Applications of the Double Integral
+    - 8.4.2 Triple Integrals
+      - 8.4.2.1 Notion of the Triple Integral
+      - 8.4.2.2 Evaluation of the Triple Integral
+      - 8.4.2.3 Applications of the Triple Integral
+  - [8.5 Surface Integrals](<8.5 Surface Integrals.md>)
+    - 8.5.1 Surface Integral of the First Type
+      - 8.5.1.1 Notion of the Surface Integral of the First Type
+      - 8.5.1.2 Evaluation of the Surface Integral of the First Type
+      - 8.5.1.3 Applications of the Surface Integral of the First Type
+    - 8.5.2 Surface Integral of the Second Type
+      - 8.5.2.1 Notion of the Surface Integral of the Second Type
+      - 8.5.2.2 Evaluation of Surface Integrals of the Second Type
+    - 8.5.3 Surface Integral in General Form
+      - 8.5.3.1 Notion of the Surface Integral in General Form
+      - 8.5.3.2 Properties of the Surface Integrals
+- [9 Differential Equations](<9 Differential Equations.md>)
+  - [9.1 Ordinary Differential Equations](<9.1 Ordinary Differential Equations.md>)
+    - [9.1.1 First-Order Differential Equations](<9.1.1 First-Order Differential Equations.md>)
+      - [9.1.1.1 Existence Theorems, Direction Field](<9.1.1.1 Existence Theorems, Direction Field.md>)
+      - [9.1.1.2 Important Solution Methods](<9.1.1.2 Important Solution Methods.md>)
+      - [9.1.1.3 Implicit Differential Equations](<9.1.1.3 Implicit Differential Equations.md>)
+      - [9.1.1.4 Singular Integrals and Singular Points](<9.1.1.4 Singular Integrals and Singular Points.md>)
+      - [9.1.1.5 Approximation Methods for Solution of First-Order Differential Equations](<9.1.1.5 Approximation Methods for Solution of First-Order Differential Equations.md>)
+    - [9.1.2 Differential Equations ofHigher Order and Systems of](<9.1.2 Differential Equations ofHigher Order and Systems of.md>)
+    - [Differential Equations](<Differential Equations.md>)
+      - [9.1.2.1 Basic Results](<9.1.2.1 Basic Results.md>)
+      - [9.1.2.2 Lowering the Order](<9.1.2.2 Lowering the Order.md>)
+      - [9.1.2.3 Linear n-th Order Differential Equations](<9.1.2.3 Linear n-th Order Differential Equations.md>)
+      - [9.1.2.4 Solution of Linear Differential Equations with Constant Coefficients](<9.1.2.4 Solution of Linear Differential Equations with Constant Coefficients.md>)
+      - [9.1.2.5 Systems of Linear Differential Equations with Constant Coefficients](<9.1.2.5 Systems of Linear Differential Equations with Constant Coefficients.md>)
+      - [9.1.2.6 Linear Second-Order Differential Equations](<9.1.2.6 Linear Second-Order Differential Equations.md>)
+    - [9.1.3 Boundary Value Problems](<9.1.3 Boundary Value Problems.md>)
+      - 9.1.3.1 Problem Formulation
+      - 9.1.3.2 Fundamental Properties of Eigenfunctions and Eigenvalues
+      - 9.1.3.3 Expansion in Eigenfunctions
+      - 9.1.3.4 Singular Cases
+  - [9.2 Partial Differential Equations](<9.2 Partial Differential Equations.md>)
+    - [9.2.1 First-Order Partial Differential Equations](<9.2.1 First-Order Partial Differential Equations.md>)
+      - 9.2.1.1 Linear First-Order Partial Differential Equations
+      - 9.2.1.2 Non-Linear First-Order Partial Differential Equations
+    - [9.2.2 Linear Second-Order Partial Differential Equations](<9.2.2 Linear Second-Order Partial Differential Equations.md>)
+      - [9.2.2.1 Classification and Properties of Second-Order Differential Equations with Two Independent Variables](<9.2.2.1 Classification and Properties of Second-Order Differential Equations with Two Independent Va.md>)
+      - [9.2.2.2 Classification and Properties of Linear Second-Order Differential Equations with More than Two Independent Variables](<9.2.2.2 Classification and Properties of Linear Second-Order Differential Equations with More than T.md>)
+      - [9.2.2.3 Integration Methods for Linear Second-Order Partial Differential Equations](<9.2.2.3 Integration Methods for Linear Second-Order Partial Differential Equations.md>)
+    - [9.2.3 Some further Partial Differential Equations from Natural](<9.2.3 Some further Partial Differential Equations from Natural.md>)
+    - [Sciences and Engineering](<Sciences and Engineering.md>)
+      - 9.2.3.1 Formulation of the Problem and the Boundary Conditions
+      - 9.2.3.2 Wave Equation
+      - 9.2.3.3 Heat Conduction and Diffusion Equation for Homogeneous Media
+      - 9.2.3.4 Potential Equation
+    - [9.2.4 Schroedinger’s Equation](<9.2.4 Schroedinger’s Equation.md>)
+      - [9.2.4.1 Notion of the Schroedinger Equation](<9.2.4.1 Notion of the Schroedinger Equation.md>)
+      - [9.2.4.2 Time-Dependent Schroedinger Equation](<9.2.4.2 Time-Dependent Schroedinger Equation.md>)
+      - [9.2.4.3 Time-Independent Schroedinger Equation](<9.2.4.3 Time-Independent Schroedinger Equation.md>)
+      - [9.2.4.4 Statistical Interpretation of the Wave Function](<9.2.4.4 Statistical Interpretation of the Wave Function.md>)
+      - [9.2.4.5 Force-Free Motion of a Particle in a Block](<9.2.4.5 Force-Free Motion of a Particle in a Block.md>)
+      - [9.2.4.6 Particle Movement in a Symmetric Central Field](<9.2.4.6 Particle Movement in a Symmetric Central Field.md>)
+      - [9.2.4.7 Linear Harmonic Oscillator](<9.2.4.7 Linear Harmonic Oscillator.md>)
+    - [9.2.5 Non-Linear Partial Differential Equations: Solitons, Periodic Patterns and Chaos](<9.2.5 Non-Linear Partial Differential Equations Solitons, Periodic Patterns and Chaos.md>)
+      - 9.2.5.1 Formulation of the Physical-Mathematical Problem
+      - 9.2.5.2 Korteweg de Vries Equation (KdV)
+      - 9.2.5.3 Non-Linear Schroedinger Equation (NLS)
+      - 9.2.5.4 Sine-Gordon Equation (SG)
+      - 9.2.5.5 Further Non-linear Evolution Equations with Soliton Solutions
+- [10 Calculus of Variations](<10 Calculus of Variations.md>)
+  - [10.1 Defining the Problem](<10.1 Defining the Problem.md>)
+  - [10.2 Historical Problems](<10.2 Historical Problems.md>)
+    - 10.2.1 Isoperimetric Problem
+    - 10.2.2 Brachistochrone Problem
+  - [10.3 Variational Problems of One Variable](<10.3 Variational Problems of One Variable.md>)
+    - 10.3.1 Simple Variational Problems and Extremal Curves
+    - 10.3.2 Euler Differential Equation of the Variational Calculus
+    - 10.3.3 Variational Problems with Side Conditions
+    - 10.3.4 Variational Problems with Higher-Order Derivatives
+    - 10.3.5 Variational Problem with Several Unknown Functions
+    - 10.3.6 Variational Problems using Parametric Representation
+  - [10.4 Variational Problems with Functions of Several Variables](<10.4 Variational Problems with Functions of Several Variables.md>)
+    - 10.4.1 SimpleVariational Problem
+    - 10.4.2 More General Variational Problems
+  - [10.5 Numerical Solution of Variational Problems](<10.5 Numerical Solution of Variational Problems.md>)
+  - [10.6 Supplementary Problems](<10.6 Supplementary Problems.md>)
+    - 10.6.1 First and Second Variation
+    - 10.6.2 Application in Physics
+- [11 Linear Integral Equations](<11 Linear Integral Equations.md>)
+  - [11.1 Introduction and Classification](<11.1 Introduction and Classification.md>)
+  - [11.2 Fredholm Integral Equations of the Second Kind](<11.2 Fredholm Integral Equations of the Second Kind.md>)
+    - [11.2.1 Integral Equations with Degenerate Kernel](<11.2.1 Integral Equations with Degenerate Kernel.md>)
+    - [11.2.2 Successive Approximation Method, Neumann Series](<11.2.2 Successive Approximation Method, Neumann Series.md>)
+    - [11.2.3 Fredholm Solution Method, Fredholm Theorems](<11.2.3 Fredholm Solution Method, Fredholm Theorems.md>)
+      - 11.2.3.1 Fredholm Solution Method
+      - 11.2.3.2 Fredholm Theorems
+    - [11.2.4 Numerical Methods for Fredholm Integral Equations of the Second Kind](<11.2.4 Numerical Methods for Fredholm Integral Equations of the Second Kind.md>)
+      - 11.2.4.1 Approximation of the Integral
+      - 11.2.4.2 Kernel Approximation
+      - 11.2.4.3 Collocation Method
+  - [11.3 Fredholm Integral Equations of the First Kind](<11.3 Fredholm Integral Equations of the First Kind.md>)
+    - 11.3.1 Integral Equations with Degenerate Kernels
+    - 11.3.2 Analytic Basis
+    - 11.3.3 Reduction of an Integral Equation into a Linear System of Equations
+    - 11.3.4 Solution of the Homogeneous Integral Equation of the First Kind
+    - 11.3.5 Construction of Two Specia lOrthonormal Systems for a Given Kernel
+    - 11.3.6 Iteration Method
+  - [11.4 Volterra Integral Equations](<11.4 Volterra Integral Equations.md>)
+    - 11.4.1 Theoretical Foundations
+    - 11.4.2 Solution by Differentiation
+    - 11.4.3 Solution of the Volterra Integral Equation of the Second Kind by Neumann Series
+    - 11.4.4 Convolution Type Volterra Integral Equations
+    - 11.4.5 Numerical Methods for Volterra Integral Equation of the Second Kind
+  - [11.5 Singular Integral Equations](<11.5 Singular Integral Equations.md>)
+    - 11.5.1 Abel Integral Equation
+    - 11.5.2 Singular Integral Equation with Cauchy Kernel
+      - 11.5.2.1 Formulation of the Problem
+      - 11.5.2.2 Existence of a Solution
+      - 11.5.2.3 Properties of Cauchy Type Integrals
+      - 11.5.2.4 The Hilbert Boundary Value Problem
+      - 11.5.2.5 Solution of the Hilbert Boundary Value Problem (in short: Hilbert Problem)
+      - 11.5.2.6 Solution of the Characteristic Integral Equation
+- [12 Functional Analysis](<12 Functional Analysis.md>)
+  - [12.1 Vector Spaces](<12.1 Vector Spaces.md>)
+    - 12.1.1 Notion of a Vector Space
+    - 12.1.2 Linear and Affine Linear Subsets
+    - 12.1.3 Linearly Independent Elements
+    - 12.1.4 Convex Subsets and the Convex Hull
+      - 12.1.4.1 Convex Sets
+      - 12.1.4.2 Cones
+    - 12.1.5 Linear Operators and Functionals
+      - 12.1.5.1 Mappings
+      - 12.1.5.2 Homomorphism and Endomorphism
+      - 12.1.5.3 Isomorphic Vector Spaces
+    - 12.1.6 Complexification of Real Vector Spaces
+    - 12.1.7 Ordered Vector Spaces
+      - 12.1.7.1 Cone and Partial Ordering
+      - 12.1.7.2 Order Bounded Sets
+      - 12.1.7.3 Positive Operators
+      - 12.1.7.4 Vector Lattices
+  - [12.2 Metric Spaces](<12.2 Metric Spaces.md>)
+    - 12.2.1 Notion of a Metric Space
+      - 12.2.1.1 Balls, Neighborhoods and Open Sets
+      - 12.2.1.2 Convergence of Sequences in Metric Spaces
+      - 12.2.1.3 Closed Sets and Closure
+      - 12.2.1.4 Dense Subsets and Separable Metric Spaces
+    - 12.2.2 Complete Metric Spaces
+      - 12.2.2.1 Cauchy Sequences
+      - 12.2.2.2 Complete Metric Spaces
+      - 12.2.2.3 Some Fundamental Theorems in Complete Metric Spaces
+      - 12.2.2.4 Some Applications of the Contraction Mapping Principle
+      - 12.2.2.5 Completion of a Metric Space
+    - 12.2.3 Continuous Operators
+  - [12.3 Normed Spaces](<12.3 Normed Spaces.md>)
+    - 12.3.1 Notion of a Normed Space
+      - 12.3.1.1 Axioms of a Normed Space
+      - 12.3.1.2 Some Properties of Normed Spaces
+    - 12.3.2 Banach Spaces
+      - 12.3.2.1 Series in Normed Spaces
+      - 12.3.2.2 Examples of Banach Spaces
+      - 12.3.2.3 Sobolev Spaces
+    - 12.3.3 Ordered Normed Spaces
+    - 12.3.4 Normed Algebras
+  - [12.4 Hilbert Spaces](<12.4 Hilbert Spaces.md>)
+    - 12.4.1 Notion of a Hilbert Space
+      - 12.4.1.1 Scalar Product
+      - 12.4.1.2 Unitary Spaces and Some of their Properties
+      - 12.4.1.3 Hilbert Space
+    - 12.4.2 Orthogonality
+      - 12.4.2.1 Properties of Orthogonality
+      - 12.4.2.2 Orthogonal Systems
+    - 12.4.3 Fourier Series in Hilbert Spaces
+      - 12.4.3.1 Best Approximation
+      - 12.4.3.2 Parseval Equation, Riesz-Fischer Theorem
+    - 12.4.4 Existence of a Basis, Isomorphic Hilbert Spaces
+  - [12.5 Continuous Linear Operators and Functionals](<12.5 Continuous Linear Operators and Functionals.md>)
+    - 12.5.1 Boundedness, Norm and Continuity of Linear Operators
+      - 12.5.1.1 Boundedness and the Norm of Linear Operators
+      - 12.5.1.2 The Space of Linear Continuous Operators
+      - 12.5.1.3 Convergence of Operator Sequences
+    - 12.5.2 Linear Continuous Operators in Banach Spaces
+    - 12.5.3 Elements of the Spectral Theory of Linear Operators
+      - 12.5.3.1 Resolvent Set and the Resolvent of an Operator
+      - 12.5.3.2 Spectrum of an Operator
+    - 12.5.4 Continuous Linear Functionals
+      - 12.5.4.1 Definition
+      - 12.5.4.2 Continuous Linear Functionals in Hilbert Spaces. Riesz Representation Theorem
+      - 12.5.4.3 Continuous Linear Functionals in
+    - 12.5.5 Extension of a Linear Functional
+    - 12.5.6 Separation of Convex Sets
+    - 12.5.7 Second Adjoint Space and Reflexive Spaces
+  - [12.6 Adjoint Operators in Normed Spaces](<12.6 Adjoint Operators in Normed Spaces.md>)
+    - 12.6.1 Adjoint of a Bounded Operator
+    - 12.6.2 Adjoint Operator of an Unbounded Operator
+    - 12.6.3 Self-Adjoint Operators
+      - 12.6.3.1 Positive Definite Operators
+      - 12.6.3.2 Projectors in a Hilbert Space
+  - [12.7 Compact Sets and Compact Operators](<12.7 Compact Sets and Compact Operators.md>)
+    - 12.7.1 Compact Subsets of a Normed Space
+    - 12.7.2 Compact Operators
+      - 12.7.2.1 Definition of Compact Operator
+      - 12.7.2.2 Properties of Linear Compact Operators
+      - 12.7.2.3 Weak Convergence of Elements
+    - 12.7.3 Fredholm Alternative
+    - 12.7.4 Compact Operators in Hilbert Space
+    - 12.7.5 Compact Self-Adjoint Operators
+  - [12.8 Non-Linear Operators](<12.8 Non-Linear Operators.md>)
+    - 12.8.1 Examples of Non-Linear Operators
+    - 12.8.2 Differentiability of Non-Linear Operators
+    - 12.8.3 Newton’s Method
+    - 12.8.4 Schauder’s Fixed-Point Theorem
+    - 12.8.5 Leray-Schauder Theory
+    - 12.8.6 Positive Non-Linear Operators
+    - 12.8.7 Monotone Operators in Banach Spaces
+  - [12.9 Measure and Lebesgue Integral](<12.9 Measure and Lebesgue Integral.md>)
+    - 12.9.1 Set Algebras and Measures
+    - 12.9.2 Measurable Functions
+      - 12.9.2.1 Measurable Function
+      - 12.9.2.2 Properties of the Class of Measurable Functions
+    - 12.9.3 Integration
+      - 12.9.3.1 Definition of the Integral
+      - 12.9.3.2 Some Properties of the Integral
+      - 12.9.3.3 Convergence Theorems
+    - 12.9.4 Lp Spaces
+    - 12.9.5 Distributions
+      - 12.9.5.1 Formula of Partial Integration
+      - 12.9.5.2 Generalized Derivative
+      - 12.9.5.3 Distributions
+      - 12.9.5.4 Derivative of a Distribution
+- [13 Vector Analysis and Vector Fields](<13 Vector Analysis and Vector Fields.md>)
+  - [13.1 Basic Notions of the Theory of Vector Fields](<13.1 Basic Notions of the Theory of Vector Fields.md>)
+    - 13.1.1 Vector Functions of a Scalar Variable
+      - 13.1.1.1 Definitions
+      - 13.1.1.2 Derivative of a Vector Function
+      - 13.1.1.3 Rules of Differentiation for Vectors
+      - 13.1.1.4 Taylor Expansion for Vector Functions
+    - 13.1.2 Scalar Fields
+      - 13.1.2.1 Scalar Field or Scalar Point Function
+      - 13.1.2.2 Important Special Cases of Scalar Fields
+      - 13.1.2.3 Coordinate Representation of Scalar Fields
+      - 13.1.2.4 Level Surfaces and Level Lines of a Field
+    - 13.1.3 Vector Fields
+      - 13.1.3.1 Vector Field or Vector Point Function
+      - 13.1.3.2 Important Cases of Vector Fields
+      - 13.1.3.3 Coordinate Representation of Vector Fields
+      - 13.1.3.4 Transformation of Coordinate Systems
+      - 13.1.3.5 Vector Lines
+  - [13.2 Differential Operators of Space](<13.2 Differential Operators of Space.md>)
+    - [13.2.1 Directional and Space Derivatives](<13.2.1 Directional and Space Derivatives.md>)
+      - 13.2.1.1 Directional Derivative of a Scalar Field
+      - 13.2.1.2 Directional Derivative of a Vector Field
+      - 13.2.1.3 Volume Derivative
+    - [13.2.2 Gradient of a Scalar Field](<13.2.2 Gradient of a Scalar Field.md>)
+      - 13.2.2.1 Definition of the Gradient
+      - 13.2.2.2 Gradient and Directional Derivative
+      - 13.2.2.3 Gradient and Volume Derivative
+      - 13.2.2.4 Further Properties of the Gradient
+      - 13.2.2.5 Gradient of the Scalar Field in Different Coordinates
+      - 13.2.2.6 Rules of Calculations
+    - [13.2.3 Vector Gradient](<13.2.3 Vector Gradient.md>)
+    - [13.2.4 Divergence ofVector Fields](<13.2.4 Divergence ofVector Fields.md>)
+      - 13.2.4.1 Definition of Divergence
+      - 13.2.4.2 Divergence in Different Coordinates
+      - 13.2.4.3 Rules for Evaluation of the Divergence
+      - 13.2.4.4 Divergence of a Central Field
+    - [13.2.5 Rotation ofVector Fields](<13.2.5 Rotation ofVector Fields.md>)
+      - 13.2.5.1 Definitions of the Rotation
+      - 13.2.5.2 Rotation in Different Coordinates
+      - 13.2.5.3 Rules for Evaluating the Rotation
+      - 13.2.5.4 Rotation of a Potential Field
+    - [13.2.6 Nabla Operator, Laplace Operator](<13.2.6 Nabla Operator, Laplace Operator.md>)
+      - 13.2.6.1 Nabla Operator
+      - 13.2.6.2 Rules for Calculations with the Nabla Operator
+      - 13.2.6.3 Vector Gradient
+      - 13.2.6.4 Nabla Operator Applied Twice
+      - 13.2.6.5 Laplace Operator
+    - [13.2.7 Review of Spatial Differential Operations](<13.2.7 Review of Spatial Differential Operations.md>)
+      - 13.2.7.1 Rules of Calculation for Spatial Differential Operators
+      - 13.2.7.2 Expressions of Vector Analysis in Cartesian, Cylindrical, and
+      - Spherical Coordinates (see Table 13.2)
+      - 13.2.7.3 Fundamental Relations and Results (see Table 13.3)
+  - [13.3 Integration in Vector Fields](<13.3 Integration in Vector Fields.md>)
+    - 13.3.1 Line Integral and Potential in Vector Fields
+      - 13.3.1.1 Line Integral in Vector Fields
+      - 13.3.1.2 Interpretation of the Line Integral in Mechanics
+      - 13.3.1.3 Properties of the Line Integral
+      - 13.3.1.4 Line Integral in Cartesian Coordinates
+      - 13.3.1.5 Integral Along a Closed Curve in a Vector Field
+      - 13.3.1.6 Conservative Field or Potential Field
+    - 13.3.2 Surface Integrals
+      - 13.3.2.1 Vector of a Plane Sheet
+      - 13.3.2.2 Evaluation of the Surface Integral
+      - 13.3.2.3 Surface Integrals and Flow of Fields
+      - 13.3.2.4 Surface Integral in Cartesian Coordinates as Surface Integrals of Second Type
+    - 13.3.3 Integral Theorems
+      - 13.3.3.1 Integral Theorem and Integral Formula of Gauss
+      - 13.3.3.2 Integral Theorem of Stokes
+      - 13.3.3.3 Integral Theorems of Green
+  - [13.4 Evaluation of Fields](<13.4 Evaluation of Fields.md>)
+    - 13.4.1 Pure Source Fields
+    - 13.4.2 Pure Rotation Field or Zero-Divergence Field
+    - 13.4.3 Vector Fields with Point-Like Sources
+      - 13.4.3.1 Coulomb Field of a Point-Like Charge
+      - 13.4.3.2 Gravitational Field of a Point Mass
+    - 13.4.4 Superposition of Fields
+      - 13.4.4.1 Discrete Source Distribution
+      - 13.4.4.2 Continuous Source Distribution
+      - 13.4.4.3 Conclusion
+  - [13.5 Differential Equations of Vector Field Theory](<13.5 Differential Equations of Vector Field Theory.md>)
+    - 13.5.1 Laplace Differential Equation
+    - 13.5.2 Poisson Differential Equation
+- [14 Function Theory](<14 Function Theory.md>)
+  - [14.1 Functions of Complex Variables](<14.1 Functions of Complex Variables.md>)
+    - [14.1.1 Continuity, Differentiability](<14.1.1 Continuity, Differentiability.md>)
+      - 14.1.1.1 Definition of a Complex Function
+      - 14.1.1.2 Limit of a Complex Function
+      - 14.1.1.3 Continuous Complex Functions
+      - 14.1.1.4 Differentiability of a Complex Function
+    - [14.1.2 Analytic Functions](<14.1.2 Analytic Functions.md>)
+      - 14.1.2.1 Definition of Analytic Functions
+      - 14.1.2.2 Examples of Analytic Functions
+      - 14.1.2.3 Properties of Analytic Functions
+      - 14.1.2.4 Singular Points
+    - [14.1.3 Conformal Mapping](<14.1.3 Conformal Mapping.md>)
+      - 14.1.3.1 Notion and Properties of Conformal Mappings
+      - 14.1.3.2 Simplest Conformal Mappings
+      - 14.1.3.3 Schwarz Reflection Principle
+      - 14.1.3.4 Complex Potential
+      - 14.1.3.5 Superposition Principle
+      - 14.1.3.6 Arbitrary Mappings ofthe Complex Plane A function
+  - [14.2 Integration in the Complex Plane](<14.2 Integration in the Complex Plane.md>)
+    - 14.2.1 Definite and Indefinite Integral
+      - 14.2.1.1 Definition of the Integral in the Complex Plane
+      - 14.2.1.2 Properties and Evaluation of Complex Integrals
+    - 14.2.2 Cauchy Integral Theorem
+      - 14.2.2.1 Cauchy Integral Theorem for Simply Connected Domains
+      - 14.2.2.2 Cauchy Integral Theorem for Multiply Connected Domains
+    - 14.2.3 Cauchy Integral Formulas
+      - 14.2.3.1 Analytic Function on the Interior of a Domain
+      - 14.2.3.2 Analytic Function on the Exterior of a Domain
+  - [14.3 Power Series Expansion of Analytic Functions](<14.3 Power Series Expansion of Analytic Functions.md>)
+    - 14.3.1 Convergence of Series with Complex Terms
+      - 14.3.1.1 Convergence of a Number Sequence with Complex Terms
+      - 14.3.1.2 Convergence of an Infinite Series with Complex Terms
+      - 14.3.1.3 Power Series with Complex Terms
+    - 14.3.2 Taylor Series
+    - 14.3.3 Principle of Analytic Continuation
+    - 14.3.4 Laurent Expansion
+    - 14.3.5 Isolated Singular Points and the Residue Theorem
+      - 14.3.5.1 Isolated Singular Points
+      - 14.3.5.2 Meromorphic Functions
+      - 14.3.5.3 Elliptic Functions
+      - 14.3.5.4 Residue
+      - 14.3.5.5 Residue Theorem
+  - [14.4 Evaluation of Real Integrals by Complex Integrals](<14.4 Evaluation of Real Integrals by Complex Integrals.md>)
+    - 14.4.1 Application of Cauchy Integral Formulas
+    - 14.4.2 Application of the Residue Theorem
+    - 14.4.3 Application of the Jordan Lemma
+      - 14.4.3.1 Jordan Lemma
+      - 14.4.3.2 Examples of the Jordan Lemma
+  - [14.5 Algebraic and Elementary Transcendental Functions](<14.5 Algebraic and Elementary Transcendental Functions.md>)
+    - 14.5.1 Algebraic Functions
+    - 14.5.2 Elementary Transcendental Functions
+    - 14.5.3 Description of Curves in Complex Form
+  - [14.6 Elliptic Functions](<14.6 Elliptic Functions.md>)
+    - 14.6.1 Relation to Elliptic Integrals
+    - 14.6.2 Jacobian Functions
+    - 14.6.3 Theta Functions
+    - 14.6.4 Weierstrass Functions
+- [15 Integral Transformations](<15 Integral Transformations.md>)
+  - [15.1 Notion of Integral Transformation](<15.1 Notion of Integral Transformation.md>)
+    - 15.1.1 General Definition of Integral Transformations
+    - 15.1.2 Special Integral Transformations
+    - 15.1.3 Inverse Transformations
+    - 15.1.4 Linearity of Integral Transformations
+    - 15.1.5 Integral Transformations for Functions of Several Variables
+    - 15.1.6 Applications of Integral Transformations
+  - [15.2 Laplace Transformation](<15.2 Laplace Transformation.md>)
+    - [15.2.1 Properties of the Laplace Transformation](<15.2.1 Properties of the Laplace Transformation.md>)
+      - 15.2.1.1 Laplace Transformation, Original and Image Space
+      - 15.2.1.2 Rules for the Evaluation of the Laplace Transformation
+      - 15.2.1.3 Transforms of Special Functions
+      - 15.2.1.4 Dirac Function and Distributions
+      - Function and Distributions
+    - [15.2.2 Inverse Transformation into the Original Space](<15.2.2 Inverse Transformation into the Original Space.md>)
+      - 15.2.2.1 Inverse Transformation with the Help of Tables
+      - 15.2.2.2 Partial Fraction Decomposition
+      - 15.2.2.3 Series Expansion
+      - 15.2.2.4 Inverse Integral
+    - [15.2.3 Solution of Differential Equations using Laplace Transformation](<15.2.3 Solution of Differential Equations using Laplace Transformation.md>)
+      - 15.2.3.1 Ordinary Linear Differential Equations with Constant Coefficients
+      - 15.2.3.2 Ordinary Linear Differential Equations with Coefficients Depending on the Variable
+      - 15.2.3.3 Partial Differential Equations
+  - [15.3 Fourier Transformation](<15.3 Fourier Transformation.md>)
+    - [15.3.1 Properties of the Fourier Transformation](<15.3.1 Properties of the Fourier Transformation.md>)
+      - 15.3.1.1 Fourier Integral
+      - 15.3.1.2 Fourier Transformation and Inverse Transformation
+      - 15.3.1.3 Rules of Calculation with the Fourier Transformation
+      - 15.3.1.4 Transforms of Special Functions
+    - [15.3.2 Solution of Differential Equations using the Fourier Transformation](<15.3.2 Solution of Differential Equations using the Fourier Transformation.md>)
+      - 15.3.2.1 Ordinary Linear Differential Equations
+      - 15.3.2.2 Partial Differential Equations
+  - [15.4 Z-Transformation](<15.4 Z-Transformation.md>)
+    - 15.4.1 Properties of the Z-Transformation
+      - 15.4.1.1 Discrete Functions
+      - 15.4.1.2 Definition of the Z-Transformation
+      - 15.4.1.3 Rules of Calculations
+      - 15.4.1.4 Relation to the Laplace Transformation
+      - 15.4.1.5 Inverse of the Z-Transformation
+    - 15.4.2 Applications of the Z-Transformation
+      - 15.4.2.1 General Solution of Linear Difference Equations
+      - 15.4.2.2 Second-Order Difference Equations (Initial Value Problem)
+      - 15.4.2.3 Second-Order Difference Equations (Boundary Value Problem)
+  - [15.5 Wavelet Transformation](<15.5 Wavelet Transformation.md>)
+    - 15.5.1 Signals
+    - 15.5.2 Wavelets
+    - 15.5.3 Wavelet Transformation
+    - 15.5.4 Discrete Wavelet Transformation
+      - 15.5.4.1 Fast Wavelet Transformation
+      - 15.5.4.2 Discrete Haar Wavelet Transformation
+    - 15.5.5 Gabor Transformation
+  - [15.6 Walsh Functions](<15.6 Walsh Functions.md>)
+    - 15.6.1 Step Functions
+    - 15.6.2 Walsh Systems
+- [16 Probability Theory and Mathematical Statistics](<16 Probability Theory and Mathematical Statistics.md>)
+  - [16.1 Combinatorics](<16.1 Combinatorics.md>)
+    - 16.1.1 Permutations
+    - 16.1.2 Combinations
+    - 16.1.3 Arrangements
+    - 16.1.4 Collection of the Formulas of Combinatorics
+  - [16.2 Probability Theory](<16.2 Probability Theory.md>)
+    - [16.2.1 Event, Frequency and Probability](<16.2.1 Event, Frequency and Probability.md>)
+      - 16.2.1.1 Events
+      - 16.2.1.2 Frequencies and Probabilities
+      - 16.2.1.3 Conditional Probability, Bayes Theorem
+    - [16.2.2 Random Variables, Distribution Functions](<16.2.2 Random Variables, Distribution Functions.md>)
+      - 16.2.2.1 Random Variable
+      - 16.2.2.2 Distribution Function
+      - 16.2.2.3 Expected Value and Variance, Chebyshev Inequality
+      - 16.2.2.4 Multidimensional Random Variable
+    - [16.2.3 Discrete Distributions](<16.2.3 Discrete Distributions.md>)
+      - 16.2.3.1 Binomial Distribution
+      - 16.2.3.2 Hypergeometric Distribution
+      - 16.2.3.3 Poisson Distribution
+    - [16.2.4 Continuous Distributions](<16.2.4 Continuous Distributions.md>)
+      - 16.2.4.1 Normal Distribution
+      - 16.2.4.2 Standard Normal Distribution, Gaussian Error Function
+      - 16.2.4.3 Logarithmic Normal Distribution
+      - 16.2.4.4 Exponential Distribution
+      - 16.2.4.5 Weibull Distribution
+      - 16.2.4.6 (Chi-Square) Distribution
+      - 16.2.4.7 Fisher F Distribution
+      - 16.2.4.8 Student Distribution
+    - [16.2.5 Law of Large Numbers, Limit Theorems](<16.2.5 Law of Large Numbers, Limit Theorems.md>)
+    - [16.2.6 Stochastic Processes and Stochastic Chains](<16.2.6 Stochastic Processes and Stochastic Chains.md>)
+      - 16.2.6.1 Basic Notions, Markov Chains
+      - 16.2.6.2 Poisson Process
+  - [16.3 Mathematical Statistics](<16.3 Mathematical Statistics.md>)
+    - [16.3.1 Statistic Function or Sample Function](<16.3.1 Statistic Function or Sample Function.md>)
+      - 16.3.1.1 Population, Sample, Random Vector
+      - 16.3.1.2 Statistic Function or Sample Function
+    - [16.3.2 Descriptive Statistics](<16.3.2 Descriptive Statistics.md>)
+      - 16.3.2.1 Statistical Summarization and Analysis of Given Data
+      - 16.3.2.2 Statistical Parameters
+    - [16.3.3 Important Tests](<16.3.3 Important Tests.md>)
+      - 16.3.3.1 Goodness of Fit Test for a Normal Distribution
+      - 16.3.3.2 Distribution of the Sample Mean
+      - 16.3.3.3 Confidence Limits for the Mean
+      - 16.3.3.4 Confidence Interval for the Variance
+      - 16.3.3.5 Structure of Hypothesis Testing
+    - [16.3.4 Correlation and Regression](<16.3.4 Correlation and Regression.md>)
+      - 16.3.4.1 Linear Correlation of two Measurable Characters
+      - 16.3.4.2 Linear Regression for two Measurable Characters
+      - 16.3.4.3 Multidimensional Regression
+    - [16.3.5 Monte Carlo Methods](<16.3.5 Monte Carlo Methods.md>)
+      - 16.3.5.1 Simulation
+      - 16.3.5.2 Random Numbers
+      - 16.3.5.3 Example of a Monte Carlo Simulation
+      - 16.3.5.4 Application of the Monte Carlo Method in Numerical Mathematics
+      - 16.3.5.5 Further Applications of the Monte Carlo Method
+  - [16.4 Calculus of Errors](<16.4 Calculus of Errors.md>)
+    - [16.4.1 Measurement Error and its Distribution](<16.4.1 Measurement Error and its Distribution.md>)
+      - 16.4.1.1 Qualitative Characterization of Measurement Errors
+      - 16.4.1.2 Density Function of the Measurement Error
+      - 16.4.1.3 Quantitative Characterization of the Measurement Error
+      - 16.4.1.4 Determining the Result of a Measurement with Bounds on the Error
+      - 16.4.1.5 Error Estimation for Direct Measurements with the Same Accuracy
+      - 16.4.1.6 Error Estimation for Direct Measurements with Different Accuracy
+    - [16.4.2 Error Propagation and Error Analysis](<16.4.2 Error Propagation and Error Analysis.md>)
+      - 16.4.2.1 Gauss Error Propagation Law
+      - 16.4.2.2 Error Analysis
+- [17 Dynamical Systems and Chaos](<17 Dynamical Systems and Chaos.md>)
+  - [17.1 Ordinary Differential Equations and Mappings](<17.1 Ordinary Differential Equations and Mappings.md>)
+    - [17.1.1 Dynamical Systems](<17.1.1 Dynamical Systems.md>)
+      - 17.1.1.1 Basic Notions
+      - 17.1.1.2 Invariant Sets
+    - [17.1.2 Qualitative Theory of Ordinary Differential Equations](<17.1.2 Qualitative Theory of Ordinary Differential Equations.md>)
+      - [17.1.2.1 Existence of Flows, Phase Space Structure](<17.1.2.1 Existence of Flows, Phase Space Structure.md>)
+      - [17.1.2.2 Linear Differential Equations](<17.1.2.2 Linear Differential Equations.md>)
+      - [17.1.2.3 Stability Theory](<17.1.2.3 Stability Theory.md>)
+      - [17.1.2.4 Invariant Manifolds](<17.1.2.4 Invariant Manifolds.md>)
+      - [17.1.2.5 Poincar´e Mapping](<17.1.2.5 Poincar´e Mapping.md>)
+      - [17.1.2.6 Topological Equivalence of Differential Equations](<17.1.2.6 Topological Equivalence of Differential Equations.md>)
+    - [17.1.3 Discrete Dynamical Systems](<17.1.3 Discrete Dynamical Systems.md>)
+      - 17.1.3.1 Steady States, Periodic Orbits and Limit Sets
+      - 17.1.3.2 Invariant Manifolds
+      - 17.1.3.3 Topological Conjugation of Discrete Systems
+    - [17.1.4 Structural Stability (Robustness)](<17.1.4 Structural Stability (Robustness).md>)
+      - 17.1.4.1 Structurally Stable Differential Equations
+      - 17.1.4.2 Structurally Stable Time Discrete Systems
+      - 17.1.4.3 Generic Properties
+  - [17.2 Quantitative Description of Attractors](<17.2 Quantitative Description of Attractors.md>)
+    - [17.2.1 Probability Measures on Attractors](<17.2.1 Probability Measures on Attractors.md>)
+      - 17.2.1.1 Invariant Measure
+      - 17.2.1.2 Elements of Ergodic Theory
+    - [17.2.2 Entropies](<17.2.2 Entropies.md>)
+      - 17.2.2.1 Topological Entropy
+      - 17.2.2.2 Metric Entropy
+    - [17.2.3 Lyapunov Exponents](<17.2.3 Lyapunov Exponents.md>)
+    - [17.2.4 Dimensions](<17.2.4 Dimensions.md>)
+      - 17.2.4.1 Metric Dimensions
+      - 17.2.4.2 Dimensions Defined by Invariant Measures
+      - 17.2.4.3 Local Hausdorff Dimension According to Douady and Oesterle ´
+      - 17.2.4.4 Examples of Attractors
+    - [17.2.5 Strange Attractors and Chaos](<17.2.5 Strange Attractors and Chaos.md>)
+    - [17.2.6 Chaos in One-Dimensional Mappings](<17.2.6 Chaos in One-Dimensional Mappings.md>)
+    - [17.2.7 Reconstruction of Dynamics from Time Series](<17.2.7 Reconstruction of Dynamics from Time Series.md>)
+      - 17.2.7.1 Foundations, Reconstruction with Basic Properties
+      - 17.2.7.2 Reconstructions with Prevalent Properties
+  - [17.3 Bifurcation Theory and Routes to Chaos](<17.3 Bifurcation Theory and Routes to Chaos.md>)
+    - [17.3.1 Bifurcations in Morse-Smale Systems](<17.3.1 Bifurcations in Morse-Smale Systems.md>)
+      - [17.3.1.1 Local Bifurcations in Neighborhoods of Steady States](<17.3.1.1 Local Bifurcations in Neighborhoods of Steady States.md>)
+      - [17.3.1.2 Local Bifurcations in a Neighborhood of a Periodic Orbit](<17.3.1.2 Local Bifurcations in a Neighborhood of a Periodic Orbit.md>)
+      - [17.3.1.3 Global Bifurcation](<17.3.1.3 Global Bifurcation.md>)
+    - [17.3.2 Transitions to Chaos](<17.3.2 Transitions to Chaos.md>)
+      - 17.3.2.1 Cascade of Period Doublings
+      - 17.3.2.2 Intermittency
+      - 17.3.2.3 Global Homoclinic Bifurcations
+      - 17.3.2.4 Destruction of a Torus
+- [18 Optimization](<18 Optimization.md>)
+  - [18.1 Linear Programming](<18.1 Linear Programming.md>)
+    - [18.1.1 Formulation of the Problem and Geometrical Representation](<18.1.1 Formulation of the Problem and Geometrical Representation.md>)
+      - 18.1.1.1 The Form of a Linear Programming Problem
+      - 18.1.1.2 Examples and Graphical Solutions
+    - [18.1.2 Basic Notions of Linear Programming, Normal Form](<18.1.2 Basic Notions of Linear Programming, Normal Form.md>)
+      - 18.1.2.1 Extreme Points and Basis
+      - 18.1.2.2 Normal Form of the Linear Programming Problem
+    - [18.1.3 Simplex Method](<18.1.3 Simplex Method.md>)
+      - [18.1.3.1 Simplex Tableau](<18.1.3.1 Simplex Tableau.md>)
+      - [18.1.3.2 Transition to the New Simplex Tableau](<18.1.3.2 Transition to the New Simplex Tableau.md>)
+      - [18.1.3.3 Determination of an Initial Simplex Tableau](<18.1.3.3 Determination of an Initial Simplex Tableau.md>)
+      - [18.1.3.4 Revised Simplex Method](<18.1.3.4 Revised Simplex Method.md>)
+      - [18.1.3.5 Duality in Linear Programming](<18.1.3.5 Duality in Linear Programming.md>)
+    - [18.1.4 Special Linear Programming Problems](<18.1.4 Special Linear Programming Problems.md>)
+      - 18.1.4.1 Transportation Problem
+      - 18.1.4.2 Assignment Problem
+      - 18.1.4.3 Distribution Problem
+      - 18.1.4.4 Travelling Salesman
+      - 18.1.4.5 Scheduling Problem
+  - [18.2 Non-linear Optimization](<18.2 Non-linear Optimization.md>)
+    - [18.2.1 Formulation of the Problem, Theoretical Basis](<18.2.1 Formulation of the Problem, Theoretical Basis.md>)
+      - 18.2.1.1 Formulation of the Problem
+      - 18.2.1.2 Optimality Conditions
+      - 18.2.1.3 Duality in Optimization
+    - [18.2.2 Special Non-linear Optimization Problems](<18.2.2 Special Non-linear Optimization Problems.md>)
+      - 18.2.2.1 Convex Optimization
+      - 18.2.2.2 Quadratic Optimization
+    - [18.2.3 Solution Methods for Quadratic Optimization Problems](<18.2.3 Solution Methods for Quadratic Optimization Problems.md>)
+      - 18.2.3.1 Wolfe’s Method
+      - 18.2.3.2 Hildreth-d’Esopo Method
+    - [18.2.4 Numerical Search Procedures](<18.2.4 Numerical Search Procedures.md>)
+      - 18.2.4.1 One-Dimensional Search
+      - 18.2.4.2 Minimum Search in n-Dimensional Euclidean Vector Space
+      - Dimensional Euclidean Vector Space
+    - [18.2.5 Methods for Unconstrained Problems](<18.2.5 Methods for Unconstrained Problems.md>)
+      - 18.2.5.1 Method of Steepest Descent
+      - 18.2.5.2 Application of the Newton Method
+      - 18.2.5.3 Conjugate Gradient Methods
+      - 18.2.5.4 Method of Davidon, Fletcher and Powell (DFP)
+    - [18.2.6 Evolution Strategies](<18.2.6 Evolution Strategies.md>)
+      - 18.2.6.1 Evolution Principles
+      - 18.2.6.2 Evolution Algorithms
+      - 18.2.6.3 Classification of Evolution Strategies
+      - 18.2.6.4 Generating Random Numbers
+      - 18.2.6.5 Application of Evolution Strategies
+      - 18.2.6.6 (1 + 1)- Mutation-Selection Strategy
+      - 18.2.6.7 Population Strategies
+    - [18.2.7 Gradient Method for Problems with Inequality Type Constraints](<18.2.7 Gradient Method for Problems with Inequality Type Constraints.md>)
+      - 18.2.7.1 Method of Feasible Directions
+      - 18.2.7.2 Gradient Projection Method
+    - [18.2.8 Penalty Function and Barrier Methods](<18.2.8 Penalty Function and Barrier Methods.md>)
+      - 18.2.8.1 Penalty Function Method
+      - 18.2.8.2 Barrier Method
+    - [18.2.9 Cutting Plane Methods](<18.2.9 Cutting Plane Methods.md>)
+  - [18.3 Discrete Dynamic Programming](<18.3 Discrete Dynamic Programming.md>)
+    - [18.3.1 Discrete Dynamic Decision Models](<18.3.1 Discrete Dynamic Decision Models.md>)
+      - 18.3.1.1 n-Stage Decision Processes
+      - 18.3.1.2 Dynamic Programming Problem
+    - [18.3.2 Examples of Discrete Decision Models](<18.3.2 Examples of Discrete Decision Models.md>)
+      - 18.3.2.1 Purchasing Problem
+      - 18.3.2.2 Knapsack Problem
+    - [18.3.3 Bellman Functional Equations](<18.3.3 Bellman Functional Equations.md>)
+      - 18.3.3.1 Properties of the Cost Function
+      - 18.3.3.2 Formulation of the Functional Equations
+    - [18.3.4 Bellman Optimality Principle](<18.3.4 Bellman Optimality Principle.md>)
+    - [18.3.5 Bellman Functional Equation Method](<18.3.5 Bellman Functional Equation Method.md>)
+      - 18.3.5.1 Determination of Minimal Costs
+      - 18.3.5.2 Determination of the Optimal Policy
+    - [18.3.6 Examples for Applications of the Functional Equation Method](<18.3.6 Examples for Applications of the Functional Equation Method.md>)
+      - 18.3.6.1 Optimal Purchasing Policy
+      - 18.3.6.2 Knapsack Problem
+- [19 Numerical Analysis](<19 Numerical Analysis.md>)
+  - [19.1 Numerical Solution of Non-Linear Equations in a Single Unknown](<19.1 Numerical Solution of Non-Linear Equations in a Single Unknown.md>)
+    - 19.1.1 Iteration Method
+      - 19.1.1.1 Ordinary Iteration Method
+      - 19.1.1.2 Newton’s Method
+      - 19.1.1.3 Regula Falsi
+    - 19.1.2 Solution of Polynomial Equations
+      - 19.1.2.1 Horner’s Scheme
+      - 19.1.2.2 Positions of the Roots
+      - 19.1.2.3 Numerical Methods
+  - [19.2 Numerical Solution of Systems of Equations](<19.2 Numerical Solution of Systems of Equations.md>)
+    - [19.2.1 Systems of Linear Equations](<19.2.1 Systems of Linear Equations.md>)
+      - 19.2.1.1 Triangular Decomposition of a Matrix
+      - 19.2.1.2 Cholesky’s Method for a Symmetric Coeficient Matrix
+      - 19.2.1.3 Orthogonalization Method
+      - 19.2.1.4 Iteration Methods
+    - [19.2.2 System of Non-Linear Equations](<19.2.2 System of Non-Linear Equations.md>)
+      - 19.2.2.1 Ordinary Iteration Method
+      - 19.2.2.2 Newton’s Method
+      - 19.2.2.3 Derivative-Free Gauss-Newton Method
+  - [19.3 Numerical Integration](<19.3 Numerical Integration.md>)
+    - 19.3.1 General Quadrature Formulas
+    - 19.3.2 Interpolation Quadratures
+      - 19.3.2.1 Rectangular Formula
+      - 19.3.2.2 Trapezoidal Formula
+      - 19.3.2.3 Simpson’s Formula
+      - 19.3.2.4 Hermite’s Trapezoidal Formula
+    - 19.3.3 Quadrature Formulas of Gauss
+      - 19.3.3.1 Gauss Quadrature Formulas
+      - 19.3.3.2 Lobatto’s Quadrature Formulas
+    - 19.3.4 Method of Romberg
+      - 19.3.4.1 Algorithm of the Romberg Method
+      - 19.3.4.2 Extrapolation Principle
+  - [19.4 Approximate Integration of Ordinary Differential Equations](<19.4 Approximate Integration of Ordinary Differential Equations.md>)
+    - 19.4.1 Initial Value Problems
+      - 19.4.1.1 Euler Polygonal Method
+      - 19.4.1.2 Runge-Kutta Methods
+      - 19.4.1.3 Multi-Step Methods
+      - 19.4.1.4 Predictor-Corrector Method
+      - 19.4.1.5 Convergence, Consistency, Stability
+    - 19.4.2 Boundary Value Problems
+      - 19.4.2.1 Difference Method
+      - 19.4.2.2 Approximation by Using Given Functions
+      - 19.4.2.3 Shooting Method
+  - [19.5 Approximate Integration of Partial Differential Equations](<19.5 Approximate Integration of Partial Differential Equations.md>)
+    - [19.5.1 Difference Method](<19.5.1 Difference Method.md>)
+    - [19.5.2 Approximation by Given Functions](<19.5.2 Approximation by Given Functions.md>)
+    - [19.5.3 Finite Element Method (FEM)](<19.5.3 Finite Element Method (FEM).md>)
+  - [19.6 Approximation, Computation of Adjustment, Harmonic Analysis](<19.6 Approximation, Computation of Adjustment, Harmonic Analysis.md>)
+    - [19.6.1 Polynomial Interpolation](<19.6.1 Polynomial Interpolation.md>)
+      - 19.6.1.1 Newton’s Interpolation Formula
+      - 19.6.1.2 Lagrange’s Interpolation Formula
+      - 19.6.1.3 Aitken-Neville Interpolation
+    - [19.6.2 Approximation in Mean](<19.6.2 Approximation in Mean.md>)
+      - 19.6.2.1 Continuous Problems, Normal Equations
+      - 19.6.2.2 Discrete Problems, Normal Equations, Householder’s Method
+      - 19.6.2.3 Multidimensional Problems
+      - 19.6.2.4 Non-Linear Least Squares Problems
+    - [19.6.3 Chebyshev Approximation](<19.6.3 Chebyshev Approximation.md>)
+      - 19.6.3.1 Problem Definition and the Alternating Point Theorem
+      - 19.6.3.2 Properties of the Chebyshev Polynomials
+      - 19.6.3.3 Remes Algorithm
+      - 19.6.3.4 Discrete Chebyshev Approximation and Optimization
+    - [19.6.4 Harmonic Analysis](<19.6.4 Harmonic Analysis.md>)
+      - 19.6.4.1 Formulas for Trigonometric Interpolation
+      - 19.6.4.2 Fast Fourier Transformation (FFT)
+  - [19.7 Representation of Curves and Surfaces with Splines](<19.7 Representation of Curves and Surfaces with Splines.md>)
+    - 19.7.1 Cubic Splines
+      - 19.7.1.1 Interpolation Splines
+      - 19.7.1.2 Smoothing Splines
+    - 19.7.2 Bicubic Splines
+      - 19.7.2.1 Use of Bicubic Splines
+      - 19.7.2.2 Bicubic Interpolation Splines
+      - 19.7.2.3 Bicubic Smoothing Splines
+    - 19.7.3 Bernstein–B´ezier Representation of Curves and Surfaces
+      - 19.7.3.1 Principle of the B–B Curve Representation
+      - 19.7.3.2 B–B Surface Representation
+  - [19.8 Using the Computer](<19.8 Using the Computer.md>)
+    - [19.8.1 Internal Symbol Representation](<19.8.1 Internal Symbol Representation.md>)
+      - 19.8.1.1 Number Systems
+      - 19.8.1.2 Internal Number Representation INR
+    - [19.8.2 Numerical Problems in Calculations with Computers](<19.8.2 Numerical Problems in Calculations with Computers.md>)
+      - 19.8.2.1 Introduction, Error Types
+      - 19.8.2.2 Normalized Decimal Numbers and Round-Off
+      - 19.8.2.3 Accuracy in Numerical Calculations
+    - [19.8.3 Libraries of Numerical Methods](<19.8.3 Libraries of Numerical Methods.md>)
+      - 19.8.3.1 NAGLibrary
+      - 19.8.3.2 IMSL Library
+      - 19.8.3.3 Aachen Library
+    - [19.8.4 Application of Interactive Program Systems and Computeralgebra Systems](<19.8.4 Application of Interactive Program Systems and Computeralgebra Systems.md>)
+      - [19.8.4.1 Matlab](<19.8.4.1 Matlab.md>)
+      - [19.8.4.2 Mathematica](<19.8.4.2 Mathematica.md>)
+      - [19.8.4.3 Maple](<19.8.4.3 Maple.md>)
+- [20 Computer Algebra Systems-Example Mathematica](<20 Computer Algebra Systems-Example Mathematica.md>)
+  - [20.1 Introduction](<20.1 Introduction.md>)
+    - 20.1.1 Brief Characterization of Computer Algebra Systems
+      - 20.1.1.1 General Purpose of Computer Algebra Systems
+      - 20.1.1.2 Restriction to Mathematica
+      - 20.1.1.3 Two Introducing Examples of Basic Application Fields
+  - [20.2 Important Structure Elements of Mathematica](<20.2 Important Structure Elements of Mathematica.md>)
+    - [20.2.1 Basic Structure Elements of Mathematica](<20.2.1 Basic Structure Elements of Mathematica.md>)
+    - [20.2.2 Types of Numbers in Mathematica](<20.2.2 Types of Numbers in Mathematica.md>)
+      - 20.2.2.1 Basic Types ofNumbers
+      - 20.2.2.2 Special Numbers
+      - 20.2.2.3 Representation and Conversion of Numbers
+    - [20.2.3 Important Operators](<20.2.3 Important Operators.md>)
+    - [20.2.4 Lists](<20.2.4 Lists.md>)
+      - 20.2.4.1 Notions
+      - 20.2.4.2 Nested Lists
+      - 20.2.4.3 Operations with Lists
+      - 20.2.4.4 Tables
+    - [20.2.5 Vectors and Matrices as Lists](<20.2.5 Vectors and Matrices as Lists.md>)
+      - 20.2.5.1 Creating Appropriate Lists
+      - 20.2.5.2 Operations with Matrices and Vectors
+    - [20.2.6 Functions](<20.2.6 Functions.md>)
+      - 20.2.6.1 Standard Functions
+      - 20.2.6.2 Special Functions
+      - 20.2.6.3 Pure Functions
+    - [20.2.7 Patterns](<20.2.7 Patterns.md>)
+    - [20.2.8 Functional Operations](<20.2.8 Functional Operations.md>)
+    - [20.2.9 Programming](<20.2.9 Programming.md>)
+    - [20.2.10 Supplement about Syntax, Information, Messages](<20.2.10 Supplement about Syntax, Information, Messages.md>)
+      - 20.2.10.1 Contexts, Attributes
+      - 20.2.10.2 Information
+      - 20.2.10.3 Messages
+  - [20.3 Important Applications with Mathematica](<20.3 Important Applications with Mathematica.md>)
+    - 20.3.1 Manipulation of Algebraic Expressions
+      - 20.3.1.1 Multiplication of Expressions
+      - 20.3.1.2 Factorization of Polynomials
+      - 20.3.1.3 Operations with Polynomials
+      - 20.3.1.4 Partial Fraction Decomposition
+      - 20.3.1.5 Manipulation of Non-Polynomial Expressions
+    - 20.3.2 Solution of Equations and Systems of Equations
+      - 20.3.2.1 Equations as Logical Expressions
+      - 20.3.2.2 Solution of Polynomial Equations
+      - 20.3.2.3 Solution of Transcendental Equations
+      - 20.3.2.4 Solution of Systems of Equations
+    - 20.3.3 Linear Systems of Equations and Eigenvalue Problems
+    - 20.3.4 Differential and Integral Calculus
+      - 20.3.4.1 Calculation of Derivatives
+      - 20.3.4.2 Indefinite Integrals
+      - 20.3.4.3 Definite Integrals and Multiple Integrals
+      - 20.3.4.4 Solution of Differential Equations
+  - [20.4 Graphics with Mathematica](<20.4 Graphics with Mathematica.md>)
+    - 20.4.1 Basic Elements of Graphics
+    - 20.4.2 Graphics Primitives
+    - 20.4.3 GraphicalOptions
+    - 20.4.4 Syntax of Graphical Representation
+      - 20.4.4.1 Building Graphic Objects
+      - 20.4.4.2 Graphical Representation of Functions
+    - 20.4.5 Two-Dimensional Curves
+      - 20.4.5.1 Exponential Functions
+      - 20.4.5.2 Function y = x + Arcoth x
+      - 20.4.5.3 Bessel Functions
+    - 20.4.6 Parametric Representation of Curves
+    - 20.4.7 Representation of Surfaces and Space Curves
+      - 20.4.7.1 Graphical Representation of Surfaces
+      - 20.4.7.2 Options for 3D Graphics
+      - 20.4.7.3 Three-Dimensional Objects in Parametric Representation
+- [21 Tables](<21 Tables.md>)
+  - 21.1 Frequently Used Mathematical Constants
+  - 21.2 Important Natural Constants
+  - 21.3 Metric Prefixes
+  - 21.4 International System of Physical Units (SI Units)
+  - 21.5 Important Series Expansions
+  - 21.6 Fourier Series
+  - 21.7 Indefinite Integrals
+    - 21.7.1 Integral Rational Functions
+      - 21.7.1.1 Integrals with X = ax + b
+      - 21.7.1.2 Integrals with X = ax2 + bx + c
+      - 21.7.1.3 Integrals with X = a2 + x2
+      - 21.7.1.4 Integrals with X = a3 + x3
+      - 21.7.1.5 Integrals with X = a4 + b4
+      - 21.7.1.6 Integrals with X = a4 - b4
+      - 21.7.1.7 Some Cases of Partial Fraction Decomposition
+    - 21.7.2 Integrals of Irrational Functions
+      - 21.7.2.1 Integrals with x and a2 + b2x
+      - 21.7.2.2 Other Integrals with x
+      - 21.7.2.3 Integrals with ax+b
+      - 21.7.2.4 Integrals with ax+b and fx+g
+      - 21.7.2.5 Integrals with a2 - x2
+      - 21.7.2.6 Integrals with x2 + a2
+      - 21.7.2.7 Integrals with x2 - a2
+      - 21.7.2.8 Integrals with ax2 + bx + c
+      - 21.7.2.9 Integrals with other Irrational Expressions
+      - 21.7.2.10 Recursion Formulas for an Integral with Binomial Differential
+    - 21.7.3 Integrals of Trigonometric Functions
+      - 21.7.3.1 Integrals with Sine Function
+      - 21.7.3.2 Integrals with Cosine Function
+      - 21.7.3.3 Integrals with Sine and Cosine Function
+      - 21.7.3.4 Integrals with Tangent Function
+      - 21.7.3.5 Integrals with Cotangent Function
+    - 21.7.4 Integrals of other Transcendental Functions
+      - 21.7.4.1 Integrals with Hyperbolic Functions
+      - 21.7.4.2 Integrals with Exponential Functions
+      - 21.7.4.3 Integrals with Logarithmic Functions
+      - 21.7.4.4 Integrals with Inverse Trigonometric Functions
+      - 21.7.4.5 Integrals with Inverse Hyperbolic Functions
+  - 21.8 Definite Integrals
+    - 21.8.1 Definite Integrals of Trigonometric Functions
+    - 21.8.2 Definite Integrals of Exponential Functions
+    - 21.8.3 Definite Integrals of Logarithmic Functions
+    - 21.8.4 Definite Integrals of Algebraic Functions
+  - 21.9 Elliptic Integrals
+    - 21.9.1 Elliptic Integral of the First Kind F( ,k), k = sin
+    - 21.9.2 Elliptic Integral of the Second Kind F( ,k), k = sin
+    - 21.9.3 Complete Elliptic Integral, k = sin
+  - 21.10 Gamma Function
+  - 21.11 Bessel Functions (Cylindrical Functions)
+  - 21.12 Legendre Polynomials of the First Kind
+  - 21.13 Laplace Transformation
+  - 21.14 Fourier Transformation
+    - 21.14.1 Fourier Cosine Transformation
+    - 21.14.2 Fourier Sine Transformation
+    - 21.14.3 Fourier Transformation
+    - 21.14.4 Exponential Fourier Transformation
+  - 21.15 Z Transformation
+  - 21.16 Poisson Distribution
+  - 21.17 Standard Normal Distribution
+    - 21.17.1 Standard Normal Distribution for 0.00≤x≤1.99
+    - 21.17.2 Standard Normal Distribution for 2.00≤ x ≤ 3.90
+  - 21.18 X2 Distribution
+  - 21.19 Fisher F Distribution
+  - 21.20 Student t Distribution
+  - 21.21 Random Numbers
+- [22 Bibliography](<22 Bibliography.md>)
+  - [1. Arithmetic](<1. Arithmetic.md>)
+  - [2. Functions](<22 Bibliography - 2. Functions.md>)
+  - [3. Geometry](<22 Bibliography - 3. Geometry.md>)
+  - [4. Linear Algebra](<22 Bibliography - 4. Linear Algebra.md>)
+  - [5. Algebra and Discrete Mathematics](<22 Bibliography - 5. Algebra and Discrete Mathematics.md>)
+  - [6. Differential Calculus](<6. Differential Calculus.md>)
+  - [7. Infinite Series](<22 Bibliography - 7. Infinite Series.md>)
+  - [8. Integral Calculus](<22 Bibliography - 8. Integral Calculus.md>)
+  - [9. Differential Equations](<22 Bibliography - 9. Differential Equations.md>)
+  - [10. Calculus of Variations](<22 Bibliography - 10. Calculus of Variations.md>)
+  - [11. Linear Integral Equations](<22 Bibliography - 11. Linear Integral Equations.md>)
+  - [12. Functional Analysis](<22 Bibliography - 12. Functional Analysis.md>)
+  - [13. Vector Analysis and Vector Fields](<22 Bibliography - 13. Vector Analysis and Vector Fields.md>)
+  - [14. Function Theory](<22 Bibliography - 14. Function Theory.md>)
+  - [15. Integral Transformations](<22 Bibliography - 15. Integral Transformations.md>)
+  - [16. Probability Theory and Mathematical Statistics](<22 Bibliography - 16. Probability Theory and Mathematical Statistics.md>)
+  - [17. Dynamical Systems and Chaos](<22 Bibliography - 17. Dynamical Systems and Chaos.md>)
+  - [18. Programming, Optimization](<18. Programming, Optimization.md>)
+  - [19. Numerical Analysis](<22 Bibliography - 19. Numerical Analysis.md>)
+  - [20. Computer Algebra Systems](<20. Computer Algebra Systems.md>)
+  - [21. Tables](<22 Bibliography - 21. Tables.md>)
+  - [22. Handbooks, Guide Books and Reference Books](<22. Handbooks, Guide Books and Reference Books.md>)
+  - [23. Encyclopedias](<23. Encyclopedias.md>)
+- [Index](<Index-2.md>)
+  - [Relational Symbols](<Relational Symbols.md>)
+  - [Greek Alphabet](<Greek Alphabet.md>)
+  - [Constants](<Constants.md>)
+  - [Algebra](<Algebra.md>)
+  - [Geometry](<Geometry.md>)
+  - [Complex Numbers](<Complex Numbers.md>)
+  - [Trigonometric Functions, Hyperbolic Functions](<Trigonometric Functions, Hyperbolic Functions.md>)
+  - [Analysis](<Analysis.md>)

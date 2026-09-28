@@ -1,6 +1,6 @@
 # Handbook of Mathematics (I.N. Bronshtein, K.A. Semendyayev etc.)
 
-由 `outputs\mineru-pdf2md-math-en\Handbook of Mathematics (I.N. Bronshtein, K.A. Semendyayev etc.)\Handbook of Mathematics (I.N. Bronshtein, K.A. Semendyayev etc.).md` 按章级标题（H2）拆分，共 497 页（1718 个标题；超过 32KB 的章按子标题二次拆分 79 处）。
+由 `outputs\mineru-pdf2md-math-en\Handbook of Mathematics (I.N. Bronshtein, K.A. Semendyayev etc.)\Handbook of Mathematics (I.N. Bronshtein, K.A. Semendyayev etc.).md` 按章级标题（H2）拆分，共 480 页（1718 个标题；超过 32KB 的章按子标题二次拆分 79 处，拆无可拆仍超限整页保留 3 页）。
 
 - [Handbook of Mathematics (I.N. Bronshtein, K.A. Semendyayev etc.)（封面/前言）](<Handbook of Mathematics (I.N. Bronshtein, K.A. Semendyayev etc.).md>)
 - [Preface to the Sixth English Edition](<Preface to the Sixth English Edition.md>)
@@ -9,8 +9,6 @@
 - [Co-Authors](<Co-Authors.md>)
 - [Additional Chapters with Co-Authors in the CD–ROM to the Books of the German Editions 7,8 and 9.](<Additional Chapters with Co-Authors in the CD–ROM to the Books of the German Editions 7,8 and 9.md>)
 - [Contents](<Contents.md>)
-  - [Contents（续2）](<Contents-2.md>)
-  - [Contents（续3）](<Contents-3.md>)
 - [List of Tables](<List of Tables.md>)
 - [1 Arithmetics](<1 Arithmetics.md>)
   - [1.1 Elementary Rules for Calculations](<1.1 Elementary Rules for Calculations.md>)
@@ -902,7 +900,6 @@
       - [9.2.2.1 Classification and Properties of Second-Order Differential Equations with Two Independent Variables](<9.2.2.1 Classification and Properties of Second-Order Differential Equations with Two Independent Va.md>)
       - [9.2.2.2 Classification and Properties of Linear Second-Order Differential Equations with More than Two Independent Variables](<9.2.2.2 Classification and Properties of Linear Second-Order Differential Equations with More than T.md>)
       - [9.2.2.3 Integration Methods for Linear Second-Order Partial Differential Equations](<9.2.2.3 Integration Methods for Linear Second-Order Partial Differential Equations.md>)
-        - [9.2.2.3 Integration Methods for Linear Second-Order Partial Differential Equations（续2）](<9.2.2.3 Integration Methods for Linear Second-Order Partial Differential Equations-2.md>)
     - [9.2.3 Some further Partial Differential Equations from Natural](<9.2.3 Some further Partial Differential Equations from Natural.md>)
     - [Sciences and Engineering](<Sciences and Engineering.md>)
       - 9.2.3.1 Formulation of the Problem and the Boundary Conditions
@@ -1693,20 +1690,6 @@
 - [22 Bibliography](<22 Bibliography.md>)
   - [1. Arithmetic](<1. Arithmetic.md>)
   - [2. Functions](<22 Bibliography - 2. Functions.md>)
-    - [2. Functions（续2）](<22 Bibliography - 2. Functions-2.md>)
-    - [2. Functions（续3）](<22 Bibliography - 2. Functions-3.md>)
-    - [2. Functions（续4）](<22 Bibliography - 2. Functions-4.md>)
-    - [2. Functions（续5）](<22 Bibliography - 2. Functions-5.md>)
-    - [2. Functions（续6）](<22 Bibliography - 2. Functions-6.md>)
-    - [2. Functions（续7）](<22 Bibliography - 2. Functions-7.md>)
-    - [2. Functions（续8）](<22 Bibliography - 2. Functions-8.md>)
-    - [2. Functions（续9）](<22 Bibliography - 2. Functions-9.md>)
-    - [2. Functions（续10）](<22 Bibliography - 2. Functions-10.md>)
-    - [2. Functions（续11）](<22 Bibliography - 2. Functions-11.md>)
-    - [2. Functions（续12）](<22 Bibliography - 2. Functions-12.md>)
-    - [2. Functions（续13）](<22 Bibliography - 2. Functions-13.md>)
-    - [2. Functions（续14）](<22 Bibliography - 2. Functions-14.md>)
-    - [2. Functions（续15）](<22 Bibliography - 2. Functions-15.md>)
   - [3. Geometry](<22 Bibliography - 3. Geometry.md>)
   - [4. Linear Algebra](<22 Bibliography - 4. Linear Algebra.md>)
   - [5. Algebra and Discrete Mathematics](<22 Bibliography - 5. Algebra and Discrete Mathematics.md>)
