@@ -66,10 +66,13 @@ def loose(s: str) -> str:
 
 
 def sanitize(title: str) -> str:
+    # 上限 100：Windows 路径护栏（仓库前缀 + 目录 100 + 最长文件名仍 < MAX_PATH 260）。
+    # 原 60 曾把 65 字符书名腰斩（"...Semendyayev e"），且与根页名/上游产物目录名不一致。
+    # 书名超 100 时目录名仍会截断而根页保持原文 stem（与上游一致），属已知取舍。
     t = title.replace("\xa0", " ")
     t = re.sub(r'[\\/:*?"<>|]+', " ", t)
     t = re.sub(r"\s+", " ", t).strip().rstrip(". ")
-    return t[:60].strip() or "未命名"
+    return t[:100].strip() or "未命名"
 
 
 def extract_sections(lines):
@@ -182,20 +185,33 @@ def split_book(md_file: Path, out_dir: Path, level_arg, max_bytes):
     extra_parts = {}                        # 硬切续页: sec 下标 -> [(文件名, 续号)]
     size_split = 0
 
-    def take_stem(parent_stem, stem):
-        """书根占用表取唯一 stem。撞名先冠父章前缀（平铺布局下保住归属信息），
-        仍撞退 -2/-3 数字后缀。"""
-        s = stem
-        if s.lower() in used and parent_stem:
-            cand = f"{parent_stem} - {stem}"
-            if cand.lower() not in used:
-                s = cand
-        n = 1
-        while s.lower() in used:
-            n += 1
-            s = f"{stem}-{n}"
+    def namekey(s):
+        """文件名撞名专用口径：loose 之外再去点号（只用于占用表，不动锁步校验的
+        loose）——「7 Infinite Series」与「7. Infinite Series」这类正文章 vs
+        书末 References 区同名小节必须视为撞名，否则两个语义相同的页并排出现。"""
+        return re.sub(r"[\s.]+", "", loose(s)).lower()
+
+    def busy(s):
+        return s.lower() in used or namekey(s) in used_loose
+
+    def claim(s):
         used.add(s.lower())
+        used_loose.add(namekey(s))
         return s
+
+    used_loose = {namekey(base), namekey("index")}
+
+    def take_stem(parent_stem, stem):
+        """书根占用表取唯一 stem。撞名（严格小写或宽松口径）先冠父章前缀
+        （平铺布局下保住归属信息），仍撞退 -2/-3 数字后缀。"""
+        s = stem
+        if busy(s) and parent_stem:
+            cand = f"{parent_stem} - {stem}"
+            if not busy(cand):
+                return claim(cand)
+        if busy(s):
+            return claim(f"{stem}-{next(n for n in range(2, 100) if not busy(f'{stem}-{n}'))}")
+        return claim(s)
 
     def emit_section(k: int, end: int, depth: int, allow_recurse: bool = True,
                      parent_stem=None):
@@ -250,9 +266,9 @@ def split_book(md_file: Path, out_dir: Path, level_arg, max_bytes):
             cont_links = []
             for part in chunks[1:]:
                 i += 1
-                while f"{stem}-{i}".lower() in used:
+                while busy(f"{stem}-{i}"):
                     i += 1
-                used.add(f"{stem}-{i}".lower())
+                claim(f"{stem}-{i}")
                 cont_rel = f"{stem}-{i}.md"
                 content[cont_rel] = part
                 extra_parts.setdefault(k, []).append((cont_rel, i))
